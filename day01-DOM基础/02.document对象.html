@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            document对象：
+                是DOM的顶层对象，是window对象的属性
+                浏览器在加载html的时候，自动生成的document对象，代表的就是当前的整个文档
+                document有很多的属性和方法可以操作整个文档 比如：bgColor title charset body head 等等。。。
+        
+         */
+        console.log(window.document);
+        console.log(document);
+        console.dir(document);
+        console.log(typeof document); //object
+        document.bgColor = "red";
+    </script>
+</body>
+
+</html>
