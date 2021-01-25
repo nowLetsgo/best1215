@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <!-- <li>2</li> -->
+        <li>3</li>
+    </ul>
+    <script>
+        /* 
+            parentNode:获取父元素节点（全兼容）
+        
+        */
+        /* var oLis = document.querySelectorAll('#box li');
+        console.log(oLis[1].parentNode); */
+
+
+
+
+        /* 
+            childNodes:获取一个元素的所有的子节点
+
+            children：获取一个元素的所有的子元素节点
+                IE8及以下 会获取到注释节点
+        
+        */
+
+        /* var oBox = document.getElementById('box');
+        console.log(oBox.children) */
+
+
+        /* 
+            获取第一个子节点
+                firstChild
+                    IE8会认为是获取第一个子元素节点
+                    高级浏览器认为是获取的第一个子节点
+
+                firstElementChild
+                    IE8没有这个属性
+                    高级浏览器获取的是第一个子元素节点
+
+        
+        */
+
+        var oBox = document.getElementById('box');
+        // var oBoxFir = oBox.firstChild;
+        // console.log(oBoxFir.nodeName)
+
+        // var oBoxFir = oBox.firstElementChild;
+        // console.log(oBoxFir.nodeName)
+
+        //兼容性写法
+        // var oBoxFir = oBox.firstElementChild || oBox.firstChild;
+        // console.log(oBoxFir.nodeName)
+
+        //封装一个兼容性的获取第一个子元素的函数
+        function getFirEle(Obj) {
+            return Obj.firstElementChild || Obj.firstChild;
+        }
+
+        console.log(getFirEle(oBox))
+    </script>
+</body>
+
+</html>

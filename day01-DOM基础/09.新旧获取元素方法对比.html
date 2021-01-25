@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="con">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        /* 
+            新旧方法的区别：
+                新方法获取的元素是静态的
+                旧方法获取的元素是动态的
+                静态/动态：获取的元素集合是否跟随节点的改变而改变
+        
+        
+        */
+        //旧获取元素方法
+        var oBtn = document.getElementById('btn');
+        var oCon = document.getElementById('con');
+        var oConLis = oCon.getElementsByTagName("li");
+
+        //给btn绑定一个点击事件
+        oBtn.onclick = function () {
+            var len = oConLis.length;
+            for (var i = 0; i < len; i++) {
+                //创建一个li
+                var oNewLi = document.createElement("li");
+                //把li插入到oCon后边
+                oCon.appendChild(oNewLi)
+            }
+        }
+
+
+        //新方法获取元素
+        /* var oBtn = document.getElementById('btn');
+        var oCon = document.getElementById('con');
+        var oConLis = document.querySelectorAll("#con li");
+
+        //给btn绑定一个点击事件
+        oBtn.onclick = function () {
+            for (var i = 0; i < oConLis.length; i++) {
+                //创建一个li
+                var oNewLi = document.createElement("li");
+                //把li插入到oCon后边
+                oCon.appendChild(oNewLi)
+            }
+        } */
+    </script>
+</body>
+
+</html>
