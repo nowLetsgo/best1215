@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ol>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ol>
+    <script>
+        /* 
+            通过标签名获取元素
+               document.getElementsByTagName("标签名")
+                    - 不一定从document中获取，也可以从其他的节点内获取
+                    - get：获取
+                    - Elements：元素们(因为标签名是可以多个的)
+                    - By 通过
+                    - TagName：标签名
+                
+                - 方法得到的是一个HTMLCollection对象，是一个类数组,只能通过下标去访问内部的元素
+
+        
+        */
+        //获取所有的li
+        var oLis = document.getElementsByTagName("li");
+        console.log(oLis)
+
+        //让li的颜色变红 使用元素的style属性 
+        // oLis.style.color = "red";
+        oLis[0].style.color = "red";
+        oLis[1].style.color = "red";
+        oLis[2].style.color = "red";
+
+
+        //指向获取ul中的li(先获取ul 然后再获取ul的li)
+        var oUl = document.getElementsByTagName("ul");
+        var oUlLis = oUl[0].getElementsByTagName("li");
+        console.log(oUlLis);
+    </script>
+</body>
+
+</html>

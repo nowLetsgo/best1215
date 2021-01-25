@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="con">
+        <li>1</li>
+        <li>2</li>
+        <!-- <li>3</li> -->
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            childNodes:
+                - 获取一个元素内所有的子节点
+                - 得到的是一个类数组对象
+            
+            关于节点有三个属性：
+                - nodeType：节点的类型
+                - nodeName：节点的名称
+                - nodeValue：节点的值
+
+            
+        */
+        //获取ul标签
+        var oCon = document.getElementById('con');
+        var oConChildNodes = oCon.childNodes;
+        console.log(oConChildNodes);
+
+        //document文档节点
+        console.log(document.nodeType) //9
+        console.log(document.nodeName) //#document
+        console.log(document.nodeValue) //null
+
+        //文本节点
+        console.log(oConChildNodes[0].nodeType) //3
+        console.log(oConChildNodes[0].nodeName) //#text
+        console.log(oConChildNodes[0].nodeValue) //文本的内容
+
+        //元素节点
+        console.log(oConChildNodes[1].nodeType) //1
+        console.log(oConChildNodes[1].nodeName) //LI
+        console.log(oConChildNodes[1].nodeValue) //null
+
+        //注释节点
+        console.log(oConChildNodes[5].nodeType) //8
+        console.log(oConChildNodes[5].nodeName) //#comment
+        console.log(oConChildNodes[5].nodeValue) //注释的内容
+
+        //创建一个属性节点
+        var oArrtNode = document.createAttribute("study");
+        oArrtNode.value = "js"
+        console.log(oArrtNode)
+        console.log(oArrtNode.nodeType) //2
+        console.log(oArrtNode.nodeName) //属性的key
+        console.log(oArrtNode.nodeValue) //属性的value
+    </script>
+</body>
+
+</html>

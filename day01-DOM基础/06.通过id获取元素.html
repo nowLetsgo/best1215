@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="con">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        /* 
+            通过id获取元素 
+                getElementById("id");
+                获取的直接是一个元素节点 并且是单数
+        
+        */
+
+        var oCon = document.getElementById("con");
+        console.log(oCon)
+
+        //获取ul中所有的li
+        var oConLis = oCon.getElementsByTagName("li");
+        console.log(oConLis);
+    </script>
+</body>
+
+</html>
