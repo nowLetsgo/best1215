@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            点击循环变色
+                - 获取元素
+                - 绑定点击事件
+                - 设置一个开关
+        
+        */
+        var oBox = document.getElementById('box');
+        //设置一个开关，true为hotpink
+        var flag = true;
+        oBox.onclick = function () {
+            if (flag) {
+                //如果开关为true  则改变颜色为绿色
+                oBox.style.backgroundColor = "green";
+            } else {
+                oBox.style.backgroundColor = "hotpink";
+            }
+
+            // flag?oBox.style.backgroundColor = "green":oBox.style.backgroundColor = "hotpink";
+
+            //flag都要取反
+            flag = !flag;
+        }
+    </script>
+</body>
+
+</html>
