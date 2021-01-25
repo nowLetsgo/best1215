@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con"></div>
+    <script>
+        /* 
+            鼠标点击事件    
+                - 鼠标左键单击： click
+                - 鼠标右键单击： contextmenu
+                - 鼠标左键双击： dblclick
+        */
+
+        var oCon = document.getElementById('con');
+
+        oCon.onclick = function () {
+            console.log("单击了")
+        }
+        oCon.oncontextmenu = function () {
+            console.log("右键了")
+
+            //去掉右键的默认事件
+            return false;
+        }
+        oCon.ondblclick = function () {
+            console.log("双击了")
+        }
+    </script>
+</body>
+
+</html>

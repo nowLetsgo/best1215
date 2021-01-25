@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var oHtml1 = document.querySelector("html");
+        var oBody1 = document.querySelector("body");
+        var oHead1 = document.querySelector("head");
+
+        /* 
+            js提供了简便的方法获取上边三个元素
+                document对象的属性获取
+        
+        */
+        var oHtml2 = document.documentElement;
+        var oBody2 = document.body;
+        var oHead2 = document.head;
+
+        console.log(oHtml1 === oHtml2)
+        console.log(oBody1 === oBody2)
+        console.log(oHead1 === oHead2)
+    </script>
+</body>
+
+</html>

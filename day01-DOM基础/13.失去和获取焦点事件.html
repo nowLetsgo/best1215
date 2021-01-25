@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="ipt" type="text" value="请输入电话号码">
+    <script>
+        /* 
+            失去和获取焦点:
+                获取焦点：当表单元素变成可编辑状态的时候 就是获取焦点
+                失去焦点：当表单元素变成不可编辑状态的时候 就是失去焦点
+            
+            失去和获取焦点事件：
+                focus：获取
+                blur：失去
+        
+        */
+
+        /* 
+            模拟placeholder思路：
+                1.获取元素
+                2.绑定获取焦点和失去焦点事件
+                3.当获取焦点的时候，如果表单的内容是‘请输入电话号码’,则把表单清空
+                4.当失去焦点的时候，如果表单的内容是空字符串，则把‘请输入电话号码’填写进去
+            
+            知识点：
+                获取和设置表单的值：
+                    通过表单元素的value属性
+                    表单的值一定是一个字符串类型
+        
+        */
+
+        var oIpt = document.querySelector('#ipt');
+
+        //绑定获取焦点事件
+        oIpt.onfocus = function () {
+            //获取表单的值 并和 ‘请输入电话号码’ 比较
+            if (oIpt.value === '请输入电话号码') {
+                //如果全等  则把表单清空
+                oIpt.value = '';
+            }
+        }
+        //绑定失去焦点事件
+        oIpt.onblur = function () {
+            if (oIpt.value === "") {
+                oIpt.value = '请输入电话号码';
+            }
+        }
+    </script>
+</body>
+
+</html>

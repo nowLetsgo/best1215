@@ -10,7 +10,7 @@
 <body>
     <ul id="box">
         <li>1</li>
-        <!-- <li>2</li> -->
+        <li>2</li>
         <li>3</li>
     </ul>
     <script>
@@ -66,6 +66,45 @@
         }
 
         console.log(getFirEle(oBox))
+
+        /* 
+            获取最后一个子节点
+                lastChild
+                lastElementChild
+        
+        */
+        //封装一个兼容性的获取第一个子元素的函数
+        function getLastEle(Obj) {
+            return Obj.lastElementChild || Obj.lastChild;
+        }
+
+        console.log(getLastEle(oBox))
+
+
+        /* 
+            获取上一个兄弟元素
+                previousSibling
+                previousElementSibling
+        
+        */
+        function getPreSibling(obj) {
+            return obj.previousElementSibling || obj.previousSibling;
+        }
+        var oLis = document.querySelectorAll('ul li');
+        console.log(getPreSibling(oLis[1]))
+
+        /* 
+            获取下一个兄弟元素
+                nextSibling
+                nextElementSibling
+        
+        */
+
+        function getPreSibling(obj) {
+            return obj.nextElementSibling || obj.nextSibling;
+        }
+        var oLis = document.querySelectorAll('ul li');
+        console.log(getPreSibling(oLis[1]))
     </script>
 </body>
 

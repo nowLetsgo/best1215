@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        /* 
+            DOM0绑定事件的方法
+                元素.on+事件名 = 匿名函数
+                给元素的事件属性添加一个方法
+                当事件发生的时候，会自动调用后边的匿名函数
+            
+                事件绑定是同步代码，事件的执行是异步代码
+        
+        
+        */
+        var oBtn = document.getElementById('btn');
+        console.dir(oBtn);
+
+        oBtn.onclick = function () {
+            alert("hello 事件");
+        }
+
+        console.log(1);
+    </script>
+</body>
+
+</html>

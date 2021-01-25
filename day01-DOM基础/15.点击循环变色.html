@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            点击循环变色
+                - 获取元素
+                - 绑定点击事件
+                - 设置一个计数器，当点击的时候累加计数器的值，对2取余
+                - 根据结果改变颜色  
+        
+        */
+        var oBox = document.getElementById('box');
+        //在事件外声明一个累加器  起始是0  余数为0的时候代表hotpink
+        var count = 0;
+        oBox.onclick = function () {
+            //当点击时，累加count的值
+            count++;
+            //把count对2取余 看余数
+            if (count % 2 === 1) {
+                oBox.style.backgroundColor = "green";
+            } else {
+                oBox.style.backgroundColor = "hotpink";
+            }
+        }
+    </script>
+</body>
+
+</html>
