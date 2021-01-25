@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="con">
+        <p class="tit">锄禾日当午</p>
+        <p>汗滴禾下土</p>
+        <h2 class="tit">蛋黄的长裙</h2>
+        <h2 name="user">蓬松的头发</h2>
+    </div>
+    <form action="###">
+        <input type="text" name="user">
+        <input type="password" name="pass">
+    </form>
+    <script>
+        
+        /* 
+            通过类名获取元素（不兼容IE8及以下）
+                - getElementsByClassName("类名");
+
+        
+        */
+        // var oTit = document.getElementsByClassName("tit");
+        // console.log(oTit);
+
+        /* 
+            通过name属性获取(在IE9及以下 只能获取表单元素)(几乎不用)
+                - getElmentsByName("name属性")
+        
+        */
+        var oUser = document.getElementsByName("user")
+        console.log(oUser);
+    </script>
+</body>
+
+</html>

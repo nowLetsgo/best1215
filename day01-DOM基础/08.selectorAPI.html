@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="con">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            Selector API:
+                - querySelector("css选择器")
+                    无论选择的元素是多少个，都是默认返回匹配的第一个元素，是个单数
+                - querySelectorAll("css选择器")
+                    返回的是一个nodeList对象，是一个集合，不能直接使用，需要添加下标
+                    nodeList对象 拥有forEach方法 可以进行遍历
+        
+        
+        */
+        var oConLi = document.querySelector(".con>li");
+        console.log(oConLi);
+        var oConLis = document.querySelectorAll(".con>li");
+        console.log(oConLis);
+
+        oConLis.forEach(function (item, index) {
+            console.log(item, index);
+            //给每一份li设置背景颜色
+            item.style.backgroundColor = "red";
+        })
+    </script>
+</body>
+
+</html>
