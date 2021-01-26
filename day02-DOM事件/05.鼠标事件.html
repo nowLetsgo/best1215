@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        /* 
+            点击事件：
+                在当前元素上按下 并在当前元素上抬起 就完成了一次点击事件
+        
+        */
+        oBox.onclick = function () {
+            console.log(1);
+        }
+
+        /* 
+            鼠标事件：
+                mousedown:鼠标按下
+                mouseup：鼠标抬起
+
+        */
+
+        oBox.onmousedown = function () {
+            oBox.style.backgroundColor = "green";
+        }
+        oBox.onmouseup = function () {
+            oBox.style.backgroundColor = "red";
+        }
+
+        /* 
+            鼠标移动事件
+                mousemove
+        
+        */
+        //定义初始的上一次时间是0
+        var lastTime = 0;
+        oBox.onmousemove = function () {
+            //获取当前的时间戳
+            var nowTime = Date.now();
+
+            //把当前事件减去上一次的时间 就是间隔时间
+            var time = nowTime - lastTime;
+            console.log(time);
+
+            //每次执行完成之后 把当前的时间设置为上一次的时间
+            lastTime = nowTime;
+        }
+    </script>
+</body>
+
+</html>

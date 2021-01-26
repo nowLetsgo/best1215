@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con {
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <div id="con"></div>
+    <script>
+        /* 
+            键盘事件：
+                keydown:键盘按下
+                keyup:键盘抬起
+
+            键盘事件：
+                可以绑定给 可输入的表单元素 和 document
+        */
+
+        var oCon = document.getElementById('con');
+        var oIpt = document.getElementById('ipt');
+        oCon.onkeydown = function () {
+            console.log(1);
+        }
+
+        oIpt.onkeydown = function () {
+            console.log("你按下了");
+        }
+
+        document.onkeydown = function () {
+            console.log("你按下了2");
+        }
+        document.onkeyup = function () {
+            console.log("你抬起了");
+        }
+    </script>
+</body>
+
+</html>

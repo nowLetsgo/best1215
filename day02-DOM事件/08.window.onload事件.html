@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        var oImg = document.getElementById('img');
+        console.log(oImg)
+        console.log(oImg.offsetWidth) //获取元素的宽度
+    </script> -->
+
+    <script>
+        window.onload = function () {
+            var oImg = document.getElementById('img');
+            console.log(oImg)
+            console.log(oImg.offsetWidth) //获取元素的宽度
+        }
+    </script>
+</head>
+
+<body>
+    <img src="./01.png" id="img" alt="">
+    <script>
+        var oImg = document.getElementById('img');
+        console.log(oImg)
+        //可以获取到图片标签，但是图片资源没有加载出来 所以获取的宽度是0
+        console.log(oImg.offsetWidth) //获取元素的宽度
+
+        /* 
+            window.onload事件触发条件：
+                1.当所有的DOM节点全部加载完成
+                2.页面中所有的资源（音频视频图片等等）全部加载完成
+        
+        
+        */
+    </script>
+</body>
+
+</html>

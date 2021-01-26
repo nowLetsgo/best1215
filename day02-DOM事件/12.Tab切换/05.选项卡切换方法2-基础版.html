@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tab {
+            width: 606px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        .title h2 {
+            width: 200px;
+            height: 40px;
+            font-size: 20px;
+            background-color: #ccc;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .title h2.active {
+            background-color: pink;
+        }
+
+        .con {}
+
+        .con li {
+            height: 300px;
+            font-size: 50px;
+            line-height: 300px;
+            text-align: center;
+            display: none;
+        }
+
+        .con li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+
+        <div class="tab">
+            <div class="title">
+                <h2 class="active">标题1</h2>
+                <h2>标题2</h2>
+                <h2>标题3</h2>
+            </div>
+            <ul class="con">
+                <li class="show">内容1</li>
+                <li>内容2</li>
+                <li>内容3</li>
+            </ul>
+        </div>
+
+    </div>
+    <script>
+        var oH2s = document.querySelectorAll('.title h2');
+        var oLis = document.querySelectorAll('.con li');
+
+        //把每一个h2当做一个对象，扩展一个自定义的属性index  保存的是这个元素的下标
+        oH2s[0].index = 0;
+        oH2s[1].index = 1;
+        oH2s[2].index = 2;
+
+        oH2s[2].onclick = function () {
+            oH2s[0].classList.remove("active");
+            oH2s[1].classList.remove("active");
+            oH2s[2].classList.remove("active");
+
+            oLis[2].classList.remove("show");
+            oLis[1].classList.remove("show");
+            oLis[0].classList.remove("show");
+
+            this.classList.add("active");
+            oLis[this.index].classList.add("show");
+
+        }
+
+        oH2s[0].onclick = function () {
+            oH2s[0].classList.remove("active");
+            oH2s[1].classList.remove("active");
+            oH2s[2].classList.remove("active");
+
+            oLis[2].classList.remove("show");
+            oLis[1].classList.remove("show");
+            oLis[0].classList.remove("show");
+
+            this.classList.add("active");
+            oLis[this.index].classList.add("show");
+        }
+
+        oH2s[1].onclick = function () {
+            oH2s[0].classList.remove("active");
+            oH2s[1].classList.remove("active");
+            oH2s[2].classList.remove("active");
+
+            oLis[2].classList.remove("show");
+            oLis[1].classList.remove("show");
+            oLis[0].classList.remove("show");
+
+            this.classList.add("active");
+            oLis[this.index].classList.add("show");
+        }
+    </script>
+</body>
+
+</html>

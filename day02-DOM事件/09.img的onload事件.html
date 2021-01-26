@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./01.png" alt="" id="haijing">
+    <script>
+        var oHaijing = document.getElementById('haijing');
+        console.log(oHaijing);
+        console.log(oHaijing.offsetWidth); //0
+
+        //给img绑定一个onload事件，当图片加载完成以后触发
+        oHaijing.onload = function () {
+            console.log(oHaijing.offsetWidth); //371
+        }
+    </script>
+</body>
+
+</html>

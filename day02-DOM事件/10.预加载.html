@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #progress {
+            width: 800px;
+            height: 40px;
+            border: 3px solid hotpink;
+        }
+
+        #per {
+            width: 0%;
+            height: 40px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress">
+        <div id="per"></div>
+    </div>
+    <p>已经加载了 <span id="num">0</span>%</p>
+    <script>
+        /* //前提 img标签在js中创建，并添加图片路径的时候就开始加载了，不需要插入节点
+        var oImg = new Image();
+        oImg.src = './01.png';
+        console.log(oImg) */
+
+
+        /* 
+            预加载：
+
+        */
+        var oPer = document.getElementById('per');
+        var oNum = document.getElementById('num');
+        //创建30个图片
+        var count = 0; //设置一个计数器
+        for (var i = 1; i <= 30; i++) {
+            var oImg = new Image();
+            //给图片添加路径 
+            oImg.src = './images/' + (i < 10 ? "0" + i : i) + ".jpg";
+
+            //图片只要加载成功就会触发onload事件
+            //给每一个图片绑定一个onload事件
+            oImg.onload = function () {
+                count++;
+                console.log(count)
+
+                // 求百分比：
+                var scale = count / 30 * 100;
+                oPer.style.width = scale + "%";
+                oNum.textContent = Math.floor(scale);
+            }
+        }
+    </script>
+</body>
+
+</html>

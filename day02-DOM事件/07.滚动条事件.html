@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        #box {
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            border: 1px solid #000;
+        }
+
+        #box .con {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="con"></div>
+    </div>
+    <script>
+        /* 
+            滚动条事件：
+                scroll:
+                    单个元素：对某一个元素可以绑定
+                    系统滚动条：给document或者window绑定
+        
+         */
+        var oBox = document.getElementById('box');
+        oBox.onscroll = function () {
+            console.log("滚了滚了")
+        }
+
+
+        /* window.onscroll = function () {
+            console.log("溜了溜了")
+        }
+        document.onscroll = function () {
+            console.log("溜了溜了")
+        } */
+
+
+        var lastTime = 0;
+        window.onscroll = function () {
+            var nowTime = Date.now();
+            console.log(nowTime - lastTime);
+            lastTime = nowTime;
+            console.log("溜了溜了")
+        }
+    </script>
+</body>
+
+</html>

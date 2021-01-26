@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <textarea id="text"></textarea>
+        <p>还可以输入<span id="num">50</span>个字</p>
+    </div>
+    <script>
+        /* 
+            限制输入字数：
+                1.获取元素
+                2.给text绑定input事件
+                3.当text被输入的时候，也就是表单事件被触发的时候，获取表单内容的长度
+                4.计算还能输入的字数,并且赋值给num元素
+                5.当可输入长度为0的时候，禁止用户输入(截取前50个 并重新给表单赋值) 并且把当前的框设置为红色
+         
+        */
+        var oText = document.getElementById('text');
+        var oNum = document.getElementById('num');
+        //限制一个最大长度
+        var allCount = 5;
+        oText.oninput = function () {
+            //当前输入的长度
+            var nowLen = oText.value.length;
+            //当前剩余的长度
+            var nowCount = allCount - nowLen;
+
+            //设置边框为黑色
+            oText.style.borderColor = "#000";
+
+            //判断临界值
+            if (nowCount <= 0) {
+                //把用户输入的前50个字符截取出来 并重新放入表单元素中
+                oText.value = oText.value.slice(0, allCount)
+                //一旦有截取字符串的需要 则直接把剩余长度设置为0就可以了
+                nowCount = 0;
+                oText.style.borderColor = "red";
+            }
+
+            //设置长度的数字
+            oNum.textContent = nowCount;
+        }
+    </script>
+</body>
+
+</html>
