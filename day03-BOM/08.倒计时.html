@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="con">敌军还有<span id="num">5</span>秒到达战场</p>
+    <script>
+        var oCon = document.getElementById('con');
+        var oNum = document.getElementById('num');
+        var count = 5;
+        var timer = setInterval(function () {
+            count--;
+            if (count <= 0) {
+                oCon.textContent = "全军出击";
+                //已经不需要计时器了 清除计时器
+                clearInterval(timer)
+            }
+
+            oNum.textContent = count;
+        }, 1000);
+    </script>
+</body>
+
+</html>

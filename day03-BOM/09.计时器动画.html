@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            position: absolute;
+            left: 0px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <button id="btn">走你~</button>
+        <div class="box"></div>
+    </div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.querySelector('.box');
+        var boxLeft = 0; //用一个变量代表元素left的值
+        var timer = null;
+        oBtn.onclick = function () {
+            //如果用户重复点击，则把上一次添加的计时器给清掉 重新添加
+            clearInterval(timer);
+            //设置一个定时器 每隔n毫秒 让boxleft发生改变
+            timer = setInterval(function () {
+                boxLeft += 1;
+                //判断临界值
+                if (boxLeft >= 1000) {
+                    //值可能超出1000，限制最大为1000
+                    boxLeft = 1000;
+                    //清计时器只是让计时器以后不再执行，当次仍然要执行完毕
+                    clearInterval(timer);
+                }
+                oBox.style.left = boxLeft + "px";
+            }, 10)
+        }
+    </script>
+</body>
+
+</html>
