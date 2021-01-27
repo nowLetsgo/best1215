@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            location:
+                获取浏览器的URL地址对象，里边有很多方法和属性 用来控制URL地址
+
+                href : 声明或获取当前文档完整的URL
+                protocol:协议部分包括后缀的冒号。例如http:
+                host:主机和端口名称 www.baidu.com:8080
+
+                hostname:主机名称
+
+                port：端口号
+
+                pathname 路径部分
+
+                search：url的查询部分，包括前导问号
+
+                hash：锚部分包括前导 #
+
+
+                assign:跳转 和href一样
+                replace:跳转，替换原有网址
+                reload:重新加载
+        */
+
+        document.onclick = function () {
+            console.log(location)
+            //可以获取完整的url地址
+            console.log(location.href)
+            //也可以设置新的url地址  重定向
+            // location.href = "http://www.baidu.com"
+
+
+            console.log(location.protocol) //http:
+            console.log(location.host) //127.0.0.1:5500/
+            console.log(location.hostname) //127.0.0.1
+            console.log(location.port) //5500
+            console.log(location.pathname) // /day03-BOM/14.location对象.html
+            console.log(location.hash) //锚点
+            console.log(location.search) //查询字符串
+
+
+            // location.assign("http://www.baidu.com")
+            // location.replace("http://www.baidu.com")
+            // location.reload()
+
+        }
+    </script>
+</body>
+
+</html>

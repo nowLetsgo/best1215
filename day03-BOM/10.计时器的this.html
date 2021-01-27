@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        /* 
+            目前书写情况下，计时器的this都指向window
+        
+        */
+        var oBtn = document.getElementById('btn');
+        var obj = {
+            name: "xiaowang",
+            fn: function () {
+                console.log(this) //obj
+                setTimeout(function () {
+                    console.log(this); //window
+                }, 1000);
+            }
+        }
+        obj.fn();
+
+
+        setTimeout(function () {
+            console.log(this); //window
+        }, 1000);
+
+        oBtn.onclick = function () {
+            console.log(this); //oBtn
+            setTimeout(function () {
+                console.log(this); //window
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

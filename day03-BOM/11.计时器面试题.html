@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            计时器和事件一样，设置计时器和绑定事件的时候是同步的，事件函数的执行和计时器函数的执行都是异步的
+        
+        */
+        for (var i = 0; i < 3; i++) {
+            setTimeout(function () {
+                //当执行计时器内部代码的时候，同步代码已经执行完毕
+                //此时找i 就找到了全局的i i已经变成3
+                console.log(i); //333
+            }, 10)
+        }
+
+
+        for (var i = 0; i < 3; i++) {
+            (function (i) {
+                setTimeout(function () {
+                    console.log(i); //0 1 2
+                }, 10)
+            })(i)
+        }
+    </script>
+</body>
+
+</html>

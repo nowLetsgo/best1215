@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            -webkit-transform: matrix();
+            -moz-transform: matrix();
+            -ms-transform: matrix();
+            -o-transform: matrix();
+            transform: matrix();
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 
+            navigator对象 储存了和浏览器相关的信息
+            onLine:表示网络连接状态 true和false
+            platform:浏览器所在的系统平台Win32 MacOS Linux
+            userAgent:用户代理字符串（浏览器识别码）
+        
+        */
+        console.log(window.navigator);
+        console.log(navigator.onLine); //true
+        console.log(navigator.platform); //Win32
+        console.log(navigator
+        .userAgent); //Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            检测浏览器：
+                - 特征检测法
+                    不需要考虑是什么浏览器，只需要考虑是否识别当前代码
+
+                - 字符串检测法
+                    查验出当前是什么浏览器，根据浏览器版本书写兼容代码
+
+        
+        */
+        // 特征检测法：
+        function get(obj) {
+            if (obj.firstElementChild) {
+                return obj.firstElementChild
+            } else {
+                return obj.firstChild
+            }
+        }
+
+
+
+        // 字符串检测法
+        var ua = navigator.userAgent.toLowerCase();
+        var info = {
+            ie: /msie/.test(ua) && !/opera/.test(ua),
+            op: /opera/.test(ua),
+            sa: /version.*safari/.test(ua),
+            ch: /chrome/.test(ua),
+            ff: /gecko/.test(ua) && !/webkit/.test(ua)
+        }
+        info.ie && console.log("ie");
+        info.op && console.log("op");
+        info.sa && console.log("sa");
+        info.ch && console.log("ch");
+        info.ff && console.log("ff");
+
+        //检测操作系统
+        var isWin = (navigator.userAgent.indexOf("Win") != -1);
+        // 如果是Windows系统，则返回true
+        var isMac = (navigator.userAgent.indexOf("Mac") != -1);
+        // 如果是Macintosh系统，则返回true 
+        var isUnix = (navigator.userAgent.indexOf("X11") != -1);
+        // 如果是UNIX系统，则返回true
+        var isLinux = (navigator.userAgent.indexOf("Linux") != -1);
+        // 如果是Linux系统， xc则返回true
+    </script>
+</body>
+
+</html>
