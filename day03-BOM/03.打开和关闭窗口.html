@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">百度一下你就知道</button>
+    <button id="btn2">关闭窗口</button>
+    <script>
+        /* 
+            window.open();
+                - 要加载的url地址
+                - _self和_blank
+                - 新窗口的特性 left top width height
+
+                - 返回值：代表新窗口
+
+            window.close():
+                关闭窗口
+        
+        */
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var newWin = null;
+        oBtn1.onclick = function () {
+            //默认打开新标签页
+            newWin = window.open("http://www.baidu.com");
+
+            //第二个参数控制自己打开还是新标签页打开
+            // newWin = window.open("http://www.baidu.com", "_self");
+
+            //打开一个新窗口 并控制窗口的特性
+            // newWin = window.open("http://www.baidu.com", "_blank", "left=100,top=200,width=500,height=300");
+            console.log(newWin);
+        }
+
+        oBtn2.onclick = function () {
+            //点击关闭新打开的窗口
+            // newWin.close();
+
+            window.close(); //脚本只能关闭脚本打开的窗口  旧浏览器可能有效
+        }
+    </script>
+</body>
+
+</html>

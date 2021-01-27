@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            超时调用计时器：
+                window对象的setTimeout的方法
+                    - 参数1：一段代码（1.字符串表示，时间到了之后使用eval来执行字符串代码）（2.一个函数,时间到了之后调用函数）
+                    - 参数2：延迟时间
+        
+        */
+
+        // eval()：可以把一段代码用字符串的形式表示，写到eval中，就可以执行这段代码
+        /* var strCode = "var a = 1;a++;alert(a)";
+        eval(strCode) */
+
+
+        //一段代码是字符串表示，防止在设置计时器的时候 就执行了代码
+        //当时间到了之后，会使用eval方法 把字符串执行
+        // setTimeout("alert(1)", 2000)
+
+
+        //参数1是一个函数
+        /* setTimeout(function () {
+            alert(1);
+        }, 2000); */
+
+
+        //函数提炼出来
+        function fn() {
+            alert(3);
+        }
+        setTimeout(fn, 2000)
+    </script>
+</body>
+
+</html>

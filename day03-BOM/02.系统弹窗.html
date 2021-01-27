@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            系统弹窗：
+                警告框：alert() 没有返回值
+                选择提示框：confirm()  返回的是用户的选择 布尔值
+                输入提示框：prompt() 返回的是用户的输入或者其他操作    
+        */
+
+        function sayHello() {
+            var userRe = prompt("叫爸爸，否则就关机");
+            console.log(userRe)
+            if (userRe != "爸爸") {
+                sayHello();
+            } else {
+                var againRe = confirm("你确定叫我爸爸");
+                console.log(againRe)
+                if (againRe) {
+                    alert("儿子乖")
+                } else {
+                    sayHello();
+                }
+            }
+        }
+
+        sayHello();
+    </script>
+</body>
+
+</html>

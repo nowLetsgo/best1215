@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            window对象：
+                1.window是窗口的意思，是浏览器的一个实例，是BOM核心对象
+                2.window本身有着双重的身份
+                    - ES规定，Global作为js的顶层全局对象，但是浏览器端并没有实现Global，window对象扮演Global角色，也就是全局对象，比如isNaN、parseInt等方法都在window对象上，声明的全局变量和全局函数都是window对象的属性和方法
+                    - window代表浏览器窗口，作为BOM的顶层对象
+        
+        
+         */
+
+        var a = 1;
+
+        function fn() {
+            console.log(2);
+        }
+
+        console.log(a)
+        console.log(window.a === a) //true
+        console.log(fn)
+        console.log(window.fn === fn) //true
+    </script>
+</body>
+
+</html>
