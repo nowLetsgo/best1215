@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            width: 400px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .nav .title {
+            height: 50px;
+            background-color: hotpink;
+        }
+
+        .nav .con {
+            height: 300px;
+            width: 400px;
+            background-color: lightblue;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+
+        <div class="nav">
+            <h2 class="title"></h2>
+            <div class="con"></div>
+        </div>
+    </div>
+
+    <script>
+        var oNav = document.querySelector('.nav');
+        var oCon = document.querySelector('.con');
+        var eleHideTimer = null;
+        oNav.onmouseenter = function () {
+            //每次在进入的时候，可能会有让元素隐藏的计时器没有执行，所以需要先把让元素隐藏的计时器清理掉
+            clearTimeout(eleHideTimer);
+            //让con显示
+            oCon.style.display = "block";
+        }
+
+        oNav.onmouseleave = function () {
+            //设置一个延迟计时器
+            eleHideTimer = setTimeout(function () {
+                //让con隐藏
+                oCon.style.display = "none";
+            }, 500)
+
+        }
+    </script>
+</body>
+
+</html>

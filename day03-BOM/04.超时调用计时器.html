@@ -32,8 +32,17 @@
 
 
         //函数提炼出来
-        function fn() {alert(3);}
-        setTimeout(fn, 2000)
+        function fn(a, b) {
+            alert(a + b);
+        }
+        // setTimeout(fn, 2000)
+
+
+        //给定时器函数传参
+        // setTimeout("fn(1, 2)", 2000)
+
+        //第三个参数开始，就是fn的参数
+        setTimeout(fn, 2000, 1, 2)
     </script>
 </body>
 

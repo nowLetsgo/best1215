@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">取消超时调用</button>
+    <script>
+        var oBtn = document.getElementById('btn');
+
+        var timer1 = setTimeout(function () {
+            alert(1);
+        }, 2000);
+        console.log(timer1);
+
+        /* 
+            计时器都有一个返回值
+                返回值是一个timerID（句柄），其实就是一个代表当前计时器的一个id
+            取消超时调用计时器：
+                clearTimeout(TimerID)
+
+        
+        */
+        oBtn.onclick = function () {
+            clearTimeout(timer1);
+        }
+    </script>
+</body>
+
+</html>

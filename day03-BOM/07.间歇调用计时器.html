@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">clear</button>
+    <script>
+        /* 
+            间歇调用：
+                setInterval(fn,timer);
+
+            清除间歇调用计时器：
+                clearInterval(timerID)
+        
+        */
+        var oClear = document.getElementById('btn');
+        var timer = setInterval(function () {
+            alert("hello");
+        }, 2000);
+
+        oClear.onclick = function () {
+            clearInterval(timer)
+        }
+    </script>
+</body>
+
+</html>
