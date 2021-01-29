@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 4000px;
+        }
+
+        #btn {
+            width: 100px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background-color: thistle;
+            display: none;
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btn">回到顶部</div>
+    <script>
+        var oBtn = document.getElementById('btn');
+
+        //给滚动条绑定事件 监听滚动条移动位置
+        window.onscroll = function () {
+            var nowScroll = window.pageYOffset;
+            if (nowScroll >= 500) {
+                oBtn.style.display = "block";
+            } else {
+                oBtn.style.display = "none";
+            }
+        }
+
+        //给回到顶部按钮绑定点击事件
+        oBtn.onclick = function () {
+            //获取当前滚动条的位置
+            var nowScroll = window.pageYOffset;
+            //设置计时器，让值递减并赋值
+            var winScrollTimer = setInterval(function () {
+                nowScroll -= 50;
+                //判断临界值
+                if (nowScroll <= 0) {
+                    nowScroll = 0;
+                    clearInterval(winScrollTimer)
+                }
+                //赋值
+                window.scrollTo(0, nowScroll)
+            }, 1)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn {
+            margin-top: 200px;
+        }
+
+        #box {
+            height: 4000px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="box"></div>
+    <script>
+        /* 
+            获取系统滚动条：    
+                window.pageXOffset(IE9+)
+                window.pageYOffset(IE9+)
+
+                在IE7以上，系统滚条被认定为html元素的
+                document.documentElement.scrollTop(IE7+)
+                在IE6及以下，系统滚动条被认定为body元素的
+                document.body.scrollTop(IE6-)
+
+            设置系统滚动条的位置：
+                document.documentElement.scrollTop = x;
+                document.body.scrollTop = x;
+                window.scrollTo(x,y);(全兼容)
+
+        
+        */
+        var oBox = document.getElementById('box');
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function () {
+            // alert(1);
+            /* console.log(window.pageYOffset)
+            console.log(document.documentElement.scrollTop);
+            console.log(document.body.scrollTop); */
+            console.log(getWinScroll())
+
+            // document.body.scrollTop = 100;
+            // document.documentElement.scrollTop = 100; 
+            // window.scrollTo(0, 200)
+        }
+
+        function getWinScroll() {
+            if (window.pageYOffset) {
+                return window.pageYOffset;
+            } else if (document.documentElement.scrollTop) {
+                return document.documentElement.scrollTop;
+            } else {
+                return document.body.scrollTop;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            获取视口的大小：
+                根元素的clientWidth和clientHeight
+                但是在IE7以上 认为html标签是根元素
+                在IE6及以下，认为body是根元素
+
+                获取方法：
+                    document.documnetElement.clientHeight
+                    document.body.clientHeight
+        
+        */
+
+        console.log(document.documentElement.clientHeight)
+        console.log(document.documentElement.clientWidth)
+        console.log(document.body.clientHeight)
+    </script>
+</body>
+
+</html>
