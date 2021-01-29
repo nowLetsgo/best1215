@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 已知一个地址 "http://www.baidu.com:80?user=laoli&pass=123456"
+        把查询字符串以对象的形式表现出来， 得到一个对象 {user: "laoli",pass: "123456} */
+
+        /* var url = "http://www.baidu.com:80?user=laoli&pass=123456";
+        var obj = {};
+        // url.split("?") //["http://www.baidu.com:80","user=laoli&pass=123456"]
+        // url.split("?")[1].split("&") //["user=laoli","pass=123456"]
+        url.split("?")[1].split("&").forEach(function (item, index) {
+            var keyValue = item.split("="); //["user","laoli"]
+            var key = keyValue[0];
+            var value = keyValue[1];
+            obj[key] = value;
+        })
+        console.log(obj) */
+
+
+        /* 已知一个查询字符串的对象{user:"laoli",pass:"123456}
+        已知一个地址http://www.baidu.com:80
+        得到一个url字符串"http://www.baidu.com:80?user=laoli&pass=123456" */
+
+        /* var obj = {
+            user: "laoli",
+            pass: "123456"
+        };
+        var baseUrl = "http://www.baidu.com:80?";
+        for (var key in obj) {
+            var keyValue = key + "=" + obj[key] + "&";
+            baseUrl += keyValue;
+        }
+        baseUrl = baseUrl.slice(0, -1)
+        console.log(baseUrl) */
+    </script>
+
+</body>
+
+</html>

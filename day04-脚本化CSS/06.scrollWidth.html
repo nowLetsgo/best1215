@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            padding: 20px;
+            overflow: auto;
+            border: 1px solid #000;
+        }
+
+        .con {
+            width: 1000px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="con">
+
+        </div>
+    </div>
+    <script>
+        /* 
+            scrollWidth:
+                元素包含内容的完全宽度和padding
+        
+        */
+        var oBox = document.getElementById('box');
+        console.log(oBox.scrollWidth)
+    </script>
+</body>
+
+</html>

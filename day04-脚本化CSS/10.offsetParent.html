@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 800px;
+            height: 600px;
+            background-color: palegoldenrod;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        #inner {
+            width: 500px;
+            height: 300px;
+            background-color: yellowgreen;
+            margin: 40px;
+            border: 2px solid #000;
+            position: relative;
+        }
+
+        #con {
+            width: 200px;
+            height: 100px;
+            background-color: teal;
+            margin: 20px;
+            border: 1px solid #000;
+            /* position: absoslut; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="con"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            offsetParent:
+                - 获取元素的最近定位父级的节点
+        
+        
+        */
+        var oCon = document.getElementById('con');
+        console.log(oCon.offsetParent) //inner
+        console.log(oCon.offsetParent.offsetParent) //outer
+        console.log(oCon.offsetParent.offsetParent.offsetParent) //body
+        console.log(oCon.offsetParent.offsetParent.offsetParent.offsetParent) //null
+    </script>
+</body>
+
+</html>

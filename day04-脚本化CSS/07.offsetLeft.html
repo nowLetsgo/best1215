@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 800px;
+            height: 600px;
+            background-color: palegoldenrod;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        #inner {
+            width: 500px;
+            height: 300px;
+            background-color: yellowgreen;
+            margin: 40px;
+            border: 2px solid #000;
+            /* position: relative; */
+        }
+
+        #con {
+            width: 200px;
+            height: 100px;
+            background-color: teal;
+            margin: 20px;
+            border: 1px solid #000;
+            /* position: absoslut; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="con"></div>
+        </div>
+    </div>
+    <script>
+        /* 
+            offsetLeft:
+                - 获取元素的左侧偏移位置
+                - 获取的是当前元素到最近定位父级的距离
+                - 如果找到根元素也没有定位父级，则获取的是相对文档边缘的距离
+        
+        
+        */
+        var oCon = document.getElementById('con');
+        console.log(oCon.offsetLeft)
+    </script>
+</body>
+
+</html>

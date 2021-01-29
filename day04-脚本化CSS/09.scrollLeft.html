@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #con {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            overflow: auto;
+        }
+
+        #box {
+            height: 4000px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <div id="con">
+        <div id="box"></div>
+    </div>
+    <script>
+        /* 
+            scrollLeft和scrollTop:
+                - 获取和设置元素滚动条已经滚动的距离
+        
+        */
+
+        var oCon = document.getElementById('con');
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function () {
+            // console.log(oCon.scrollTop)
+            oCon.scrollTop = 404;
+        }
+    </script>
+</body>
+
+</html>
