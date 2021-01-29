@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            margin: 100px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            getBoundingClientRect()方法 
+            获取元素四个边缘到视口左侧和上侧的距离
+        
+        
+        */
+        var oBox = document.getElementById('box');
+        console.log(oBox.getBoundingClientRect());
+        console.log(oBox.getBoundingClientRect().left);
+        console.log(oBox.getBoundingClientRect().right);
+        console.log(oBox.getBoundingClientRect().top);
+        console.log(oBox.getBoundingClientRect().bottom);
+        console.log(oBox.getBoundingClientRect().width); //border-box
+        console.log(oBox.getBoundingClientRect().height);
+    </script>
+</body>
+
+</html>

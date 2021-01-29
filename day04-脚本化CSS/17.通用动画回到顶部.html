@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 4000px;
+        }
+
+        #btn {
+            width: 100px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background-color: thistle;
+            display: none;
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btn">回到顶部</div>
+    <script>
+        var oBtn = document.getElementById('btn');
+
+        //给滚动条绑定事件 监听滚动条移动位置
+        window.onscroll = function () {
+            var nowScroll = window.pageYOffset;
+            if (nowScroll >= 500) {
+                oBtn.style.display = "block";
+            } else {
+                oBtn.style.display = "none";
+            }
+        }
+
+        //给回到顶部按钮绑定点击事件
+        oBtn.onclick = function () {
+            //1.获取动画的起始位置  当前滚动条的位置
+            var startLocation = window.pageYOffset;
+            //2.获取动画的结束位置
+            var endLocation = 0;
+            //3.起始的步数
+            var startStep = 0;
+            //4.总步数
+            var totalStep = 40;
+            //5. 求每一步走的距离
+            var everyStep = (endLocation - startLocation) / totalStep;
+
+            //设置计时器开始动画
+            var returnTopTimer = setInterval(function () {
+                //步数累加
+                startStep++;
+                //临界值判断
+                if (startStep >= totalStep) {
+                    clearInterval(returnTopTimer);
+                }
+                //每次执行 把起始位置加上每一步的距离
+                startLocation = startLocation + everyStep;
+                //赋值
+                window.scrollTo(0, startLocation);
+            }, 10)
+        }
+    </script>
+</body>
+
+</html>
