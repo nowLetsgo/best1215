@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <img src="./01.png" alt="海静哥哥的照片" id="haijing" class="haijing" study="js">
+    <script>
+        /* 
+            元素的属性分为两种：
+                - 自有属性
+                    元素提供的一些属性
+                    可以直接通过点操作符获取或者修改
+                    也有特殊的：对于class属性，必须使用className属性名，因为class是JavaScript语言的保留字
+                                对于for属性，则必须使用htmlFor属性名
+
+                
+
+        
+        
+        */
+
+        var oHaijing = document.getElementById('haijing');
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function () {
+            console.log(oHaijing.src)
+            console.log(oHaijing.alt)
+            console.log(oHaijing.id)
+            console.log(oHaijing.className)
+
+            //获取自定义属性
+            console.log(oHaijing.study)
+        }
+    </script>
+</body>
+
+</html>

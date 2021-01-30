@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="dele">删除</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            当属性点击某个元素的时候，把这个元素背景颜色变红，然后点击删除，删除这些变红的元素
+        
+        */
+        var oLis = document.querySelectorAll('#box li');
+        var oDele = document.getElementById('dele');
+
+        oLis.forEach(function (item, index) {
+            item.onclick = function () {
+                item.style.background = "red";
+                //给选中的元素添加一个自定义属性作为标记
+                item.dataset.click = true;
+            }
+        })
+
+        oDele.onclick = function () {
+            //点击删除的时候 遍历所有的li 判断哪一个被选中
+            oLis.forEach(function (item, index) {
+                if (item.dataset.click) {
+                    item.remove();
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

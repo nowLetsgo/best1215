@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <img src="./01.png" alt="海静哥哥的照片" id="haijing" class="haijing" study="js">
+    <script>
+        /* 
+            元素的属性分为两种：
+                - 自定义属性
+                    - 我们可以给一个元素设置自定义属性，用来保存一些值
+                    - 但是 直接通过点操作符获取自定义属性的时候，会把DOM节点当做一个js对象，获取的是这个对象的属性，不是DOM节点上的属性
+                
+                    - getAttribute(key):获取某个自定义属性
+                    - setAttribute(key,value):设置某个自定义属性,可以覆盖之前存在的值
+                    - removeAttribute(key)：删除某个自定义属性
+
+                
+
+        
+        
+        */
+
+        var oHaijing = document.getElementById('haijing');
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function () {
+            console.log(oHaijing.getAttribute("study"));
+            // oHaijing.setAttribute("say", "hello");
+            oHaijing.setAttribute("study", "jquery");
+            // oHaijing.removeAttribute("study")
+        }
+    </script>
+</body>
+
+</html>

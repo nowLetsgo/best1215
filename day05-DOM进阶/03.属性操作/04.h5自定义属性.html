@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <img src="./01.png" id="haijing" data-study="js" data-say="hello">
+    <script>
+        /* 
+           h5自定义属性：
+            建议在给元素添加自定义属性的时候，添加一个data-前缀 方便识别
+
+            h5规定：
+                每一个元素都有一个dataset对象，dataset对象上保存这当前元素上所有的h5自定义属性
+                我们可以通过操作这个对象，来控制元素的h5自定义属性
+
+                
+
+        
+        
+        */
+
+        var oHaijing = document.getElementById('haijing');
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function () {
+            console.log(oHaijing.dataset)
+
+            //添加一个h5的自定义属性
+            oHaijing.dataset.speek = "world";
+
+            //修改
+            oHaijing.dataset.say = "hi";
+
+            //删除
+            delete oHaijing.dataset.study;
+        }
+    </script>
+</body>
+
+</html>
