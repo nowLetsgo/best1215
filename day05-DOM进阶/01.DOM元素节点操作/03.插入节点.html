@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            插入节点：
+                A.appendChild(B):
+                    - 把B插入到A中，作为A的最后一个子节点
+                    - 不仅仅可以插入新节点，也可以插入已经存在的节点
+
+                A.insertBefore(new,old):
+                    - old是A的子节点
+                    - 将new元素 作为old的兄弟插入到old的前边
+
+        
+        
+         */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        var oLis = document.querySelectorAll('#box li');
+        oBtn.onclick = function () {
+            //创建一个元素节点(在插入之前只是保存在内存中)
+            var newLi = document.createElement("li");
+            console.log(newLi);
+
+            //创建文本节点
+            newLi.textContent = "我是li";
+            console.log(newLi);
+
+            //appendChild插入
+            // oBox.appendChild(newLi);
+            //把第一个li插入到ul中的末尾
+            // oBox.appendChild(oLis[0])
+
+            //insertBefore()插入节点
+            // oBox.insertBefore(newLi, oLis[2])
+            oBox.insertBefore(oLis[0], oLis[2])
+        }
+    </script>
+</body>
+
+</html>

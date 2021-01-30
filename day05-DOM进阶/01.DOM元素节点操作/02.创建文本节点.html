@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            创建文本节点：
+                document.createTextNode("文本内容")
+
+                textContent、innerHTML、innerText
+        
+        
+         */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        oBtn.onclick = function () {
+            //创建一个元素节点(在插入之前只是保存在内存中)
+            var newLi = document.createElement("li");
+            console.log(newLi);
+
+            //创建一个文本节点 方法一
+            /* var newLiText = document.createTextNode("我是li");
+            console.dir(newLiText)
+            //把文本节点插入到元素节点中
+            newLi.appendChild(newLiText)
+            console.log(newLi); */
+
+            newLi.textContent = "我是li";
+            console.log(newLi);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="con">
+        hello
+        <span>我是span</span>
+    </div>
+    <script>
+        /* 
+            textContent:
+                - 和innerText类似，输入元素的文本操作，不会解析标签
+                - 不兼容ie低版本
+                - 和innerText有些区别
+                    - innerText不会理会html格式，直接输出不换行的文本 ，textContent会根据标签里面的元素独立一行
+                    - innerText 对IE的兼容性较好 ，textContent虽然作为标准方法但是只支持IE8+以上的浏览器
+        
+        */
+        var oBtn = document.getElementById('btn');
+        var oCon = document.getElementById('con');
+        oBtn.onclick = function () {
+            console.log(oCon.innerText)
+            // console.log(oCon.textContent)
+            // oCon.innerText = "hehe <a href='###'>删除</a>"
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            创建元素节点：
+                document.createElement("标签名");
+        
+        
+         */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        oBtn.onclick = function () {
+            //创建一个元素节点(在插入之前只是保存在内存中)
+            var newLi = document.createElement("li");
+            console.dir(newLi);
+            
+        }
+    </script>
+</body>
+
+</html>

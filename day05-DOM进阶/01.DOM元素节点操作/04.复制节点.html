@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            复制节点：
+                A.cloneNode();
+                    - 把A复制一份 用一个变量保存
+                    - cloneNode接受一个参数 是一个布尔值
+                    - 参数为ture 则表示深复制 复制当前元素和内部所有元素
+                    - 参数为false或者省略，表示浅复制，复制当前元素
+        
+        
+         */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        var oLis = document.querySelectorAll('#box li');
+        oBtn.onclick = function () {
+            var newBox = oBox.cloneNode(true);
+            console.log(newBox);
+
+            document.body.appendChild(newBox)
+        }
+    </script>
+</body>
+
+</html>

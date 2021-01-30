@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="box">
+        <li>1 <a href="###">dele</a></li>
+        <li>2 <a href="###">dele</a></li>
+        <li>3 <a href="###">dele</a></li>
+        <li>4 <a href="###">dele</a></li>
+    </ul>
+    <script>
+        /* 
+            删除节点：
+                A.removeChild(B):
+                    把A中的元素B删除
+
+                B.remove();
+                    移除B
+
+        
+        
+         */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        var oLis = document.querySelectorAll('#box li');
+        var oDele = document.querySelectorAll('#box li a');
+
+        for (var i = 0; i < oDele.length; i++) {
+            oDele[i].onclick = function () {
+                // this.parentNode.parentNode.removeChild(this.parentNode)
+
+                this.parentNode.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>

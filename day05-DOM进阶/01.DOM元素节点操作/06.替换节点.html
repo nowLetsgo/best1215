@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            替换节点：
+                A.replaceChild(new,old):
+                    - old是A的子节点
+                    - 使用new 取代old的位置 old元素消失
+                    - 这个new可以是新创建的元素 也可以是已经存在的元素
+
+        
+        
+         */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        var oLis = document.querySelectorAll('#box li');
+        oBtn.onclick = function () {
+            //创建一个元素节点(在插入之前只是保存在内存中)
+            var newLi = document.createElement("li");
+            console.log(newLi);
+
+            //创建文本节点
+            newLi.textContent = "我是li";
+            console.log(newLi);
+
+            //替换元素
+            // oBox.replaceChild(newLi, oLis[3])
+            oBox.replaceChild(oLis[0], oLis[3])
+        }
+    </script>
+</body>
+
+</html>

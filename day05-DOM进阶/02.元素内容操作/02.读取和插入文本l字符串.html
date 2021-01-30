@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="con">
+        hello
+        <span>我是span</span>
+    </div>
+    <script>
+        /* 
+            innerText：
+                读取元素节点的内容:不会获取到标签，不会把内部的标签解析成字符串
+                设置元素节点的内容：设置的时候不会解析标签，而是把标签当做字符串显示出来
+
+            outerText：
+                读取元素节点的内容:读取标签内容 和innerText一样
+                设置元素节点内容: 设置的时候会把当前的元素一起替换，不解析标签
+        
+        */
+        var oBtn = document.getElementById('btn');
+        var oCon = document.getElementById('con');
+        oBtn.onclick = function () {
+            // console.log(oCon.innerText)
+            // oCon.innerText = "hehe <a href='###'>删除</a>"
+
+
+            // console.log(oCon.outerText)
+            oCon.outerText = "hehe <a href='###'>删除</a>"
+        }
+    </script>
+</body>
+
+</html>

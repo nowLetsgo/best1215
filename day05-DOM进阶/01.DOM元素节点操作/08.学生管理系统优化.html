@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="###" id="form">
+        <div>
+            <label>
+                姓名
+                <input type="text" name="user" id="user">
+            </label>
+        </div>
+        <div>
+            <label>
+                年龄
+                <input type="text" name="user" id="age">
+            </label>
+        </div>
+        <div>
+            <label>
+                性别
+                <input type="text" name="user" id="sex">
+            </label>
+        </div>
+        <button id="add">添加</button>
+    </form>
+
+    <table width="500" border="1" style="border-collapse: collapse; margin-top: 50px;">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>张海静</td>
+            <td>20</td>
+            <td>男</td>
+            <td><a href="###" class="dele">dele</a></td>
+        </tr>
+    </table>
+    <script>
+        var oForm = document.querySelector('form');
+        var oUser = document.getElementById('user');
+        var oAge = document.getElementById('age');
+        var oSex = document.getElementById('sex');
+        var oTbody = document.querySelector('table>tbody');
+        //表单被提交事件：onsubmit
+        oForm.onsubmit = function () {
+            //创建一个tr
+            var newTr = document.createElement("tr");
+            newTr.innerHTML = '<td>' + oUser.value + '</td>\
+                <td>' + oAge.value + '</td>\
+                <td>' + oSex.value + '</td>\
+                <td><a href="###" class="dele">dele</a></td>\
+            ';
+
+            console.log(newTr)
+            oTbody.appendChild(newTr)
+
+
+
+
+            //每次点击添加的时候，再次获取所有的删除按钮 然后给所有的删除按钮绑定点击事件
+            var oDeles = document.querySelectorAll('table tr td .dele');
+            for (var i = 0; i < oDeles.length; i++) {
+                oDeles[i].onclick = function () {
+                    this.parentNode.parentNode.remove();
+                }
+            }
+            //阻止表单提交 其实阻止默认事件
+            return false;
+        }
+
+
+        //每次点击添加的时候，再次获取所有的删除按钮 然后给所有的删除按钮绑定点击事件
+        var oDeles = document.querySelectorAll('table tr td .dele');
+        for (var i = 0; i < oDeles.length; i++) {
+            oDeles[i].onclick = function () {
+                this.parentNode.parentNode.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>
