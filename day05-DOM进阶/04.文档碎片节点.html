@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul class="box"></ul>
+    <script>
+        /* 
+            - DocumentFragment是一个虚拟的节点类型，仅仅存在于内存中，没有添加到文档树中，所以看不到渲染效果
+            - 使用文档碎片的好处，就是避免浏览器多次渲染和占用资源
+            当文档片段设计完善后，再使用js一次性添加到文档树中显示出来，提高效率，减少页面重绘的次数。解决大量添加节点时候的性能问题
+            - 使用document.createDocumentFragment()方法创建，使用appendChild等方法插入
+
+        
+        */
+        var oBtn = document.getElementById('btn');
+        var oBox = document.querySelector('.box');
+        var oFrag = document.createDocumentFragment();
+        oBtn.onclick = function () {
+            for (var i = 0; i < 100; i++) {
+                var newLi = document.createElement("li");
+                //把li插入到文档碎片节点中
+                oFrag.appendChild(newLi);
+            }
+            console.log(oFrag)
+            //把文档碎片节点的内容一次性插入到ul中
+            oBox.appendChild(oFrag)
+
+        }
+
+       
+    </script>
+</body>
+
+</html>
