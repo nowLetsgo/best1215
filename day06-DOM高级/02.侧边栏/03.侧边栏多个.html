@@ -73,29 +73,37 @@
     <script>
         var oLis = document.querySelectorAll('.bar li');
         var oLisPs = document.querySelectorAll('.bar li p');
-        var l = 0; //声明一个初始位置
-        var moveTimer = null;
-        oLis[0].onmouseenter = function () {
-            clearInterval(moveTimer)
-            moveTimer = setInterval(function () {
-                l--;
-                if (l <= -150) {
+
+        for (var i = 0; i < oLis.length; i++) {
+            (function () {
+                var l = 0; //声明一个初始位置
+                var moveTimer = null;
+                oLis[i].index = i;
+                oLis[i].onmouseenter = function () {
                     clearInterval(moveTimer);
+                    var _this = this;
+                    moveTimer = setInterval(function () {
+                        l--;
+                        if (l <= -150) {
+                            clearInterval(moveTimer);
+                        }
+                        oLisPs[_this.index].style.left = l + "px";
+                    }, 10)
                 }
-                oLisPs[0].style.left = l + "px";
-            }, 10)
-        }
 
 
-        oLis[0].onmouseleave = function () {
-            clearInterval(moveTimer);
-            moveTimer = setInterval(function () {
-                l++;
-                if (l >= 0) {
+                oLis[i].onmouseleave = function () {
                     clearInterval(moveTimer);
+                    var _this = this;
+                    moveTimer = setInterval(function () {
+                        l++;
+                        if (l >= 0) {
+                            clearInterval(moveTimer);
+                        }
+                        oLisPs[_this.index].style.left = l + "px";
+                    }, 10)
                 }
-                oLisPs[0].style.left = l + "px";
-            }, 10)
+            })();
         }
     </script>
 </body>

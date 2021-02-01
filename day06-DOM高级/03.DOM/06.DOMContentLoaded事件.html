@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="../01.图片轮播/images/01.png" alt="">
+
+    <script>
+        /* 
+            DOMContentLoaded 事件和 Load 事件的区别
+                - 当 onload 事件触发时，页面上所有的DOM，样式表，脚本，图片，flash都已经加载完成了
+                - 当 DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片，flash，是DOM2级事件 必须事件处理函数绑定
+                        
+        
+        */
+        //DOM2事件只能通过DOM2的事件监听绑定
+        window.onDOMContentLoaded = function () {
+            alert(1);
+        }
+
+        window.onload = function () {
+            alert("onload");
+        }
+        window.addEventListener("DOMContentLoaded", function () {
+            alert("DOMContentLoaded")
+        })
+    </script>
+</body>
+
+</html>

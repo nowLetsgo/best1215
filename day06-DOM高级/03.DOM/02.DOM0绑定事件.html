@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="outer">
+        outer
+        <div class="inner">
+            inner
+            <div class="con">
+                con
+            </div>
+        </div>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oInner = document.querySelector('.inner');
+        var oCon = document.querySelector('.con');
+        var oBtn = document.getElementById('btn');
+        /* 
+            DOM0绑定事件的特点：
+                - DOM0遵守的是冒泡机制
+                - 对同一个元素绑定一个事件多次 会进行覆盖
+                - 移除DOM0事件 设置事件属性为null即可
+
+        */
+        /* oOuter.onclick = function () {
+            alert("outer")
+        }
+        oInner.onclick = function () {
+            alert("inner")
+        }
+        oCon.onclick = function () {
+            alert("con")
+        } */
+
+        /* oCon.onclick = function () {
+            alert("con1")
+        }
+        oCon.onclick = function () {
+            alert("con2")
+        } */
+
+        oCon.onclick = function () {
+            alert("con2")
+        }
+
+        oBtn.onclick = function () {
+            oCon.onclick = null;
+        }
+    </script>
+</body>
+
+</html>

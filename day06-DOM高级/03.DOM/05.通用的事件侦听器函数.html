@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">box</div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        function fn() {
+            alert(1);
+        }
+        if (oBox.addEventListener) {
+            oBox.addEventListener("click", fn, false)
+        } else if (oBox.attachEvent) {
+            oBox.attachEvent("onclick", fn)
+        } else {
+            oBox.onclick = fn;
+        }
+
+        function addEvent(Ele, type, fn, boo) {
+            if (Ele.addEventListener) {
+                Ele.addEventListener(type, fn, boo || false)
+            } else if (Ele.attachEvent) {
+                Ele.attachEvent("on" + type, fn)
+            } else {
+                Ele["on" + type] = fn;
+            }
+        }
+        addEvent(oBox, "click", fn, false);
+
+
+        
+    </script>
+</body>
+
+</html>

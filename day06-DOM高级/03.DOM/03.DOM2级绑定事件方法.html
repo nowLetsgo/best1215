@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="outer">
+        outer
+        <div class="inner">
+            inner
+            <div class="con">
+                con
+            </div>
+        </div>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oInner = document.querySelector('.inner');
+        var oCon = document.querySelector('.con');
+        var oBtn = document.getElementById('btn');
+
+        /* 
+            DOM2级绑定事件方法：
+                - 使用 obj.addEventListener()方法来注册事件（事件监听）
+                - 参数1：事件类型 不带on
+                - 参数2：事件函数
+                - 参数3：事件流的选择 布尔值，true代表捕获  false代表冒泡
+
+            DOM2级事件的特点：
+                - 可以选择冒泡或捕获
+                - 可以给同一个元素绑定同一个事件多次
+                - DOM2级绑定事件方式可以绑定DOM2级事件，比如DOMContentLoaded事件
+                - 移除DOM2事件需要使用 removeEventListener方法
+                    - 参数1：移除的当前元素的事件类型
+                    - 参数2：移除当前事件类型的哪一个事件函数
+                    - 参数3：移除当前事件函数的冒泡或捕获类型的布尔值
+        */
+        /* document.addEventListener("click", function () {
+            alert("document")
+        }, true)
+        oOuter.addEventListener("click", function () {
+            alert("outer")
+        }, false);
+        oInner.addEventListener("click", function () {
+            alert("inner")
+        }, false);
+        oCon.addEventListener("click", function () {
+            alert("con")
+        }, true); */
+
+
+        /* oCon.addEventListener("click", function () {
+            alert("con1")
+        }, true);
+        oCon.addEventListener("click", function () {
+            alert("con2")
+        }, true);
+        oCon.addEventListener("click", function () {
+            alert("con3")
+        }, true) */
+
+
+        function fn() {
+            alert("con")
+        }
+        oCon.addEventListener("click", fn, false);
+
+        oBtn.onclick = function () {
+            oCon.removeEventListener("click", fn, false)
+        }
+
+    </script>
+</body>
+
+</html>
