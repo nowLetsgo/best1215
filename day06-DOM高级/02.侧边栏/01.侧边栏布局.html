@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .bar {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bar li {
+            margin: 30px 0;
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .bar li span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+
+            position: relative;
+            z-index: 1;
+
+
+        }
+
+        .bar li p {
+            width: 150px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: hotpink;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="bar">
+        <li>
+            <span>A</span>
+            <p>我是侧边栏1</p>
+        </li>
+        <li>
+            <span>B</span>
+            <p>我是侧边栏1</p>
+        </li>
+        <li>
+            <span>C</span>
+            <p>我是侧边栏1</p>
+        </li>
+    </ul>
+    <script>
+        var oLis = document.querySelectorAll('.bar li');
+        var oLisPs = document.querySelectorAll('.bar li p');
+
+        var l = 0; //声明一个初始位置
+        var moveTimer = null;
+        oLis[0].onmouseenter = function () {
+            clearInterval(moveTimer)
+            moveTimer = setInterval(function () {
+                l--;
+                if (l <= -150) {
+                    clearInterval(moveTimer);
+                }
+                oLisPs[0].style.left = l + "px";
+            }, 10)
+        }
+
+
+        oLis[0].onmouseleave = function () {
+            clearInterval(moveTimer);
+            moveTimer = setInterval(function () {
+                l++;
+                if (l >= 0) {
+                    clearInterval(moveTimer);
+                }
+                oLisPs[0].style.left = l + "px";
+            }, 10)
+        }
+    </script>
+</body>
+
+</html>

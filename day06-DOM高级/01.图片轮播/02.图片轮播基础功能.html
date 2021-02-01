@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            overflow: auto;
+        }
+
+        .con {
+            width: 5000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .left,
+        .right {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 100, .7);
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .list {
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+        }
+
+        .list li {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background-color: rgba(255, 255, 255, .4);
+        }
+
+        .list li.active {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="./images/01.png" alt="">
+                <img src="./images/02.png" alt="">
+                <img src="./images/03.png" alt="">
+                <img src="./images/04.png" alt="">
+                <img src="./images/05.png" alt="">
+            </div>
+            <div>
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /* 
+            每隔2秒换一张图，直接换
+        */
+        var oInner = document.querySelector('.inner');
+        var oConImgs = document.querySelectorAll('.con img');
+        var i = 0; //定义一个当前图片的下标
+        setInterval(function () {
+            i++; //每次图片滚动的时候 i累加
+            //i的临界值判断
+            if (i >= oConImgs.length) {
+                //当下标没有图片表示的时候，回到初始位置0
+                i = 0;
+            }
+            oInner.scrollLeft = i * oConImgs[0].offsetWidth;
+        }, 2000)
+    </script>
+</body>
+
+</html>
