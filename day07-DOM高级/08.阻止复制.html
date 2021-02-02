@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">求你了，复制一下我吧 救救孩子吧</div>
+    <script>
+        document.oncontextmenu = function () {
+
+            //阻止默认事件
+            return false;
+        }
+        /* //设置一个开关 保存ctrl的状态 因为不能在一次事件中 获取两个keyCode 每次事件触发只可能有一个keyCode
+        var key = false;
+        document.onkeydown = function (e) {
+            if (e.keyCode === 17) {
+                key = true;
+            }
+            if (e.keyCode === 67 && key) {
+                e.preventDefault();
+            }
+        }
+        document.onkeyup = function (e) {
+            if (e.keyCode === 17) {
+                key = false;
+            }
+        } */
+
+
+        //event事件对象 对 alt ctrl shift三个按键是有监听的，所以可以直接在事件中获取这三个的状态
+        document.onkeydown = function (e) {
+            if (e.keyCode === 67 && e.ctrlKey) {
+                e.preventDefault();
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="outer">
+        outer
+        <div class="inner">
+            inner
+            <div class="con">
+                con
+            </div>
+        </div>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oInner = document.querySelector('.inner');
+        var oCon = document.querySelector('.con');
+        var oBtn = document.getElementById('btn');
+
+        document.addEventListener("click", function () {
+            alert("document")
+        }, true)
+        oOuter.addEventListener("click", function () {
+            alert("outer")
+        }, true);
+        oInner.addEventListener("click", function (e) {
+            //现代浏览器阻止传播
+            e.stopPropagation();
+            //ie8以下 阻止冒泡
+            e.cancelBubble = true;
+            alert("inner")
+        }, true);
+        oCon.addEventListener("click", function (e) {
+            // e.stopPropagation();
+            alert("con")
+        }, true);
+    </script>
+</body>
+
+</html>

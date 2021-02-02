@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1000px;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+            overflow: hidden;
+        }
+
+        #box .con {
+            height: 100px;
+            margin-top: 100px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p class="con"></p>
+    </div>
+    <script>
+        /* 
+            clientX/clientY:获取事件发生的时候 鼠标 到 视口左侧和顶部的 距离
+            offsetX/offsetY:获取事件发生的时候 鼠标 到 当前目标元素左侧和顶部的 距离
+            pageX/pageY:获取事件发生的时候 鼠标 到 文档左侧和顶部的 距离(IE8以下不兼容)
+            screenX/screenY: 获取事件发生的时候 鼠标 到 电脑屏幕左侧和顶部的距离
+        
+        */
+        var oBox = document.getElementById('box');
+        oBox.onclick = function (e) {
+            var e = e || window.event;
+            console.log(e.clientY)
+            console.log(e.offsetY)
+            console.log(e.pageY);
+            console.log(e.screenY);
+        }
+    </script>
+</body>
+
+</html>

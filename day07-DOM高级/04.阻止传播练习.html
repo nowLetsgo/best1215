@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 300px;
+            height: 300px;
+            background-color: antiquewhite;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="box"></div>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oBox = document.querySelector('.box');
+
+        oOuter.onclick = function () {
+            console.log("outer");
+        }
+
+        oBox.onmousedown = function (e) {
+            console.log("鼠标按下");
+        }
+        oBox.onmouseup = function (e) {
+            console.log("鼠标抬起");
+        }
+        oBox.onclick = function (e) {
+            /* 
+                阻止传播 只能阻止当前事件类型的传播
+            */
+            e.stopPropagation();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.oncontextmenu = function (e) {
+            //阻止默认事件
+            /* e.preventDefault();
+            //ie低版本
+            e.returnValue = false; */
+
+            //兼容性阻止默认事件写法
+            // e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            //最粗暴的阻止方式 全兼容  但是只能书写在函数的末尾
+            return false;
+        }
+    </script>
+</body>
+
+</html>

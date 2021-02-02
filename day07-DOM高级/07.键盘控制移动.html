@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        var l = 0,
+            t = 0;
+        /* document.onkeydown = function (e) {
+            if (e.keyCode === 39) {
+                l++;
+                oBox.style.left = l + "px";
+            }
+            if (e.keyCode === 37) {
+                l--;
+                oBox.style.left = l + "px";
+            }
+        } */
+
+        var boxLeft = false,
+            boxTop = false,
+            boxRight = false,
+            boxBottom = false;
+
+        //键盘控制开关
+        document.onkeydown = function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    boxLeft = true;
+                    break;
+                case 38:
+                    boxTop = true;
+                    break;
+                case 39:
+                    boxRight = true;
+                    break;
+                case 40:
+                    boxBottom = true;
+                    break;
+            }
+        }
+        //键盘控制开关
+        document.onkeyup = function (e) {
+            switch (e.keyCode) {
+                case 37:
+                    boxLeft = false;
+                    break;
+                case 38:
+                    boxTop = false;
+                    break;
+                case 39:
+                    boxRight = false;
+                    break;
+                case 40:
+                    boxBottom = false;
+                    break;
+            }
+        }
+
+        setInterval(function () {
+            if (boxLeft) {
+                l--;
+            }
+
+            if (boxRight) {
+                l++;
+            }
+
+            if (boxTop) {
+                t--;
+            }
+
+            if (boxBottom) {
+                t++;
+            }
+            oBox.style.left = l + "px";
+            oBox.style.top = t + "px";
+        }, 10)
+    </script>
+</body>
+
+</html>

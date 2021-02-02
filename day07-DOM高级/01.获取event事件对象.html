@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        /* oBox.onclick = function (e) {
+            //当事件发生的时候，事件函数调用会被传入一个event事件对象，所以我们需要使用一个形参接收
+            console.log(e);
+        } */
+
+
+        /* oBox.onclick = function () {
+            //IE事件模型中，如果想要获取event对象，请在事件方法中直接通过window.event获取，也就是当事件发生的时候 会把当前事件的event对象放在window上
+            console.log(window.event);
+        } */
+
+        //获取event事件对象兼容写法
+        oBox.onclick = function (e) {
+            var e = e || window.event;
+            console.log(e);
+        }
+    </script>
+</body>
+
+</html>
