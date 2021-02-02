@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        //绑定鼠标按下事件
+        oBox.onmousedown = function (e) {
+            //鼠标按下的时候要获取：当前的clientX，和当前元素的定位位置
+            var clientXDown = {
+                x: e.clientX,
+                y: e.clientY
+            }
+
+            var lastBoxLocation = {
+                x: oBox.offsetLeft,
+                y: oBox.offsetTop
+            }
+
+            //绑定鼠标移动事件
+            document.onmousemove = function (e) {
+                //获取到每次移动的client值，减去鼠标按下时候的client的值 得到了元素在改变的时候移动的距离
+                //再添加上原来的位置信息  就是元素最新的定位信息
+                var oBoxLocation = {
+                    x: e.clientX - clientXDown.x + lastBoxLocation.x,
+                    y: e.clientY - clientXDown.y + lastBoxLocation.y
+                }
+
+
+                //赋值之前判断临界值
+                if (oBoxLocation.x <= 0) {
+                    oBoxLocation.x = 0;
+                } else if (oBoxLocation.x >= document.documentElement.clientWidth - oBox.offsetWidth) {
+                    oBoxLocation.x = document.documentElement.clientWidth - oBox.offsetWidth
+                }
+                if (oBoxLocation.y <= 0) {
+                    oBoxLocation.y = 0;
+                } else if (oBoxLocation.y >= document.documentElement.clientHeight - oBox.offsetHeight) {
+                    oBoxLocation.y = document.documentElement.clientHeight - oBox.offsetHeight
+                }
+
+                //赋值操作
+                oBox.style.left = oBoxLocation.x + "px";
+                oBox.style.top = oBoxLocation.y + "px";
+            }
+
+            //绑定一个鼠标抬起事件
+            document.onmouseup = function () {
+                //清除move事件
+                document.onmousemove = null;
+                //up也不需要了 下次按下的时候会重新绑定
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

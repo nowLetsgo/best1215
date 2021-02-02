@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menu {
+            width: 200px;
+            height: 300px;
+            background-color: cornflowerblue;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu"></div>
+    <script>
+        var oMenu = document.getElementById('menu');
+        document.oncontextmenu = function (e) {
+            //视口的宽高
+            var winWH = {
+                width: document.documentElement.clientWidth,
+                height: document.documentElement.clientHeight,
+            }
+            //让元素显示
+            oMenu.style.display = "block";
+            //正常情况下
+            var oMenuLocation = {
+                x: e.clientX,
+                y: e.clientY
+            }
+
+            //判断水平方向临界值
+            if (oMenuLocation.x > winWH.width - oMenu.offsetWidth) {
+                oMenuLocation.x -= oMenu.offsetWidth;
+            }
+
+            if (oMenuLocation.y > winWH.height - oMenu.offsetHeight) {
+                oMenuLocation.y -= oMenu.offsetHeight;
+            }
+
+
+            oMenu.style.left = oMenuLocation.x + "px";
+            oMenu.style.top = oMenuLocation.y + "px";
+            return false;
+        }
+    </script>
+</body>
+
+</html>
