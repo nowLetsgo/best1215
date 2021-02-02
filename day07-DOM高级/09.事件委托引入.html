@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">新增一个li</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var oListLis = document.querySelectorAll('.list li');
+        var oBtn = document.getElementById('btn');
+        var oList = document.querySelector('.list');
+
+        oBtn.onclick = function () {
+            //新建一个li
+            var newLi = document.createElement("li");
+            newLi.textContent = "newli";
+            oList.appendChild(newLi);
+
+            var oListLis = document.querySelectorAll('.list li');
+            //遍历所有已存在的li绑定事件
+            oListLis.forEach(function (item, index) {
+                item.onclick = function () {
+                    item.style.background = "red";
+                }
+            });
+        }
+
+        //遍历所有已存在的li绑定事件
+        oListLis.forEach(function (item, index) {
+            item.onclick = function () {
+                item.style.background = "red";
+            }
+        });
+    </script>
+</body>
+
+</html>

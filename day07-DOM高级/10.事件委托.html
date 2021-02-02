@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">新增一个li</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>
+            <span>hello <em>嗯哼</em></span>
+        </li>
+    </ul>
+    <script>
+        var oListLis = document.querySelectorAll('.list li');
+        var oBtn = document.getElementById('btn');
+        var oList = document.querySelector('.list');
+
+        oList.onclick = function (e) {
+            /* 
+                event事件对象的target属性 代表的是当前事件发生的时候 鼠标发生事件的目标元素
+                事件委托：
+                    把事件交给父级或者是祖辈元素，然后用冒泡的原理触发事件的执行，通过e.target控制精确的目标
+
+                优点：
+                    减少了代码量，提高运行效率，防止内存泄漏
+                    可以给未来的元素绑定事件
+            */
+            console.log(e.target);
+
+            //判断当点击的是li的时候 才进行改变颜色
+            if (e.target.nodeName.toLowerCase() === "li") {
+                e.target.style.background = "red";
+            }
+        }
+
+
+
+        oBtn.onclick = function () {
+            //新建一个li
+            var newLi = document.createElement("li");
+            newLi.textContent = "newli";
+            oList.appendChild(newLi);
+        }
+    </script>
+</body>
+
+</html>

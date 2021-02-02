@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            display: flex;
+        }
+
+        .left {
+            width: 200px;
+            height: 300px;
+            line-height: 30px;
+            background-color: aquamarine;
+        }
+
+        .right {
+            width: 200px;
+            height: 300px;
+            line-height: 30px;
+            background-color: bisque;
+        }
+
+        .btns {
+            width: 100px;
+            background-color: cornflowerblue;
+        }
+
+        .btns button {
+            width: 100px;
+            height: 30px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <ul class="left">
+            <li>左侧内容1</li>
+            <li>左侧内容2</li>
+            <li>左侧内容3</li>
+            <li>左侧内容4</li>
+            <li>左侧内容5</li>
+            <li>左侧内容6</li>
+        </ul>
+        <div class="btns">
+            <button id="toRight">&gt;&gt;&gt;&gt;</button>
+            <button id="toLeft">&lt;&lt;&lt;&lt;</button>
+        </div>
+        <ul class="right">
+            <li>右侧内容1</li>
+            <li>右侧内容2</li>
+            <li>右侧内容3</li>
+            <li>右侧内容4</li>
+            <li>右侧内容5</li>
+            <li>右侧内容6</li>
+        </ul>
+    </div>
+    <script>
+        //给所有的li绑定点击事件  做好标记 并改变颜色
+        var oLeft = document.querySelector('.left');
+        var oRight = document.querySelector('.right');
+
+
+
+        var oToRight = document.getElementById('toRight');
+        var oToLeft = document.getElementById('toLeft');
+
+        oLeft.onclick = function (e) {
+            if (e.target.nodeName === "LI") {
+                e.target.dataset.choose = "true";
+                e.target.style.background = "red";
+            }
+        }
+
+        oRight.onclick = function (e) {
+            if (e.target.nodeName === "LI") {
+                e.target.dataset.choose = "true";
+                e.target.style.background = "red";
+            }
+        }
+
+        oToRight.onclick = function () {
+            var oLeftLis = document.querySelectorAll('.left li');
+            //遍历所有的左侧li 把有标记的元素移过去
+            oLeftLis.forEach(function (item, index) {
+                if (item.dataset.choose) {
+                    //判断符合条件，把元素移动过去
+                    oRight.appendChild(item)
+                    //并且清除元素的颜色和标记
+                    delete item.dataset.choose;
+                    item.style.background = "";
+                }
+            })
+        }
+        oToLeft.onclick = function () {
+            var oRightLis = document.querySelectorAll('.right li');
+            //遍历所有的左侧li 把有标记的元素移过去
+            oRightLis.forEach(function (item, index) {
+                if (item.dataset.choose) {
+                    //判断符合条件，把元素移动过去
+                    oLeft.appendChild(item)
+                    //并且清除元素的颜色和标记
+                    delete item.dataset.choose;
+                    item.style.background = "";
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .con {
+            position: relative;
+        }
+
+        .con p {
+            width: 400px;
+            height: 40px;
+            background-color: pink;
+            color: #fff;
+        }
+
+        .con #list {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: limegreen;
+            display: none;
+
+        }
+
+        .con #list li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 id="city">北京</h2>
+    <div class="con">
+        <p id="choose">请选择城市</p>
+        <ul id="list">
+            <li>北京</li>
+            <li>上海</li>
+            <li>天津</li>
+            <li>广州</li>
+            <li>深圳</li>
+            <li>长沙</li>
+            <li>南昌</li>
+            <li>厦门</li>
+            <li>台湾</li>
+            <li>后瑞</li>
+            <li>宝安</li>
+            <li>钟屋</li>
+        </ul>
+    </div>
+
+    <script>
+        var oList = document.querySelector('#list');
+        var oCity = document.getElementById('city');
+        document.onclick = function (e) {
+            if (e.target.id === "choose") {
+                oList.style.display = "flex";
+                return;
+            }
+            if (e.target.nodeName === "LI" && e.target.parentNode.id === "list") {
+                oCity.textContent = e.target.textContent;
+                oList.style.display = "none";
+                return;
+            }
+
+            oList.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
