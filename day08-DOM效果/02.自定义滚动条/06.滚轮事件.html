@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            滚轮事件：
+                谷歌/ie：
+                    mousewheel事件：
+                        e.wheelDelta:
+                            上滚：正
+                            下滚：负
+
+
+                火狐：
+                    DOMMouseScroll(DOM2事件)
+                        e.detail：
+                            上滚：负
+                            下滚：正
+
+        
+        */
+
+        var oBox = document.getElementById('box');
+        var h = 100;
+        //谷歌绑定滚轮事件
+        /* oBox.onmousewheel = function (e) {
+            console.log(e)
+            if (e.wheelDelta > 0) {
+                h += 10;
+            } else {
+                h -= 10;
+            }
+            oBox.style.height = h + "px";
+        }
+
+        oBox.addEventListener("DOMMouseScroll", function (e) {
+            console.log(e);
+            if (e.detail > 0) {
+                h -= 10;
+            } else {
+                h += 10;
+            }
+            oBox.style.height = h + "px";
+        }) */
+
+        //兼容写法：
+        oBox.addEventListener("DOMMouseScroll", mouseScroll)
+        oBox.onmousewheel = mouseScroll;
+
+        function mouseScroll(e) {
+            //先判断是什么浏览器
+            if (e.wheelDelta) {
+                //谷歌
+                if (e.wheelDelta > 0) {
+                    h += 10;
+                } else {
+                    h -= 10;
+                }
+            } else {
+                //火狐
+                if (e.detail > 0) {
+                    h -= 10;
+                } else {
+                    h += 10;
+                }
+            }
+            oBox.style.height = h + "px";
+        }
+    </script>
+</body>
+
+</html>

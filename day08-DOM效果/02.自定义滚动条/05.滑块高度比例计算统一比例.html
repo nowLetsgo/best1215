@@ -49,7 +49,7 @@
         var oScroll = document.querySelector('.scroll');
         var oCon = document.querySelector('.con');
         //创建内容
-        for (var i = 0; i < 1000; i++) {
+        for (var i = 0; i < 300; i++) {
             oCon.innerHTML += i + "<br>";
         }
 
@@ -60,6 +60,7 @@
         //根据公式得出 滑块的高度 = 屏幕的高度*(滑槽的高度/Con的高度)
         //计算比例 scale= 滑槽的高度/Con的高度;
         var scale = oScroll.clientHeight / oCon.offsetHeight;
+        console.log(scale)
         var oBoxHeight = document.documentElement.clientHeight * scale;
         oBox.style.height = oBoxHeight + "px";
 
@@ -84,15 +85,14 @@
                 //赋值
                 oBox.style.top = oBoxLocation + "px";
 
-                //根据滑块走的距离 算出来 Con应该走的距离
-                //比例：滑块走的距离/滑块可以走的距离 = con走的距离 /con可以走的距离
-                //根据公式可以求出：con走的距离 = (滑块走的距离/滑块可以走的距离) * con可以走的距离
-                //根据公式可以求出：con走的距离 = 滑块走的距离 * (con可以走的距离 /滑块可以走的距离)
-                //可以先去计算比例 scale = (con可以走的距离 /滑块可以走的距离)
-                var boxAllMove = oScroll.clientHeight - oBox.offsetHeight;
-                var conAllMove = oCon.offsetHeight - document.documentElement.clientHeight;
-                var scale = conAllMove / boxAllMove;
-                var conLocation = oBoxLocation * scale;
+                //因为滑块的高度 是根据比例计算出来的，所以可以不用再次计算比例
+                //上边的比例就是 滑槽的总高度/con的总高度
+                //因为滑块高度是计算的，所以 滑块可以走的高度/con能走的高度 = 滑槽的总高度/con的总高度
+                //所以 滑块可以走的高度/con能走的高度 = scale
+                //滑块可以走的高度/con能走的高度 =  滑块走的/con走的
+                //滑块走的/con走的 = scale
+                //con走的 = 滑块走的/ scale
+                var conLocation = oBoxLocation / scale;
                 oCon.style.transform = "translateY(" + -conLocation + "px)";
             }
             document.onmouseup = function () {
