@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+        }
+
+        html {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            /* overflow: auto; */
+        }
+
+        body {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+            /* overflow: auto; */
+        }
+
+        #box {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        当html和body只有一个设置滚动条的时候，那么这个滚动条会设置在系统上
+        如果html设置了overflow，则body的滚动条才是自己的
+
+        禁止系统滚动条：设置html和body的overflow为hidden即可
+
+
+     -->
+    <div id="box"></div>
+</body>
+
+</html>

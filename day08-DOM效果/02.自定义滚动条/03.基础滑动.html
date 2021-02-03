@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+        }
+
+        .scroll {
+            width: 40px;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            background-color: aquamarine;
+            z-index: 1;
+
+        }
+
+        .scroll .box {
+            width: 40px;
+            height: 50px;
+            background-color: hotpink;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scroll">
+        <div class="box"></div>
+    </div>
+    <div class="con"></div>
+    <script>
+        var oBox = document.querySelector('.box');
+        var oScroll = document.querySelector('.scroll');
+        var oCon = document.querySelector('.con');
+        //创建内容
+        for (var i = 0; i < 300; i++) {
+            oCon.innerHTML += i + "<br>";
+        }
+
+        //基础拖拽
+        oBox.onmousedown = function (e) {
+            //阻止默认事件
+            e.preventDefault();
+            var mouseToBox = e.offsetY;
+
+            document.onmousemove = function (e) {
+                //阻止默认事件
+                e.preventDefault();
+                var oBoxLocation = e.clientY - mouseToBox;
+
+                //临界值判断
+                if (oBoxLocation <= 0) {
+                    oBoxLocation = 0;
+                } else if (oBoxLocation >= oScroll.clientHeight - oBox.offsetHeight) {
+                    oBoxLocation = oScroll.clientHeight - oBox.offsetHeight;
+                }
+                //赋值
+                oBox.style.top = oBoxLocation + "px";
+
+                //根据滑块走的距离 算出来 Con应该走的距离
+                //比例：滑块走的距离/滑块可以走的距离 = con走的距离 /con可以走的距离
+                //根据公式可以求出：con走的距离 = (滑块走的距离/滑块可以走的距离) * con可以走的距离
+                //根据公式可以求出：con走的距离 = 滑块走的距离 * (con可以走的距离 /滑块可以走的距离)
+                //可以先去计算比例 scale = (con可以走的距离 /滑块可以走的距离)
+                var boxAllMove = oScroll.clientHeight - oBox.offsetHeight;
+                var conAllMove = oCon.offsetHeight - document.documentElement.clientHeight;
+                var scale = conAllMove / boxAllMove;
+                var conLocation = oBoxLocation * scale;
+                oCon.style.transform = "translateY(" + -conLocation + "px)"
+            }
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

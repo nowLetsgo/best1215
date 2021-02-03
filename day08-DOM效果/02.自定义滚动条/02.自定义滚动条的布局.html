@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+        }
+
+        .scroll {
+            width: 40px;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            background-color: aquamarine;
+        }
+
+        .scroll .box {
+            width: 40px;
+            height: 50px;
+            background-color: hotpink;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll">
+        <div class="box"></div>
+    </div>
+    <div class="con"></div>
+    <script>
+        var oCon = document.querySelector('.con');
+        //创建内容
+        for (var i = 0; i < 300; i++) {
+            oCon.innerHTML += i + "<br>";
+        }
+    </script>
+</body>
+
+</html>
