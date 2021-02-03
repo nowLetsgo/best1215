@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            overflow: auto;
+        }
+
+        .con {
+            width: 5000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 500px;
+            height: 300px;
+        }
+
+        .left,
+        .right {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 100, .7);
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .list {
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+        }
+
+        .list li {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background-color: rgba(255, 255, 255, .4);
+        }
+
+        .list li.active {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="./images/01.png" alt="">
+                <img src="./images/02.png" alt="">
+                <img src="./images/03.png" alt="">
+                <img src="./images/04.png" alt="">
+                <img src="./images/05.png" alt="">
+                <img src="./images/01.png" alt="">
+            </div>
+            <div>
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /* 
+            每隔2秒换一张图，直接换
+        */
+        var oInner = document.querySelector('.inner');
+        var oConImgs = document.querySelectorAll('.con img');
+        var oLeft = document.querySelector('.left');
+        var oRight = document.querySelector('.right');
+        var oListLis = document.querySelectorAll('.list li');
+        var i = 0; //定义一个当前图片的下标
+        var autoMoveTimer = null,
+            moveTimer = null;
+
+        //图片切换动画
+        function move() {
+            //动画切换
+            //起始位置
+            var startLocation = oInner.scrollLeft;
+            //结束位置
+            var endLocation = i * oConImgs[0].offsetWidth;
+            //起始步数
+            var startStep = 0;
+            //结束步数
+            var endStep = 40;
+            //每一步走的距离
+            var everyStep = (endLocation - startLocation) / endStep;
+            //切换动画
+            moveTimer = setInterval(function () {
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer);
+                }
+                startLocation += everyStep;
+                oInner.scrollLeft = startLocation;
+            }, 10)
+        }
+        //自动走
+        function autoMove() {
+            autoMoveTimer = setInterval(function () {
+                // 为了防止两个计时器冲突
+                clearInterval(moveTimer);
+                i++; //每次图片滚动的时候 i累加
+                //i的临界值判断
+                if (i >= oConImgs.length) {
+                    //临界值是 现在看到的是第六张图 图一 所以下一次应该走到图二 所以i应该变成1
+                    i = 1;
+                    //到达临界值后，瞬间把滚动条恢复到0  因为图片都是一样的 所以用户无法察觉
+                    oInner.scrollLeft = 0;
+                }
+                move();
+
+                listChange();
+            }, 2000)
+        }
+        //下标跟随
+        function listChange() {
+            //遍历所有的下标list 让下标为i的元素 直接设置为active类名
+            oListLis.forEach(function (item, index) {
+                item.classList.remove("active");
+            })
+            oListLis[i === 5 ? 0 : i].classList.add("active");
+        }
+        //清计时器
+        function clearMove() {
+            //在点击按钮的时候，直接把自动走的和动画走的计时器全部清掉，然后重新添加
+            clearInterval(autoMoveTimer)
+            clearInterval(moveTimer)
+        }
+
+        //刚进入页面需要执行自动走
+        autoMove();
+
+        //右侧按钮
+        oRight.onclick = function () {
+            clearMove();
+            i++; //每次图片滚动的时候 i累加
+            //i的临界值判断
+            if (i >= oConImgs.length) {
+                //临界值是 现在看到的是第六张图 图一 所以下一次应该走到图二 所以i应该变成1
+                i = 1;
+                //到达临界值后，瞬间把滚动条恢复到0  因为图片都是一样的 所以用户无法察觉
+                oInner.scrollLeft = 0;
+            }
+            move();
+            listChange();
+            //点击的时候 会清除自动走，所有当点击完成 要重新添加自动走代码
+            autoMove();
+        }
+
+        //左侧按钮
+        oLeft.onclick = function () {
+            clearMove();
+
+            //图片倒着走
+            i--;
+            if (i < 0) {
+                i = oConImgs.length - 2;
+                oInner.scrollLeft = (oConImgs.length - 1) * oConImgs[0].offsetWidth
+            }
+            move();
+            listChange();
+
+            //点击的时候 会清除自动走，所有当点击完成 要重新添加自动走代码
+            autoMove();
+        }
+
+
+        oListLis.forEach(function (item, index) {
+            item.onclick = function () {
+                clearMove();
+                //先清空所有的样式
+                oListLis.forEach(function (item, index) {
+                    item.classList.remove("active");
+                });
+                this.classList.add("active");
+
+                //index就是 外层forEach遍历的index，也就是当前item的对应的下标
+                i = index;
+
+                move();
+
+
+                //点击的时候 会清除自动走，所有当点击完成 要重新添加自动走代码
+                autoMove();
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>
