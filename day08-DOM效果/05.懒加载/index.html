@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 1040px;
+            display: flex;
+            margin: 0 auto;
+            border: 1px solid #000;
+            flex-wrap: wrap;
+        }
+
+        .outer img {
+            width: 500px;
+            height: 300px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+
+    </div>
+    <script>
+        var imgsrc = ["https://s3.ax1x.com/2020/12/08/rSCogx.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCh59.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCI81.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCfUJ.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCWE4.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCHKK.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPCKf.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCqbD.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCbDO.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCTv6.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCOVe.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCXUH.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCj5d.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCxPA.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSCz8I.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPPr8.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPS2t.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPpxP.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPiqS.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPkVg.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPE5j.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPZPs.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPMrT.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPeGn.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPm2q.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPnx0.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPQqU.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSPKMV.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSP3a4.jpg",
+            "https://s3.ax1x.com/2020/12/08/rSP1ZF.jpg"
+        ]
+
+        //动态生成图片
+        var oOuter = document.querySelector('.outer');
+        imgsrc.forEach(function (item, index) {
+            var newImg = new Image();
+            newImg.src =
+                "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp%2Fjy_sccnn_com%2F334245f1e475c61d070fe07822f9c904.gif&refer=http%3A%2F%2Ftc.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1614929508&t=ef625dfd56dc4cf7b47feb64c9f096d5";
+            newImg.dataset.src = item;
+            oOuter.appendChild(newImg);
+        })
+
+        //获取元素到文档边缘的距离
+        function getEleToDoc(Ele) {
+            var l = 0,
+                t = 0;
+            var obj = Ele;
+            while (obj) {
+                //判断obj是不是con 如果是，则不用获取它的边框，否则需要另外获取元素的边框
+                if (obj === Ele) {
+                    l += obj.offsetLeft;
+                    t += obj.offsetTop;
+                } else {
+                    l += obj.offsetLeft + obj.clientLeft;
+                    t += obj.offsetTop + obj.clientTop;
+                }
+                obj = obj.offsetParent;
+            }
+            return {
+                left: l,
+                top: t
+            }
+        }
+
+
+        //只要滚动条滚动，则开始监听每一张图片
+        window.onload = window.onscroll = function () {
+            //获取所有的图片
+            var allImg = document.querySelectorAll('.outer img');
+            //获取系统滚动条高度
+            var winScroll = window.pageYOffset;
+            //获取窗口高度
+            var winHei = document.documentElement.clientHeight;
+            allImg.forEach(function (item, index) {
+                //当一个元素到文档顶部的距离 小于 系统滚动条的距离+窗口高度的时候
+                //说明这个元素要进入视口了
+                if (getEleToDoc(item).top <= winScroll + winHei) {
+                    item.src = item.dataset.src;
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 1000px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: 50px auto;
+
+            position: relative;
+        }
+
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+
+            position: absolute;
+            left: 50px;
+            top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="box"></div>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        var oOuter = document.getElementById('outer');
+
+        var l = 50;
+        var t = 80;
+        var flagX = true;
+        var flagY = true;
+        setInterval(function () {
+            if (flagX) {
+                l++;
+                if (l >= oOuter.clientWidth - oBox.offsetWidth) {
+                    flagX = false;
+                }
+            } else {
+                l--;
+                if (l <= 0) {
+                    flagX = true;
+                }
+            }
+
+            if (flagY) {
+                t++;
+                if (t >= oOuter.clientHeight - oBox.offsetHeight) {
+                    flagY = false;
+                }
+            } else {
+                t--;
+                if (t <= 0) {
+                    flagY = true;
+                }
+            }
+            oBox.style.left = l + "px";
+            oBox.style.top = t + "px";
+        }, 1)
+    </script>
+</body>
+
+</html>

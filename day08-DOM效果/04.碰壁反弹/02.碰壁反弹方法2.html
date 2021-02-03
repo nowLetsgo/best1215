@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 1000px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: 50px auto;
+
+            position: relative;
+        }
+
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+
+            position: absolute;
+            left: 50px;
+            top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="box"></div>
+    </div>
+    <script>
+        var oBox = document.getElementById('box');
+        var oOuter = document.getElementById('outer');
+
+        var l = 50;
+        var t = 80;
+        var baseX = 1;
+        var baseY = 1;
+        setInterval(function () {
+
+            //base默认是正数，但是只要到临界值 就取反
+            if (l <= 0 || l >= oOuter.clientWidth - oBox.offsetWidth) {
+                baseX *= -1
+            }
+
+            //base默认是正数，但是只要到临界值 就取反
+            if (t <= 0 || t >= oOuter.clientHeight - oBox.offsetHeight) {
+                baseY *= -1
+            }
+
+
+            //每次l的值都累加base 
+            l += baseX;
+            t += baseY;
+            oBox.style.left = l + "px";
+            oBox.style.top = t + "px";
+        }, 1)
+    </script>
+</body>
+
+</html>
