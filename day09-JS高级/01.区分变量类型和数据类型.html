@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            严格区分 变量类型 和 数据类型
+            变量类型：比如以下案例的a和b两个变量，a保存的是一个基本值，b保存的是一个地址值
+                所以变量类型分为两种：基本类型  引用类型
+
+            数据类型：数据类型 比如一下案例 字符串和一个对象
+                所以数据类型分为两种：基本类型  对象类型
+        */
+        var a = "hello";
+        var b = {};
+
+        var fn = function (){
+            var a = 1;
+            var obj = {};
+        }
+
+        fn()
+
+        fn = null;
+
+    </script>
+</body>
+</html>

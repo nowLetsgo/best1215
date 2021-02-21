@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象：
+                1.储存数据的一种数据结构 {} 
+                2.现实事物的在编程中的一个抽象
+
+            对象：
+                1. 由0个或多个 key-value 组成
+                2. 对象的key是属性  value是属性值
+                3. 对象的属性如果保存的是一个函数，则把这个属性称作为方法
+                4. 属性保存的是对象的一些状态，方法保存的是对象的行为
+
+            访问对象内部的数据：
+                - 点操作符：
+                    - 成员访问，读取会自动把点操作符后边的内容读成字符串格式
+                    - obj.fn :会把fn读成字符串 不可能把fn当作一个变量
+                - 中括号操作符
+                    - 中括号操作符里边可以书写变量 也可以书写字符串，如果是变量就会解析成字符串
+                    - obj[fn]:把fn当作一个变量，先读取fn变量代表的值 然后再获取obj的这个属性
+                    - obj['fn']:直接读取obj的fn属性
+
+                - 什么是用中括号和点
+                    - 一般来说都使用点操作符，特殊情况下用中括号
+                    - 特殊情况：1.key是一个变量 obj[a]  2.key是非法字符 obj["my-name"]
+        
+        */
+        var a = "sex";
+        var obj = {
+            "name": "xiaowang",
+            "fn": function () {
+
+            },
+            a: "nv", //并不会把a当作变量解析，而是直接扩展了一个a属性 通过obj.a获取
+            "my-name": "hello"
+        }
+        var n = "name";
+        // console.log(obj.fn);
+        console.log(obj.a);
+        console.log(obj.sex);
+        console.log(obj.n) //undefined
+
+        console.log(obj["my-name"])
+
+        //只有以下三种方法获取的name是正确的
+        console.log(obj.name)
+        console.log(obj[n])
+        console.log(obj['name'])
+
+
+
+        function Array() {
+
+        }
+        Array.prototype.sort = function () {
+
+        }
+
+        function Car() {
+
+        }
+        Car.prototype.changeColor = function () {
+
+        }
+
+
+        //练习
+        var a = {}
+
+        var obj1 = {
+            n: 2
+        }
+
+        var obj2 = {
+            m: 3
+        }
+
+        a[obj1] = 4
+        a[obj2] = 5
+        console.log(a[obj1]) //5
+    </script>
+</body>
+
+</html>

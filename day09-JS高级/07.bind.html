@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            bind():
+                - bind语法和call一样
+                - 但是bind并不会区调用函数，而是改变了函数的this执行，并返回改变this指向后的函数
+                - bind会返回一个函数，返回的是改变了this指向的fn
+        */
+        function fn(a, b) {
+            console.log(this, a + b);
+        }
+        var re = fn.bind([], 1, 2);
+        console.log(re);
+        console.log(re === fn) //false
+        re();
+
+        var obj = {
+            name: "laowang",
+            do: function () {
+                // console.log(this) //obj
+                setTimeout((function () {
+                    console.log(this);
+                }).bind(this), 1000)
+            }
+        }
+        obj.do();
+
+        fn.bind(undefined, 1, 2)(); //window 
+        fn.bind(null, 1, 2)(); //window
+        fn.bind(1, 1, 2)(); //Number(1)
+        fn.bind("h", 1, 2)(); //String("1")
+        fn.bind(true, 1, 2)(); //Boolean(true)
+        fn.bind([], 1, 2)(); //[]
+        fn.bind({}, 1, 2)(); //{}
+        fn.bind(new Date, 1, 2)(); //new Date
+        fn.bind(Math, 1, 2)(); //math
+        fn.bind(/\s/gi, 1, 2)(); //当前正则
+        fn.bind(function () {}, 1, 2)(); //当前函数
+    </script>
+</body>
+
+</html>

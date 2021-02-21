@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            问题: var a = xxx, a内存中到底保存的是什么?
+        */
+        var a;
+        a = 'abc';//一个基本类型的值
+        a = function () {//一个地址值
+
+        }
+
+        var b = true//一个基本类型的值
+        a = b
+        b = []//一个地址值
+        a = b;//一个地址值
+
+
+
+        var o1 = {m: 1}//o1是一个地址值
+        var o2 = o1;//o1和o2是同一个地址 指向的是同一个对象
+        o2.m = 2;//修改了o2 其实也是修改了o1
+        console.log(o1.m, o1===o2) //2  true //全等比较的是地址值
+
+
+        var o3 = {m: 3}//o3保存的是一个地址值
+        var o4 = o3//o3 o4保存的是一个地址
+        o3 = {m: 4}//修改了o3，o3和o4不再是同一个东西 o4不受影响 还是原来o3赋给他的值
+        console.log(o4.m, o4===o3) //3 false
+
+
+        // o5:0x111
+        // o6:0x111
+        // obj:0x111 -- 0x222
+        /*
+            var o5 = {m: 5};
+            var o6 = o5;
+            function fn(obj) {
+                obj = {m: 6};
+            }
+            fn(o5)
+            console.log(o5.m, o6.m, o6===o5)//5 5 true
+        */
+
+
+        // o5:0x111
+        // o6:0x111
+        // obj:0x111
+        /*
+            var o5 = {m: 5};
+            var o6 = o5;
+            function fn(obj) {
+                obj.m = 6 
+            }
+            fn(o5)
+            console.log(o5.m, o6.m, o6===o5)//6 6 true
+        */
+    </script>
+</body>
+
+</html>

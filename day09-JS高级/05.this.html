@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            this:
+                - 什么是this
+                    - 一个关键字，是一个引用变量
+                    - 函数中可以出现this（全局的this指向window）
+                    - this 指向其所在函数的调用者，如果没有调用者则指向window
+                    - this的指向是在调用函数的时候确定的
+
+                - this指向（其实就是看函数的调用方式）
+                    - this默认绑定（函数默认调用）
+                    - this指向调用函数的上下文（函数是上下文调用的）
+                    - 注意隐式丢失现象 （通过一个上下文对象拿到了一个函数，但是没有调用，而是赋值给了其他人）
+                    - this指向实例化对象（函数实例化调用）
+                    - 强制绑定，this指向call、apply、bind修改的对象（函数是call、apply、bind调用的）
+
+                - 如何判断this指向
+                    1.先看函数是不是call、apply、bind调用
+                    2.在看函数是不是实例化调用
+                    3.看函数是否是上下文对象调用（注意隐式丢失现象）
+                    4.如果以上都不是 则直接指向window
+        
+        
+        */
+
+        console.log(this);
+        //self是window的引用
+        console.log(self);
+        console.log(window.self);
+
+        //默认绑定
+        function fn() {
+            console.log(this);
+        }
+
+        fn(); //window
+
+        var obj = {
+            name: "xiaowang",
+            do: function () {
+                fn(); //默认调用 this指向window
+
+                setTimeout(fn, 1000) //fn也是默认调用window
+            },
+            fn: fn
+        }
+        obj.do(); //
+        obj.fn(); //fn函数是obj调用的 所以fn的this指向obj
+
+        var f2 = obj.fn;
+        f2(); //window
+
+
+
+        function Person() {
+            console.log(this)
+        }
+        var p1 = new Person();
+
+
+        fn.call(p1); //fn的this指向p1
+
+
+
+
+        var x = 1;
+        var obj = {
+            f: function () {
+                console.log(this.x)
+            },
+            x: 2
+        }
+        obj.f(); //2
+        var f1 = obj.f;
+        f1(); //1
+    </script>
+</body>
+
+</html>

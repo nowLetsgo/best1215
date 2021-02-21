@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //所有的函数都能使用 所以myCall应该放在Function的构造函数上
+        //参数context是指定的this指向
+        Function.prototype.myCall = function (context) {
+            //context可能有三种类型 1.null和undefined 2.基本类型值  3.对象类型
+            //首先判断null和undefined类型，如果符合，context应该是window
+            if (context === null || context === undefined) {
+                context = window;
+            }
+
+            //再次判断context是基本类型值的时候，context应该是这个值的包装对象
+            if (typeof context !== 'object' && typeof context !== 'undefined' && typeof context !== "function") {
+                // Object方法可以把一个基本类型变成他的包装对象
+                context = Object(context);
+            }
+            //获取用户调用fn函数应该传递的参数，这个参数是myCall函数的第二个实参之后所有的参数，使用arguments获取
+            // console.log(arguments)
+            //截取我们需要的参数
+            var argArr = Array.from(arguments).slice(1);
+            // console.log(argArr)
+
+            //1.在这里 this 就是 调用myCall的函数fn
+            //2.context就是指定的this指向
+            //myCall的作用是 调用fn 并且把fn的this指向context  故可以书写 context.fn();
+
+            //先给context扩展一个方法 这个方法就是this
+            //给context扩展的方法名可能会重名，所以用一个独一无二的值
+            var uniqKey = Date.now().toString(36);
+            context[uniqKey] = this;
+            //调用context的这个方法
+            // [1,2,3]
+            // context[uniqKey]();
+            eval("context[uniqKey](" + argArr.toString() + ")")
+
+            //用完context的uniqKey的属性 要删掉 否则影响原来的对象
+            delete context[uniqKey];
+        }
+
+        var obj = {
+            name: "laowang"
+        }
+
+        function fn(a, b) {
+            console.log(a + b);
+            console.log(this);
+        }
+
+        fn.myCall(obj, 1, 2, 3);
+
+
+
+        fn.myCall(undefined, 1, 2); //window 
+        fn.myCall(null, 1, 2); //window
+        fn.myCall(1, 1, 2); //Number(1)
+        fn.myCall("h", 1, 2); //String("1")
+        fn.myCall(true, 1, 2); //Boolean(true)
+        fn.myCall([], 1, 2); //[]
+        fn.myCall({}, 1, 2); //{}
+        fn.myCall(new Date, 1, 2); //new Date
+        fn.myCall(Math, 1, 2); //math
+        fn.myCall(/\s/gi, 1, 2); //当前正则
+        fn.myCall(function () {}, 1, 2); //当前函数
+    </script>
+</body>
+
+</html>

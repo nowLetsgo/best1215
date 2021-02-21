@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            函数：
+                什么是函数？
+                    - 多条语句的封装体
+                    - 只有函数类型是可以被调用的
+
+                函数的身份：
+                    - 作为 函数 被调用
+                    - 函数也是对象，被称作为函数对象
+
+                定于函数：
+                    - 函数声明 function
+                    - 函数表达式 
+                    - 实例化Function
+                
+                函数的调用方式：
+                    - 默认调用  fn();
+                    - 上下文调用 obj.fn();
+                    - 实例化调用 new fn();
+                    - call/apply调用  fn.call();
+
+                什么是回调函数：
+                    - 函数是我们自己声明的
+                    - 我们没有主动调用它（加小括号调用）
+                    - 但是最后却执行了
+                    - 常见回调函数：计时器 事件函数 ajax回调函数
+                IIFE：
+                    - 立即调用函数表达式
+                    - 作用：构成一个独立的空间,封装内部实现，常见于模块化开发
+        
+        */
+        setTimeout(function () {
+
+        })
+        div.onclick = function () {
+
+        };
+        [].forEach(function () {
+
+        })
+
+        function fn() {
+
+        }
+        fn(); //把fn当作一个函数来使用
+
+        fn.a = "hello"; //是把fn当作一个对象 来扩展属性和方法的
+        fn.b = function () {
+            alert("world");
+        }
+
+
+        // var fn1 = new Function();
+
+        for (var i = 0; i < 5; i++) {
+            (function (i) {
+                setTimeout(function () {
+                    console.log(i);
+                })
+            })(i)
+
+        }
+    </script>
+</body>
+
+</html>

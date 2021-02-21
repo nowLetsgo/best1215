@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fn(a, b, c, d) {
+
+        }
+        console.log(fn.length) //获取函数的形参个数
+        console.log(fn.name) //获取函数的名字
+        //call apply bind是函数原型对象的方法，所有的函数都能够使用这三个方法
+        console.dir(Function.prototype) //
+
+
+        /* 
+            call:
+                - 在使用一个指定的this值 和 指定的若干个参数的前提下 调用了某个函数
+                - 作用：1.调用函数 2.改变函数的上下文（this指向） 
+                - fn.call(thisArg,arg1,arg2,arg3.....)
+                    - thisArg就是指定的this值
+                    - 如果fn需要参数，则依次在call的第二个函数开始传参
+
+                - 执行的this值可能性
+                    - null和undefined：把this指向window
+                    - 基本类型值：把this指向当前值的包装对象
+                    - 对象类型：把this指向当前对象
+        */
+        function fn(a, b) {
+            console.log(this, a + b);
+        }
+
+        fn.call(undefined, 1, 2); //window 
+        fn.call(null, 1, 2); //window
+        fn.call(1, 1, 2); //Number(1)
+        fn.call("h", 1, 2); //String("1")
+        fn.call(true, 1, 2); //Boolean(true)
+        fn.call([], 1, 2); //[]
+        fn.call({}, 1, 2); //{}
+        fn.call(new Date, 1, 2); //new Date
+        fn.call(Math, 1, 2); //math
+        fn.call(/\s/gi, 1, 2); //当前正则
+        fn.call(function () {}, 1, 2); //当前函数
+    </script>
+</body>
+
+</html>

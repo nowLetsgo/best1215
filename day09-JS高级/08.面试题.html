@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fn1() {
+            console.log(1);
+        }
+
+        function fn2() {
+            console.log(2);
+        }
+        fn1.call(fn2);
+        //call2调用：两个作用 1.改变了call1的this指向  2.调用了call1
+        //所以call1的this指向的是fn2  call1也调用了
+        fn1.call.call(fn2);
+        //call的源码里可能有句话是this()
+
+        //给ff扩展一个a方法 调用a方法的时候 能够调用ff
+        function ff() {
+            alert("ff")
+        }
+
+        ff.a = function () {
+            this();
+        }
+
+        ff.a();
+    </script>
+</body>
+
+</html>

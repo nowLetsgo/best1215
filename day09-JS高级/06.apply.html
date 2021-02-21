@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            apply:
+                语法与 call() 方法的语法几乎完全相同，唯一的区别在于，apply的第二个参数必须是一个包含多个参数的数组（或类数组对象）
+        */
+        function fn(a, b) {
+            console.log(this, a + b);
+        }
+
+        fn.apply(undefined, [1, 2]); //window 
+        fn.apply(null, [1, 2]); //window
+        fn.apply(1, [1, 2]); //Number(1)
+        fn.apply("h", [1, 2]); //String("1")
+        fn.apply(true, [1, 2]); //Boolean(true)
+        fn.apply([], [1, 2]); //[]
+        fn.apply({}, [1, 2]); //{}
+        fn.apply(new Date, [1, 2]); //new Date
+        fn.apply(Math, [1, 2]); //math
+        fn.apply(/\s/gi, [1, 2]); //当前正则
+        fn.apply(function () {}, [1, 2]); //当前函数
+
+
+        var arr = [2, 3, 4];
+
+        function fn1(a, b, c) {
+            console.log(a + b + c)
+        }
+        console.log(arr.toString())
+
+        eval("fn1(" + arr.toString() + ")")
+    </script>
+</body>
+
+</html>
