@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            instanceof:
+                - A instanceof B :判断B的显式原型prototype 在不在 A的原型链上  返回布尔值
+        
+        */
+
+
+        function Foo() {}
+        var f1 = new Foo();
+        console.log(f1 instanceof Foo); //true
+        console.log(f1 instanceof Object); //true
+
+        //案例2
+        console.log(Object instanceof Function) //true
+        console.log(Object instanceof Object) //true
+        console.log(Function instanceof Object) //true
+        console.log(Function instanceof Function) //true
+        console.log(Object instanceof Foo); //false
+
+        console.log(Function.prototype.__proto__ === Object.prototype) //true
+    </script>
+</body>
+
+</html>

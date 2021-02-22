@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //案例1
+        //构造函数A
+        var A = function () {}
+        //给A的原型对象添加一个属性n
+        A.prototype.n = 1
+        //实例化A  如果将来用新对象替换了原型对象，不影响当前b的原型链查找
+        var b = new A();
+
+        //直接把A的原型对象替换为一个新的对象了 原来的原型对象被覆盖了
+        A.prototype = {
+            n: 2,
+            m: 3
+        }
+        //再次实例化A
+        var c = new A()
+
+        //用新对象替换prototype属性（不是修改了，而是替换） 不会更改以前的实例
+        console.log(b.n, b.m, c.n, c.m) //1 undefined 2 3
+
+
+        //案例2
+        var F = function () {};
+        Object.prototype.a = function () {
+            console.log('a()')
+        };
+        Function.prototype.b = function () {
+            console.log('b()')
+        };
+        var f = new F();
+        f.a() //a()
+        // f.b()//报错
+        F.a() //a()
+        F.b() //b()
+    </script>
+</body>
+
+</html>

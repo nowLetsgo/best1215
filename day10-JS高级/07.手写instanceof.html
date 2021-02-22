@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //自定义封装instanceof(A,B)  判断B的原型对象在不在A的原型链上  类似于 A instanceof B
+        function myInstanceof(A, B) {
+            //首先先获取B的原型对象
+            var BP = B.prototype;
+            //只要A沿着原型链 能找到B 那就返回true  否则返回false
+            //while判断 每次循环的时候A会发生变化
+            while (A) {
+                //判断当前的A的原型链上有没有BP
+                if (A.__proto__ === BP) {
+                    return true;
+                }
+                //把A变化为A的上一级原型链
+                A = A.__proto__;
+            }
+
+            //只要while没有执行return true 并且退出while了，说明B的原型对象不在A的原型链上
+            return false;
+        }
+
+        //案例2
+        console.log(myInstanceof(Object, Function));
+        console.log(myInstanceof(Object, Object));
+        console.log(myInstanceof(Function, Object));
+        console.log(myInstanceof(Function, Function));
+        console.log(myInstanceof(Object, Array));
+    </script>
+</body>
+
+</html>
