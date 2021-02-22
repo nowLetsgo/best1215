@@ -21,6 +21,107 @@
                 7.执行上下文包含3个内容：1.变量对象（VO） 2.作用域链 3.this
         
         */
+
+        //练习1
+        function fun3() {
+            console.log("fun3");
+        }
+
+        function fun2() {
+            fun3();
+        }
+
+        function fun1() {
+            fun2();
+        }
+        fun1();
+
+        //使用伪代码来模拟执行上下文
+        var stack = []; //执行上下文栈
+        //刚进入页面，向栈中压入全局执行上下文
+        stack = ["<globalContext>"];
+        //压入fun1执行上下文
+        stack = ["<globalContext>", "<fun1Context>"];
+        //压入fun2执行上下文
+        stack = ["<globalContext>", "<fun1Context>", "<fun2Context>"];
+        //压入fun3执行上下文
+        stack = ["<globalContext>", "<fun1Context>", "<fun2Context>", "<fun3Context>"];
+        //fun3执行完毕 出栈
+        stack.pop();
+        //fun2执行完毕 出栈
+        stack.pop();
+        //fun1执行完毕 出栈
+        stack.pop();
+        //页面关闭 清空栈
+        stack.pop();
+
+
+
+        //练习2
+        var scope = "hello";
+
+        function checkscope() {
+            var scope = "world";
+
+            function f() {
+                return scope;
+            }
+            return f();
+        }
+        checkscope();
+
+        //使用伪代码来模拟执行上下文
+        var stack = []; //执行上下文栈
+        //刚进入页面，向栈中压入全局执行上下文
+        stack = ["<globalContext>"];
+        //压入checkscope执行上下文
+        stack = ["<globalContext>", "<checkScopeContext>"];
+        //压入f执行上下文
+        stack = ["<globalContext>", "<checkScopeContext>", "<fContext>"];
+        //出栈
+        stack.pop()
+        stack.pop()
+        stack.pop()
+
+
+
+        //练习3
+        console.log('global begin: ' + i)
+        var i = 1
+        foo(1);
+
+        function foo(i) {
+            if (i == 4) {
+                return;
+            }
+            console.log('foo() begin:' + i);
+            foo(i + 1);
+            console.log('foo() end:' + i);
+        }
+        console.log('global end: ' + i)
+
+        //使用伪代码来模拟执行上下文
+        var stack = []; //执行上下文栈
+        //刚进入页面，向栈中压入全局执行上下文
+        stack = ["<globalContext>"]; //打印global begin: undefined
+        //压入foo1执行上下文
+        stack = ["<globalContext>", "<foo1Context>"]; //打印foo() begin:1
+        //压入foo2执行上下文
+        stack = ["<globalContext>", "<foo1Context>", "<foo2Context>"]; //打印foo() begin:2
+        //压入foo3执行上下文
+        stack = ["<globalContext>", "<foo1Context>", "<foo2Context>", "<foo3Context>"]; //打印foo() begin:3
+        //压入foo4执行上下文
+        stack = ["<globalContext>", "<foo1Context>", "<foo2Context>", "<foo3Context>",
+            "<foo4Context>"
+        ]; //开始执行foo4的时候 到达临界值 return出去了
+        //foo4执行结束，栈中弹出
+        stack.pop() //foo4执行完成 继续执行foo3 所以打印foo() end:3
+        //foo3执行结束，栈中弹出
+        stack.pop() //foo3执行完成 继续执行foo2 所以打印foo() end:2
+        //foo2执行结束，栈中弹出
+        stack.pop() //foo2执行完成 继续执行foo1 所以打印foo() end:1
+        //foo1执行结束，栈中弹出
+        stack.pop() //继续执行全局 global end: ' + 1
     </script>
 </body>
 
