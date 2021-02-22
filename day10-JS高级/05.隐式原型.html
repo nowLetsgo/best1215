@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+
+            隐式原型和显式原型的关系：
+            - 每一个函数都有一个prototype属性，即显式原型
+            - 每一个实例对象都有一个__proto__属性，即隐式原型
+            - 对象的隐式原型指向 其 构造函数的显式原型
+
+            注意事项：
+            - 当函数定义的时候，就已经有了显式原型了，是一个空对象（constructor属性除外），但是只有当前函数实例化对象能够使用
+            - 隐式原型在创建对象的时候就自动添加了，当访问对象的属性的时候可能会沿着隐式原型查找
+        */
+
+        function Person() {
+
+        }
+        //Person作为构造函数来说有一个显式原型prototype
+        Person.prototype.do = function () {
+
+        }
+
+        var p1 = new Person();
+        //先访问p1对象的do方法，如果没有，则沿着p1的隐式原型 找到了 p1构造函数的显式原型
+        p1.do();
+
+
+        //只要fn不是作为构造函数实例化，那么fn的prototype将没有办法使用，因为只有实例化对象才能访问构造函数的原型对象
+        function fn() {
+
+        }
+        fn.prototype.do = function () {
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myApply = function (thisArg) {
+            //判断指定this的类型 
+            if (thisArg === null || thisArg === undefined) {
+                thisArg = window;
+            }
+            if (typeof thisArg !== 'undefined' && typeof thisArg !== 'function' && typeof thisArg !== 'object') {
+                thisArg = Object(thisArg);
+            }
+
+            //获取用户给被call调用的函数的参数 因为arguments的第二个参数就是一个数组，所以直接获取argument的下标为1的值就行
+            var argArr = arguments[1];
+            console.log(argArr)
+            //给thisArg扩展一个方法 这个方法就是调用call的那个函数this
+            //创建一个独一无二的值，作为thisArg的方法key
+            var uniqKey = Date.now().toString(36);
+            thisArg[uniqKey] = this;
+
+            //调用thisArg的uniqKey方法，此时 调用call的fn函数将被调用，并且this也指向了thisArg
+            //因为我们还要把参数也传递进去，所以目前需要使用eval方法
+            eval("var re = thisArg[uniqKey](" + argArr.toString() + ")");
+
+            //删除给thisArg扩展的方法
+            delete thisArg[uniqKey];
+
+            //其实call的返回值 就是被调用函数的返回值 也就是this的返回值
+            return re;
+        }
+
+
+
+        var obj = {
+            name: "laowang"
+        }
+
+        function fn(a, b, c) {
+            console.log(this, a + b + c);
+            return "hello"
+        }
+        var re = fn.myApply(obj, [1, 2, 3]);
+        console.log(re)
+    </script>
+</body>
+
+</html>

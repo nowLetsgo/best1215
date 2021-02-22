@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            prototype属性：
+                - 每一个函数都有一个prototype属性
+                - prototype其实是一个指针，默认指向的是一个空对象
+                - prototype指向的对象被称作为当前函数的显式原型，也被称作为原型对象
+            
+            constructor：
+                - 每一个原型对象都有一个constructor属性，指向其构造函数 
+        */
+
+
+        console.log(Array.prototype.constructor === Array);
+
+        //arr本身没有constructor属性，所以沿着原型链找到了Array.prototype，执行constructor指向Array
+        // console.log(arr.constructor); //Array
+
+        function fn() {
+
+        }
+        console.log(fn.prototype)
+    </script>
+</body>
+
+</html>

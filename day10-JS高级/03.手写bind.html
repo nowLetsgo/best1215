@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myBind = function (thisArg) {
+            //这个位置的this指向的是上下文对象fn
+            var _this = this;
+            var argArr = Array.from(arguments).slice(1);
+            return function () {
+                //当返回的函数一旦调用 就改变fn的this指向 并调用fn
+                //这里的this指向要看返回的这个函数是怎么被调用的，所以这里不能直接使用this
+                return _this.apply(thisArg, argArr);
+            }
+        }
+
+        var obj = {
+            name: "laowang"
+        }
+
+        function fn(a, b) {
+            console.log(this, a + b)
+            return "hello"
+        }
+
+        //返回了改变this指向的fn函数（调用了reFn1 就相当于调用了改变this指向的fn）
+        var reFn1 = fn.bind(obj, 1, 2);
+        console.log(reFn1()) //最终的结果就是改变了fn的指向 并调用了fn
+
+        var reFn2 = fn.myBind(obj, 1, 2);
+        //只要调用了reFn函数，那么就代表 fn的this指向了obj，并且fn调用了
+        // console.log(reFn2);
+        console.log(reFn2());
+    </script>
+</body>
+
+</html>
