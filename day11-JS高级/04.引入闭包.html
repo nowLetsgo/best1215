@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <script>
+        var oLis = document.querySelectorAll("ul li");
+
+        //点击li打印当前li的下标
+
+        //方法一无法满足
+        /* for (var i = 0; i < oLis.length; i++) {
+            oLis[i].onclick = function () {
+                console.log(i);
+            }
+        } */
+
+        for (var i = 0; i < oLis.length; i++) {
+            (function (i) {
+                oLis[i].onclick = function () {
+                    console.log(i);
+                }
+            })(i)
+        }
+
+
+        oLis.forEach(function (item, index) {
+            item.onclick = function () {
+                console.log(index);
+            }
+        })
+    </script>
+</body>
+
+</html>

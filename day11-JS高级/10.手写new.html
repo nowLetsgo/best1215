@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Person类
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            //构造函数如果return一个object类型值，则不再返回实例化对象
+            //如果return的是一个基本类型的值，则不影响返回实例化对象
+            return 1;
+        }
+        Person.prototype.study = function () {
+            console.log("HTML5");
+        }
+
+        var p1 = new Person("xiaowang", 30);
+        console.log(p1)
+
+        /* 
+            new做了什么？、
+                1.创建了一个对象
+                2.调用构造函数，并把构造函数的this 指向了这个对象
+                3.对象的隐式原型指向了当前函数的显式原型（构成原型链）在
+                4.判断构造函数的返回值，如果是基本类型，则正常返回实例化对象，如果是对象类型，则返回当前的对象
+        */
+
+        function myNew(constr) {
+            //1.创建一个对象
+            var obj = {};
+            //2.调用构造函数，并把构造函数的this指向obj,并且拿到构造函数的返回值
+            var re = constr.apply(obj, Array.from(arguments).slice(1));
+            //3.修正原型链，把obj的隐式原型指向构造函数的显式原型
+            obj.__proto__ = constr.prototype;
+
+            //4.判断re是什么类型，如果是对象类型则直接返回re
+            if (typeof re === 'object' && re != null || typeof re === "function") {
+                return re;
+            }
+            //把实例化对象返回
+            return obj;
+        }
+
+        var p1 = myNew(Person, "xiaowang", 30);
+        var p2 = myNew(Person, "xiaoli", 20);
+        console.log(p1, p2);
+        console.log(p1.constructor) //Person
+        console.log(p1.study === p2.study) //true
+    </script>
+</body>
+
+</html>

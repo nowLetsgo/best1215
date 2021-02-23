@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //变量对象
+        function foo(a) {
+            var VO = {
+                arguments: {
+                    0: 1,
+                    1: 2,
+                    length: 2
+                },
+                a: 1,
+                c: function () {
+
+                },
+                b: 2,
+                d: function () {
+
+                }
+
+            }
+            var b = 2;
+
+            function c() {}
+            var d = function () {};
+            b = 3;
+        }
+        foo(1, 2);
+
+
+
+        function fn1(a) {
+            console.log(a); //1
+            var a = 2;
+            console.log(a); //2
+        }
+        fn1(1);
+
+
+        function fn2() {
+            console.log(foo); //f
+
+            function foo() {}
+            var foo = 1;
+        }
+        fn2();
+
+
+        function a() {}
+        var a;
+        console.log(typeof a) //function
+
+
+        if (!(b in window)) {
+            var b = 1;
+        }
+        console.log(b) //undefined
+
+
+        var c = 1
+
+        function c(c) {
+            console.log(c)
+            var c = 3
+        }
+        c(2) //报错
+    </script>
+</body>
+
+</html>

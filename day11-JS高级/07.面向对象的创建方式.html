@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            字面量或者Object等方法:
+                - 缺点：代码冗余
+        
+        
+        */
+        /* var car1 = {};
+        car1.color = "pink";
+        car1.type = "BWMX7";
+        car1.speed = function () {
+            console.log("260");
+        }
+
+        var car2 = {};
+        car2.color = "green";
+        car2.type = "BWMX6";
+        car2.speed = function () {
+            console.log("240");
+        } */
+
+
+
+        /* 
+            封装函数-工厂模式：
+                - 缺点：无法判断当前对象类型，都是属于Object
+
+        */
+        /* function car(color, type, speed) {
+            var obj = {};
+            obj.color = color;
+            obj.type = type;
+            obj.speed = speed;
+            obj.run = function () {
+                console.log("最高是" + this.speed);
+            }
+            return obj;
+        }
+        var car1 = car("pink", "BMW", 260);
+        var car2 = car("green", "BMW", 240);
+
+        console.log(car2.constructor) //Object */
+
+
+        /* 
+            构造函数的方法：
+                缺点：方法不共享
+        
+        */
+
+        /* function Car(color, type, speed) {
+            this.color = color;
+            this.speed = speed;
+            this.type = type;
+            this.run = function () {
+                console.log("最高是" + this.speed)
+            }
+        }
+        var car1 = new Car("green", "BMW", 240)
+        var car2 = new Car("pink", "BMW", 260)
+
+        console.log(car1.constructor)
+        console.log(car1 instanceof Car)
+        console.log(car1.run === car2.run)
+
+        console.log([1].pop === [2].pop) */
+
+
+        /* 
+            原型对象+构造函数 创建对象
+        
+        */
+
+        function Car(color, type, speed) {
+            this.color = color;
+            this.speed = speed;
+            this.type = type;
+        }
+        Car.prototype.run = function () {
+            console.log("最高是" + this.speed)
+        }
+
+        var car1 = new Car("green", "BMW", 240)
+        var car2 = new Car("pink", "BMW", 260)
+
+        console.log(car1.run === car2.run)
+    </script>
+</body>
+
+</html> 

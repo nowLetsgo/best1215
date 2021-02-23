@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            作用域和执行上下文：
+                - 作用域：一段代码所在的区域
+                - 作用域在函数声明的时候就确定了，是静态的
+                - 执行上下文是函数执行的时候才确定，是动态的
+
+            作用域链：
+                - 函数在创建的时候就会创建一个包含全局变量对象的作用域链（scope chain）
+                - 作用域链是：保证对 执行环境有权访问的所有变量和函数  的有序访问
+                - 作用域链在函数定义的时候已经生成，但是并不完整。当函数执行的时候，会把自己的变量对象推到作用域链的最前端，以构成完整的作用域链。
+                - 作用域链的最前端一定是当前执行环境的变量对象，末端一定都是全局的变量对象
+                - 搜索标识符的过程是从作用域链的最前端向最末端逐级搜索的过程，如果搜索不到可能会报错
+        
+        
+        */
+        /* var a = 0;
+
+        function fn() {
+            var b = 2;
+            console.log(a);
+        }
+
+        function fn2() {
+            var a = 1;
+            fn();
+        }
+        fn2(); */
+
+
+
+
+        //练习1
+        var x = 10;
+
+        function fn() {
+            console.log(x); //10
+        }
+
+        function show(f) {
+            var x = 20;
+            f();
+        }
+        show(fn);
+
+        //练习2
+        var fn = function () {
+            console.log(fn) //fn
+        }
+        fn()
+
+        //练习3
+        /* var obj = {
+            fn2: function () {
+                console.log(fn2) //报错
+            }
+        }
+        obj.fn2() */
+
+
+
+        var scope = "a";
+
+        function ff1() {
+            var scope = "b";
+
+            function f() {
+                return scope;
+            }
+            return f();
+        }
+        console.log(ff1()); //b
+
+        /* var scope = "a";
+
+        function ff2() {
+            var scope = "b";
+
+            function f() {
+                return scope;
+            }
+            return f;
+        }
+        console.log(ff2()()); */
+    </script>
+</body>
+
+</html>

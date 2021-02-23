@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            公有属性和方法：
+                设置给实例化对象的属性和方法
+            私有属性和方法：
+                在构造函数中声明的变量和方法
+            静态方法和静态属性：
+                直接把构造函数当做对象扩展的属性和方法，无需实例化即可访问
+            特权方法：
+                在构造函数中设置给实例化对象的方法
+        */
+        function Person(name, age) {
+            //公有属性
+            this.name = name;
+            this.age = age;
+
+            //私有属性
+            var _this = this;
+            //私有方法
+            function fn() {
+
+            }
+
+            //特权方法
+            this.eat = function () {
+                console.log("螺蛳粉")
+            }
+        }
+        //公有方法
+        Person.prototype.do = function () {
+            console.log("学习");
+        }
+
+        //静态方法
+        Person.say = function () {
+            console.log("我是person类")
+        }
+        //静态属性
+        Person.type = "person";
+
+        var p1 = new Person("xiaowang", 18);
+    </script>
+</body>
+
+</html>

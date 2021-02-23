@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            变量对象：
+                什么是变量对象：
+                    - 在函数执行之后，产生了执行上下文，在执行上下文中要生成一个变量对象，保存当前作用域中所有的变量，只有激活了变量对象，当前作用域的变量才能被访问
+                    - 变量对象保存了当前作用域中声明的变量、函数、形参、arguments
+
+                变量对象的分类：
+                    - 全局变量对象：因为全局的变量和函数都是window对象的属性和方法，所以window对象就是全局变量对象
+                    - 局部变量对象：
+                        - 1.变量对象首先要包含所有的形参和实参
+                        - 2.在变量对象中添加当前作用域的所有的函数声明，以键值对形式表示,如果变量对象中有同名，则直接覆盖
+                        - 3.在变量对象中添加所有的变量声明，键值对表示，如果变量和形参或函数同名，则不干扰当前已经存在的属性
+        
+        
+        */
+
+        function fn(a, b) {
+            //模拟变量对象
+            var VO = {
+                arguments: {
+                    0: 1,
+                    1: 2,
+                    2: 3,
+                    length: 3
+                },
+                // a: 1,
+                b: 2,
+                a: function () {
+                    alert("hello");
+                },
+                fn: function () {
+                    alert("world");
+                },
+                // a: 1,
+                // b: 4, 
+                c: 3
+
+            }
+            var a = 1;
+            var c = 3;
+            var b = 4;
+
+            function a() {
+                alert("hello");
+            }
+
+            function fn() {
+                alert("world");
+            }
+        }
+        fn(1, 2, 3)
+    </script>
+</body>
+
+</html>

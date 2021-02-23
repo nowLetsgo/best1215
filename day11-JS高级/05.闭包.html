@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            什么是闭包：
+                - 理解一：函数嵌套函数，闭包就是内部嵌套的函数
+                - 理解二：闭包就是包含被引用变量的 closure对象，在嵌套的内部函数中
+
+            产生闭包的情况：
+                - 函数嵌套
+                - 内部函数引用外部函数的变量
+                - 调用外部函数
+
+            闭包的作用：
+                - 延长了局部变量的生命周期
+                - 可以在外部操作局部变量
+
+            闭包的生命周期：
+                - 产生：只要内部函数被定义就产生了
+                - 死亡：内部函数成为垃圾对象的时候 闭包结束
+
+            闭包的缺点：
+                - 函数的局部变量占用内存时间过长，容易造成内存泄漏
+                - 解决：1.减少使用闭包 2.及时释放闭包
+        
+        */
+        /* function fn1() {
+            debugger;
+            var a = 1;
+            var b = 2;
+
+            function fn2() {
+                console.log(a);
+            }
+            return fn2; //把当前函数return出去 就可以看到closure对象
+        }
+        fn1(); */
+
+
+        function fn() {
+            var a = 1;
+
+            function add() {
+                a++;
+                console.log(a);
+            }
+            return add;
+        }
+
+        var f = fn();
+        f(); //2
+        f(); //3
+        f(); //4
+        f(); //5
+
+        var f2 = fn();
+        f2(); //2
+        f2(); //3
+        f(); //6
+
+        //以后再也不用f了，要及时释放
+        f = null; //内部函数没有被引用了 变成了垃圾对象
+    </script>
+</body>
+
+</html>
