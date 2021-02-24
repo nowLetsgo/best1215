@@ -59,6 +59,7 @@
 
         //原型对象的方法
         Drag.prototype.down = function (e) {
+            e.preventDefault();
             //鼠标按下 获取鼠标的offsetX
             //这个位置this指向实例化对象,把变量变成实例化对象的属性，那么在其他位置也能访问了
             this.mouseToBox = {
@@ -79,6 +80,7 @@
         }
 
         Drag.prototype.move = function (e) {
+            e.preventDefault();
             //获取最终位置
             //这个位置this指向实例化对象
             var boxLocation = {
@@ -95,10 +97,13 @@
             document.onmouseup = null;
         }
 
+        Drag.prototype.changeColor = function () {
 
+        }
 
         //实例化过程
-        new Drag("box1")
+        var a = new Drag("box1")
+        a.changeColor()
         new Drag("box2")
         new Drag("box3")
         new Drag("box4")

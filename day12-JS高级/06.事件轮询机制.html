@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            事件轮询机制：
+                - 代码分类：
+                    - 同步代码：绑定事件、设置计时器，for循环等等
+                    - 异步代码：事件回调函数，计时器回调函数，ajax回调函数
+                - JS先执行同步代码，再执行异步代码
+                - 事件模型的主要组成部分：1.事件管理模块 2.回调队列
+                - 事件轮询过程
+                    - 先执行同步代码，将异步代码的回调函数交给事件管理模块管理
+                    - 事件管理模块中的事件发生了，就会把回调函数交给回调队列（callback queue）
+                    - 当同步代码执行完毕之后，会遍历回调队列中的函数执行(event Loop)
+
+                
+        
+        */
+    </script>
+</body>
+
+</html>

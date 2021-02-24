@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //构造函数+原型 组合继承
+
+        //父类
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat = function () {
+            console.log("eat方法")
+        }
+
+        //子类
+        function Teacher(name, age, type, classNum) {
+            //构造函数继承
+            //调用父类，并让父类的this指向当前子类的this
+            Person.call(this, name, age);
+            this.type = type;
+            this.classNum = classNum
+        }
+
+        //原型链继承
+        //不能直接把Person.prototype赋值给子类，这样改变子类就会影响父类
+        //父类的实例化对象，也能访问父类的原型对象,故把父类的实例化对象赋值给子类的原型对象
+        Teacher.prototype = new Person();
+        //修正构造器指向
+        Teacher.prototype.constructor = Teacher;
+
+        Teacher.prototype.do = function () {
+            console.log("备课")
+        }
+
+
+        var teacher1 = new Teacher("haijing", 40, "html5", 0223);
+        console.log(teacher1)
+        console.log(teacher1.eat)
+        console.log(teacher1.constructor)
+    </script>
+</body>
+
+</html>

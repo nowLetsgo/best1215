@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //计时器延迟的毫秒数并不是精确的，而是要等待同步代码全部执行结束以后才能执行异步代码
+        console.time("计时器事件计算")
+        setTimeout(function () {
+            console.timeEnd("计时器事件计算")
+        }, 1000)
+
+        var num = 0;
+        for (var i = 0; i < 1000000000; i++) {
+            num += Math.sqrt(i)
+        }
+    </script>
+</body>
+
+</html>

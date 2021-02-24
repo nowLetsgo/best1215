@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            多态：
+                - JS对象多态性是与生俱来的
+                - 给不同的对象发送同一个消息时，这些对象会根据这个消息分别给出不同的反馈
+        
+        */
+        function Cat() {
+
+        }
+        Cat.prototype.eat = function () {
+            console.log("吃猫粮");
+        }
+
+        function Dog() {
+
+        }
+        Dog.prototype.eat = function () {
+            console.log("吃狗粮");
+        }
+
+        //发出同一个指令 可以执行不同的结果
+        function sayEat(obj) {
+            obj.eat();
+        }
+
+
+        //实例化一个猫
+        var cat1 = new Cat();
+        //实例化一个狗
+        var dog1 = new Dog();
+
+        sayEat(cat1)
+        sayEat(dog1)
+    </script>
+</body>
+
+</html>
