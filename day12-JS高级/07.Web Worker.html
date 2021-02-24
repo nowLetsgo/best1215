@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">单线程运算</button>
+    <button id="btn2">多线程运算</button>
+    <button id="btn3">测试</button>
+    <script>
+        /* 
+            webWorker：多线程 主要API
+                - new Worker():创建一个分线程
+                - postMessage():主线程向分线程，分线程向主线程 传递数据
+                - onmessage事件：分线程或主线程接收到其他线程发送的数据后 自动触发，事件函数的event事件对象中的data属性，就是发送的数据
+
+            缺点：
+                - 不可以操作DOM
+                - 不能跨域加载js
+                - 低版本不兼容
+        
+        
+        */
+        var oBtn1 = document.getElementById("btn1");
+        var oBtn2 = document.getElementById("btn2");
+        var oBtn3 = document.getElementById("btn3");
+
+        oBtn1.onclick = function () {
+            var num = 0;
+            for (var i = 0; i < 900000000; i++) {
+                num += Math.sqrt(i)
+            }
+            console.log(num)
+        }
+
+
+        oBtn2.onclick = function () {
+            //创建分线程 传入作为分线程代码的文件路径(必须在服务器环境下)
+            //创建好以后分线程就已经执行了
+            var wk = new Worker("./worker.js");
+            console.log(wk);
+            //向分线程传递数据
+            wk.postMessage(9000000);
+
+            //onmessage事件是当分线程发送过来数据的时候触发
+            wk.onmessage = function (e) {
+                //e的data属性就是分线程发送的数据
+                console.log(e);
+                console.log(e.data);
+
+                //在主线程关闭某个分线程
+                wk.terminate();
+            }
+        }
+    </script>
+</body>
+
+</html>

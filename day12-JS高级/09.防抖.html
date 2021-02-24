@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        var oIpt = document.getElementById("ipt");
+
+        function getData(e) {
+            console.log("ajax请求")
+            console.log(this);
+            console.log(e)
+        }
+
+        oIpt.oninput = debounce(getData, 1300);
+
+        //通用防抖函数
+        function debounce(fn, time) {
+            var timer = null;
+            return function () {
+                //每次进入函数的时候，如果上一次的计时器没有执行，则直接给清掉，重新设置新的计时器
+                clearTimeout(timer);
+                //每次进到函数中的时候 让延迟time时间 执行函数fn
+                //这个位置的this才是真正的事件触发的对象
+                var _this = this;
+                var arg = arguments[0];
+                timer = setTimeout(function () {
+                    fn.call(_this, arg);
+                }, time)
+            }
+        }
+    </script>
+</body>
+
+</html>

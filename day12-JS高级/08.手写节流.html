@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">box</div>
+    <script>
+        var oBox = document.getElementById("box");
+
+        /* // 基础思路
+        var lastTime = 0;
+        oBox.onmousemove = function () {
+            //获取当前执行事件的时间
+            var nowTime = Date.now();
+            //计算本次时间和上一次时间的差值
+            var reduceTime = nowTime - lastTime;
+            //如果差值小于100毫秒，则直接退出本次事件函数（看门狗）
+            if (reduceTime < 500) {
+                return;
+            }
+
+            //如果当前看门狗放行，则把本次执行的时间 赋值给lastTime  方便下次使用
+            lastTime = nowTime;
+            //下边都是我们的逻辑代码
+            console.log("逻辑代码");
+        } */
+
+
+
+        //通用的节流函数(一段时间内只触发第一次)
+
+        //把真正的逻辑代码的事件函数提炼出来
+        function move(e) {
+            //直接写逻辑代码
+            console.log("逻辑代码");
+            console.log(this);
+            console.log(e);
+        }
+        oBox.onmousemove = throttle(move, 100);
+
+
+
+        function throttle(fn, time) {
+            var lastTime = 0;
+            return function () {
+                //获取当前的时间
+                var nowTime = Date.now();
+                if (nowTime - lastTime < time) {
+                    return;
+                }
+                //在这个函数中 this是真正指向事件调用者Box的
+                //当间隔时间到达time的时候 才调用fn
+
+                fn.call(this, arguments[0])
+                //并且把当前时间变成上一次的时间
+                lastTime = nowTime;
+            }
+        }
+    </script>
+</body>
+
+</html>
