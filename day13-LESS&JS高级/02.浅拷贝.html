@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "laowang",
+            age: 18,
+            do: function () {
+                console.log("study");
+            },
+            hobby: ["唱", "跳", "rap"]
+        }
+
+
+        //完成了浅拷贝
+        var obj2 = {};
+        for (var key in obj1) {
+            obj2[key] = obj1[key];
+        }
+
+        console.log(obj2);
+        console.log(obj2 === obj1);
+        obj2.name = "xiaowang";
+        console.log(obj1);
+
+        console.log(obj2.hobby === obj1.hobby);
+        obj2.hobby.push("篮球");
+        console.log(obj1.hobby)
+    </script>
+</body>
+
+</html>

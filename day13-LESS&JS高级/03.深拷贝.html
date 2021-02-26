@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "laowang",
+            age: 18,
+            do: function () {
+                console.log("study");
+            },
+            hobby: ["唱", "跳", "rap", [1, 2, 3]]
+        };
+
+        function checkType(obj) {
+            return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+        }
+
+        //深拷贝函数
+        function deepClone(obj) {
+            //刚进入函数需要判断 当前要拷贝的值是什么类型
+            if (checkType(obj) === 'object') {
+                //如果当前拷贝的是一个对象，则需要定一个新的对象
+                var newObj = {};
+            } else if (checkType(obj) === "array") {
+                //如果当前拷贝的是一个数组，则需要定一个新的数组
+                var newObj = [];
+            } else {
+                //如果当前拷贝的值既不是数组也不是对象，则直接返回即可
+                return obj;
+            }
+
+            //开始拷贝
+            // ["唱", "跳", "rap", [1, 2, 3]]
+
+            for (var key in obj) {
+                //在拷贝之前 需要判断当前的obj[key]是一个对象还是数组，如果是对象或数组，则需要重新拷贝 再赋值
+                newObj[key] = deepClone(obj[key]);
+            }
+
+            return newObj;
+        }
+
+        var obj2 = deepClone(obj1);
+
+        console.log(obj2 === obj1);
+        console.log(obj2.hobby === obj1.hobby)
+        console.log(obj2.hobby[3] === obj1.hobby[3])
+    </script>
+</body>
+
+</html>

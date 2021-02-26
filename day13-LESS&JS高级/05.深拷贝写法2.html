@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "laowang",
+            age: 18,
+            hobby: ["唱", "跳", "rap"],
+            do: function () {
+
+            }
+        }
+
+        //JSON对象转JSON字符串(函数不能被转换)
+        var obj1Str = JSON.stringify(obj1);
+        console.log(obj1Str) //{"name":"laowang","age":18,"hobby":["唱","跳","rap"]}
+
+        //JSON字符串转JSON对象
+        var obj2 = JSON.parse(obj1Str);
+        console.log(obj2);
+
+        console.log(obj1 === obj2)
+        console.log(obj1.hobby === obj2.hobby)
+    </script>
+</body>
+
+</html>

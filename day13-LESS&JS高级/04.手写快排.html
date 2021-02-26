@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [3, 2, 5, 4, 8, 3, 9, 3, 5, 2, 1, 6];
+
+        //快速排序 升序
+        function quickSort(arr) {
+            //如果arr的长度是一个值的话，则直接把这个arr返回即可
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            //找一个基准值 并从数组中取出来 shift方法是删除数组的第一个值 并把删除的值返回，那么我们可以把这个值作为基准值
+            var center = arr.shift();
+            //定义一个left和right的数组 用来盛放对比后的数组值
+            var left = [];
+            var right = [];
+
+            //把数组的每一个值和基准值比较 并放入数组
+            arr.forEach(function (item, index) {
+                if (item <= center) {
+                    left.push(item);
+                }
+                if (item > center) {
+                    right.push(item);
+                }
+            })
+            // console.log(left, right);
+
+            var newArr = quickSort(left).concat(center, quickSort(right));
+
+            return newArr;
+
+        }
+        var newArr = quickSort(arr);
+        console.log(newArr)
+    </script>
+</body>
+
+</html>
