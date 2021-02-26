@@ -1,0 +1,14 @@
+.pub(@w) when (@w<500),
+(@w>800) {
+    height: 300px;
+    background-color: red;
+}
+
+.pub(@w) when (@w>=500) and (@w<=800) {
+    height: 500px;
+    background-color: red;
+}
+
+.outer {
+    .pub(600);
+}

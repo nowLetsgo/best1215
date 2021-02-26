@@ -1,0 +1,54 @@
+//less中 @用来声明和使用变量
+
+//1.less变量作为属性值来使用
+@mainColor: #34ac31;
+@mainWidth: 1202px;
+@bdWdith: 2px;
+
+//2.less变量作为选择器名称使用  @{变量名}
+@select1: con;
+@select2: .li2;
+
+//3.less变量作为属性名 @{变量名}
+@w: width;
+
+//4.less保存url
+@url: "https://tva1.sinaimg.cn/large/007S8ZIlgy1gfnltr07koj30s20pwacm.jpg";
+@url1: url("https://tva1.sinaimg.cn/large/007S8ZIlgy1gfnltr07koj30s20pwacm.jpg");
+
+
+.outer {
+    background-color: @mainColor;
+    @{w}: @mainWidth;
+
+    .@{select1} {
+        background-color: #fff;
+        color: @mainColor;
+        border: @bdWdith solid #000;
+
+        @{select2} {
+            background-color: @mainColor;
+        }
+
+        .box {
+            // background: url(@url) 0 0 no-repeat;
+            background: @url1 0 0 no-repeat;
+        }
+    }
+}
+
+
+//less变量的作用域和延迟加载
+@var: 0;
+
+.class {
+    @var: 1;
+
+    .brass {
+        @var: 2;
+        three: @var;
+        @var: 3;
+    }
+
+    one: @var;
+}

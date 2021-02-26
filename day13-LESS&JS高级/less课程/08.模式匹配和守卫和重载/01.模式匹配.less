@@ -1,0 +1,19 @@
+//必选部分
+.pub(@_) {
+    width: 100px;
+    height: 100px;
+}
+
+//可选
+.pub(nav) {
+    background-color: red;
+}
+
+//可选
+.pub(aside) {
+    background-color: yellow;
+}
+
+.con {
+    .pub(nav)
+}

@@ -1,0 +1,6 @@
+/* 公共样式 */
+body,
+html {
+  width: 1000px;
+  margin: 0 auto;
+}

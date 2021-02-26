@@ -1,0 +1,41 @@
+body,
+html {
+    font-size: 20px;
+    font-family: "Microsoft YaHei", "SimHei", "SimSun";
+
+    //直接嵌套书写则是后代元素
+    .con {
+        width: 1200px;
+        height: 400px;
+        background-color: red;
+
+        +.con3 {
+            width: 200px;
+            height: 100px;
+        }
+
+        li {
+            list-style: none;
+
+            //&符号表示父级引用  代表父级
+            &:nth-child(1) {
+                color: red;
+            }
+
+            &:nth-child(2) {
+                color: red;
+            }
+
+            &:hover {
+                color: yellow;
+            }
+        }
+
+    }
+
+    &>.con2 {
+        width: 200px;
+        height: 100px;
+        background-color: pink;
+    }
+}

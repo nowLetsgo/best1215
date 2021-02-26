@@ -1,0 +1,21 @@
+.outer {
+  background-color: #34ac31;
+  width: 1202px;
+}
+.outer .con {
+  background-color: #fff;
+  color: #34ac31;
+  border: 2px solid #000;
+}
+.outer .con .li2 {
+  background-color: #34ac31;
+}
+.outer .con .box {
+  background: url("https://tva1.sinaimg.cn/large/007S8ZIlgy1gfnltr07koj30s20pwacm.jpg") 0 0 no-repeat;
+}
+.class {
+  one: 1;
+}
+.class .brass {
+  three: 3;
+}

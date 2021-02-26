@@ -1,0 +1,9 @@
+.outer {
+  *zoom: 1;
+}
+.outer:after {
+  content: "\200B";
+  height: 0;
+  display: block;
+  clear: both;
+}

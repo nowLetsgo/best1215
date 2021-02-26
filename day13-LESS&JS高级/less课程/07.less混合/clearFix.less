@@ -1,0 +1,15 @@
+.clearFix() {
+    *zoom: 1; //开启ie的haslayout
+
+    &:after {
+        content: "\200B"; //空字符
+        height: 0; //固定高度为0
+        display: block;
+        clear: both;
+    }
+}
+
+
+.outer {
+    .clearFix();
+}

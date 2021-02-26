@@ -1,0 +1,52 @@
+/* .center() {
+    position: absolute;
+    top: @zero;
+    bottom: @zero;
+    left: @zero;
+    right: @zero;
+    margin: auto;
+} */
+/* .center(@w, @h, @c) {
+    width: @w;
+    height: @h;
+    background-color: @c;
+    position: absolute;
+    top: @zero;
+    bottom: @zero;
+    left: @zero;
+    right: @zero;
+    margin: auto;
+} */
+.outer {
+  width: 500px;
+  height: 600px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.outer .inner {
+  width: 300px;
+  height: 200px;
+  background-color: yellow;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.outer .inner .con {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

@@ -1,0 +1,38 @@
+body,
+html {
+  font-size: 20px;
+  font-family: "Microsoft YaHei", "SimHei", "SimSun";
+}
+body .con,
+html .con {
+  width: 1200px;
+  height: 400px;
+  background-color: red;
+}
+body .con + .con3,
+html .con + .con3 {
+  width: 200px;
+  height: 100px;
+}
+body .con li,
+html .con li {
+  list-style: none;
+}
+body .con li:nth-child(1),
+html .con li:nth-child(1) {
+  color: red;
+}
+body .con li:nth-child(2),
+html .con li:nth-child(2) {
+  color: red;
+}
+body .con li:hover,
+html .con li:hover {
+  color: yellow;
+}
+body > .con2,
+html > .con2 {
+  width: 200px;
+  height: 100px;
+  background-color: pink;
+}

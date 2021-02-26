@@ -1,0 +1,9 @@
+@url: "http://lipeihua.vip:8800/imgs/";
+@f: 30;
+
+.outer {
+    background: url("@{url}01.png");
+
+    //为了拼接，书写字符串插值，但是为了能够使用，则需要把字符串转义
+    font-size:~"@{f}px";
+}

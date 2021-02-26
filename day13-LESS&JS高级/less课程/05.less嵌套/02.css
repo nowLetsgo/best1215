@@ -1,0 +1,15 @@
+html,
+body {
+  background-color: red;
+}
+.outer {
+  width: 1200px;
+}
+.outer .header-outer {
+  width: 100%;
+  background-color: #ccc;
+}
+.outer .header {
+  width: 1200px;
+  margin: 0 auto;
+}

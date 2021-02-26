@@ -1,0 +1,15 @@
+.pub(@w) {
+    width: @w;
+    background-color: red;
+}
+
+.pub(@w, @h) {
+    width: @w;
+    height: @h;
+    background-color: red;
+}
+
+.outer {
+    //重载是根据参数的个数选择使用哪一个混合
+    .pub(200px, 200px);
+}
