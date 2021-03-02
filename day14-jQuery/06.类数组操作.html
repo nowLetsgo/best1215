@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="box box1">
+        <li class="con">1</li>
+        <li>2</li>
+        <li class="con">3</li>
+    </ul>
+    <ul class="box box2">
+        <li>4</li>
+        <li class="con con1">5</li>
+        <li>6</li>
+        <li>
+            <span class="span1">我是span1</span>
+            <em class="em1">我是em</em>
+        </li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(function () {
+            // $(".box").children(".con").css("color", "red");
+
+            // $(".con").parent(".box1").css("background", "yellow");
+
+
+            // $(".con1").siblings().css("color", "green")
+
+            // $(".con1").prev().css("color", "green")
+            // $(".con1").next().css("color", "green")
+
+            // $(".box").css("background", "pink").find(".span1").css("background", "green");
+
+
+            $(".box").css("background", "pink").find(".span1").css("background", "green").end().css("color",
+                "#fff");
+
+        })
+    </script>
+</body>
+
+</html>

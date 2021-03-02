@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>h1111</h1>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>
+            <h2>3333 h22</h2>
+        </li>
+    </ul>
+    <ul>
+        <li>4</li>
+        <li class="con1">5</li>
+        <li>
+            <h3>66666 h3</h3>
+        </li>
+        <li></li>
+    </ul>
+
+    <ul>
+        <li></li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <script>
+        // $("ul li:first").css("background", "red")
+        // $("ul li:first-child").css("background", "red")
+
+        // $("ul li:not(.con1)").css("background", "red");
+        // $("ul li:even").css("background", "red");
+        // $("ul li:eq(1)").css("background", "red");
+        // var i = 1;
+        // $("ul li:eq(" + i + ")").css("background", "red");
+        // $("ul li").eq(i).css("background", "red");
+        // $("ul li:gt(3)").css("background", "red");
+
+
+        // $(':header').css("background", "red")
+        // $('ul :header').css("background", "red")
+        // $("ul li:contains(1)").css("background", "red")
+
+        // $("ul li:empty").css("background", "red")
+
+        //has是看某个元素里边的后代有没有某个选择器 而不是看自己有没有
+        // $("ul:has(.con1)").css("background", "red")
+
+        // $("ul li:parent").css("background", "red")
+
+        //选取的当前li，并且是他父级里唯一子元素的
+        $("ul li:only-child").css("background", "red")
+    </script>
+</body>
+
+</html>

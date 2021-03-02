@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <button id="btn">走你~</button>
+    <div id="box"></div>
+    <script>
+        $(function () {
+            /* $("#btn").click(function () {
+                $("#box").animate({
+                    left: "800px",
+                }, 1000, "linear", function () {
+                    $("#box").animate({
+                        top: "500px",
+                    }, 1000, "linear", function () {
+                        $("#box").animate({
+                            left: "0px",
+                        }, 1000, "linear", function () {
+                            $("#box").animate({
+                                top: "40px",
+                            }, 1000, "linear", function () {
+
+                            })
+                        })
+                    })
+                });
+            }) */
+
+
+            $("#btn").click(function () {
+                $("#box")
+                    .animate({
+                        left: "800px",
+                    }, 1000, "linear")
+                    .animate({
+                        top: "400px",
+                    }, 1000, "linear")
+                    .animate({
+                        left: "0px",
+                    }, 1000, "linear")
+                    .animate({
+                        top: "40px",
+                    }, 1000, "linear")
+                    .css("background", "yellow")
+            })
+        })
+    </script>
+</body>
+
+</html>

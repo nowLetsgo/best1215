@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <form action="###">
+        <!-- 
+            disabled：表单禁用，表单不会被提交
+            readonly:表单只读 可以被提交
+         -->
+        <input type="text" name="user" disabled value="laoli">
+        <input type="password" name="pass" readonly value="1234">
+        <input type="radio" name="sex" value="男">
+        <input type="radio" name="sex" value="女" checked>
+
+        <select name="city" id="" multiple>
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="南京" selected>南京</option>
+            <option value="广州">广州</option>
+        </select>
+
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>提交</button>
+    </form>
+    <script>
+        $(function () {
+            // console.log(($("form input:enabled")))
+            // console.log(($("form input:disabled")))
+            // console.log(($("form input:checked")))
+            // console.log(($("form select option:selected")))
+
+            // console.log($("form :input"))
+            console.log($("form :password"))
+            console.log($("form :text"))
+            console.log($("form :radio"))
+        })
+    </script>
+</body>
+
+</html>

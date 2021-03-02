@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(function () {
+            // console.log($(".box"))
+            //jQuery对象转js对象
+            //1.使用jQuery提供的get方法 里边添加下标
+            // $(".box").get(0).style.background = "pink";
+            //2.直接使用中括号下标
+            // $(".box")[0].style.background = "pink";
+        })
+
+
+
+        var oBox = document.querySelector('.box');
+        console.log(oBox)
+        console.log($(oBox))
+        //只需要在js对象外层嵌套一个包裹 即可变成jQuery对象
+        $(oBox).css("background", "yellow");
+    </script>
+</body>
+
+</html>

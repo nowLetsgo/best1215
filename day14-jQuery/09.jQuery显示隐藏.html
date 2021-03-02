@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 200px;
+            background-color: orchid;
+        }
+
+        .con {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">显示</button>
+    <button id="btn2">隐藏</button>
+    <button id="btn3">切换</button>
+    <div class="box">
+        <div class="con">
+            jquery的显示和隐藏。
+            jquery的显示和隐藏。
+            jquery的显示和隐藏。
+            jquery的显示和隐藏。
+            jquery的显示和隐藏。
+            jquery的显示和隐藏。
+            jquery的显示和隐藏。
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#btn2").click(function () {
+                /* 
+                    hide方法：
+                        参数1：时间：ms为单位 或者 fast normal slow 为字符串关键词
+                        参数2: 动画执行效果
+                        参数3：回调函数
+                
+                */
+                $(".box").hide(1000, "linear", function () {
+                    // alert("回调函数，当动画执行完成后触发")
+                });
+            });
+            $("#btn1").click(function () {
+                $(".box").show(1000);
+            });
+
+            $("#btn3").click(function () {
+                $(".box").toggle(1000);
+            });
+
+        })
+    </script>
+</body>
+
+</html>

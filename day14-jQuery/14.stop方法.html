@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#box")
+                .mouseenter(function () {
+                    $(this).stop(true, false).animate({
+                        width: "400px"
+                    }, 2000)
+                })
+                .mouseleave(function () {
+                    $(this).stop(true, false).animate({
+                        width: "200px"
+                    }, 2000)
+                })
+                .click(function () {
+                    /* 
+                        stop方法：肯定会停止当前动画
+                            参数1：是否清空动画队列
+                            参数2：当前动画停止后 是否走到动画末端
+                        delay方法：延迟动画
+                    
+                    */
+                    $(this).stop(true, false).delay(1000).animate({
+                        height: "400px"
+                    }, 2000)
+                })
+        })
+    </script>
+</body>
+
+</html>

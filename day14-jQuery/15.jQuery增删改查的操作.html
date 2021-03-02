@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(".box").click(function () {
+            alert(1);
+        })
+        $(function () {
+            $("#btn").click(function () {
+                // var newli = $("<li id='con' study='jq'>new</li>");
+
+                // A.append(B): A内部的末尾插入B
+                // $(".box").append(newli)
+                // B.appendTo(A): 把B插入到A的内部的末尾
+                // newli.appendTo($(".box"))
+
+                // $(".box").prepend(newli)
+                // newli.prependTo($(".box"))
+
+                /*  $(".box li:nth-child(2)").after(newli)
+                 $(".box li:nth-child(2)").before(newli) */
+
+                // newli.insertBefore($(".box li:nth-child(2)"))
+                // newli.insertAfter($(".box li:nth-child(2)"))
+
+                //remove删除当前节点
+                // $(".box li:nth-child(2)").remove();
+                //empty清空当前元素所有内容
+                // $(".box").empty();
+
+                // $("<h2>h222</h2>").replaceAll($("ul li"))
+
+
+                //jQuery的clone是克隆js事件
+                $("body").append($(".box").clone(true))
+            })
+        })
+    </script>
+</body>
+
+</html>
