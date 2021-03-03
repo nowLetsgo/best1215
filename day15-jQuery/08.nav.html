@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav {
+            width: 808px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            display: flex;
+        }
+
+        .nav .item {
+            width: 200px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .item h3 {
+            height: 40px;
+            background-color: red;
+        }
+
+        .item div {
+            width: 200px;
+            height: 300px;
+            background-color: skyblue;
+            position: absolute;
+            left: 1px;
+            top: 40px;
+            display: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="nav1" class="nav">
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+    </ul>
+
+    <ul id="nav2" class="nav">
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+        <li class="item">
+            <h3>我是标题</h3>
+            <div>我是内容</div>
+        </li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="./jQuery.Nav.js"></script>
+    <script>
+        $(function () {
+            /* $(".nav .item")
+                .mouseenter(function () {
+                    $(this).children("div").stop(true, false).slideDown(1000);
+                })
+                .mouseleave(function () {
+                    $(this).children("div").stop(true, false).slideUp(1000);
+                }) */
+
+
+            $("#nav1").nav();
+            $("#nav2").nav();
+        })
+    </script>
+</body>
+
+</html> 

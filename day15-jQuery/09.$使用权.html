@@ -11,15 +11,14 @@
 <body>
     <div id="box">box</div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script> 
-        $("body").click(function () {
-            alert(1);
-        })
-        $("#box").click(function (e) {
-            e.stopPropagation();
-            console.log(e);
-            console.log(e.clientX);
-        })
+    <script>
+        //noConflict 放弃$使用权  可以用一个新的变量接受返回值 这个新的变量就是代表jQuery
+        var _ = jQuery.noConflict();
+        console.log(_("#box"))
+
+
+
+        
     </script>
 </body>
 

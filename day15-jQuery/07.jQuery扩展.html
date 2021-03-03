@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">box</div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        /* 
+            jQuery的扩展：
+                1.给jQuery实例化对象扩展
+                2.给jQuery对象扩展，也就是扩展一个静态方法
+        
+        */
+
+        /* jQuery.prototype.fly = function () {
+            alert("飞~︿(￣︶￣)︿")
+        }
+        // $("#box").fly();
+        // $.fly();
+        jQuery.prototype.red = function () {
+            return $(this).css("background", "red");
+        }
+        $("#box").red();
+ */
+
+
+        /* jQuery.eat = function () {
+            alert("吃~")
+        }
+        $.eat();
+        // $("#box").eat(); */
+
+        //jQuery正规方法 给实例化对象扩展
+        jQuery.fn.extend({
+            red: function () {
+                return $(this).css("background", "red")
+            },
+            yellow: function () {
+                return $(this).css("background", "yellow")
+            }
+        })
+
+        $("#box").yellow();
+
+
+        //给jQuery扩展
+        jQuery.extend({
+            eat: function () {
+                alert("chi~")
+            },
+            drink: function () {
+                alert("he~")
+            }
+        })
+
+        $.eat();
+    </script>
+</body>
+
+</html>

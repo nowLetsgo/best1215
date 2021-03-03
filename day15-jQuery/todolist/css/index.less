@@ -1,0 +1,48 @@
+@import "public";
+.todo-container{
+    width: 600px;
+    margin: 50px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    .todo-header{
+        margin-bottom: 20px;
+        input{
+            width: 600px;
+            box-sizing: border-box;
+            height: 30px;
+            padding: 0 10px;
+            outline: none;
+            border:1px solid #ddd;
+        }
+        input:focus{
+            outline: 0;
+        }
+    }
+    .todo-main{
+        border:1px solid #ddd;
+        border-radius: 5px;
+        .todo-list{
+            height: 40px;
+            line-height: 40px;
+            padding: 0 5px;
+            border-bottom: 1px solid #ddd;
+            &:last-child{
+                border-bottom: none;
+            }
+            button{
+                float: right;
+                margin-top: 3px;
+                display: none;
+            }
+        }
+    }
+    .todo-footer{
+        height: 40px;
+        line-height: 40px;
+        button{
+            float: right;
+            margin-top: 5px;
+        }
+    }
+}
