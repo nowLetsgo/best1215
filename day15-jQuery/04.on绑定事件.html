@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">添加</button>
+    <button id="btn2">移除事件</button>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        /* $("ul li").on("click", function () {
+            $(this).css("background", "red");
+        }) */
+
+        $("ul").on("click", "li", [1, 2, 3], function (e) {
+            console.log(e)
+            $(this).css("background", "red");
+        })
+
+
+        $("#btn").click(function () {
+            $("ul").append($("<li>new</li>"))
+        });
+
+        function fn() {
+            alert(1)
+        }
+        $("#btn").click(fn);
+
+
+
+        $("#btn2").click(function () {
+            $("#btn").off("click", fn)
+        })
+    </script>
+</body>
+
+</html>
