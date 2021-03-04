@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+        }
+
+        @media screen and (max-width: 500px) {
+            #box {
+                background-color: pink;
+            }
+        }
+
+        @media screen and (min-width: 500px) {
+            #box {
+                background-color: green;
+            }
+        }
+
+        @media screen and (min-width: 800px) {
+            #box {
+                background-color: yellow;
+            }
+        }
+
+
+        #con {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* portrait:竖屏 */
+        @media screen and (orientation:portrait) {
+            #con {
+                background-color: rosybrown;
+            }
+        }
+
+        /* landscape:横屏 */
+        @media screen and (orientation:landscape) {
+            #con {
+                background-color: orange;
+            }
+        }
+
+
+        #inner {
+            width: 120px;
+            height: 120px;
+        }
+
+        /*  @media screen and (-webkit-device-pixel-ratio:2) {
+            #inner {
+                background-color: blue;
+            }
+        }
+
+        @media screen and (-webkit-device-pixel-ratio:3) {
+            #inner {
+                background-color: greenyellow;
+            }
+        } */
+
+
+        @media screen {
+            @media (-webkit-device-pixel-ratio:3) {
+                #inner {
+                    background-color: greenyellow;
+                }
+            }
+
+            @media (-webkit-device-pixel-ratio:2) {
+                #inner {
+                    background-color: blue;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="con"></div>
+    <div id="inner"></div>
+</body>
+
+</html>
