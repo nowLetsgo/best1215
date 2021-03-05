@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            模板字符串：    
+                - 反引号标识 ``
+                - 里边可以嵌套变量 使用 ${}插入变量
+        
+        */
+
+        /* const str = `j
+            as
+            asd
+            asdfa
+            dfa" "''''asd'''da'sda"
+            sffas
+            f`;
+
+        function self({
+            name,
+            age,
+            sex
+        }) {
+            const str = `我是${name}性别${sex}年龄${age}`;
+            console.log(str)
+        }
+
+
+        self({
+            name: "laowang",
+            age: 18,
+            sex: "nv"
+        })
+ */
+
+        //${}中可以书写表达式(不是语句)
+        const flag = true;
+
+        function fn() {
+            return "hahha"
+        }
+        const str = `hello${flag?"xiaowang":"xiaozhang"},${fn()}`;
+        console.log(str)
+    </script>
+</body>
+
+</html>

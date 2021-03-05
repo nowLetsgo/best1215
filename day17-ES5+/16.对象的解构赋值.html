@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //对象的解构赋值
+        {
+            const obj = {
+                name: "laowang",
+                age: 19,
+                sex: "nan"
+            }
+            const {
+                name: a,
+                age: b,
+                sex: c
+            } = obj;
+            console.log(a, b, c)
+        }
+
+        //对象的简写(当value是一个变量的时候，并且key和value一样的时候，则可以合写)
+        {
+            const name = "laowang";
+            const age = 18;
+            const sex = "nv";
+            const obj = {
+                name,
+                age,
+                sex
+            }
+            console.log(obj)
+        }
+
+        //解构赋值：
+        {
+            const obj = {
+                name: "laowang",
+                age: 19,
+                sex: "nan"
+            }
+
+            const {
+                name,
+                age,
+                sex
+            } = obj;
+            console.log(name, age, sex)
+        }
+
+        {
+
+            // 解构赋值
+            const {
+                log
+            } = console;
+
+            log("能看懂吗？")
+        }
+
+
+        //对象解构赋值可以设置默认值
+        {
+            const {
+                name = "laowang",
+                    age
+            } = {
+                age: 19,
+                name: "xiaozhang"
+            }
+            console.log(age, name)
+        }
+
+        //嵌套解构
+        {
+            const arr = [{
+                name: "laowang"
+            }, 2, 3];
+            const [{
+                name
+            }, b, c] = arr;
+            console.log(name, b, c)
+        }
+
+        //解构出数组的第一个值和最后一个值
+        {
+            const arr = ["a", "b", "c", "d", "e"];
+            const {
+                0: a,
+                [arr.length - 1]: b
+            } = arr;
+            console.log(a, b)
+        }
+
+        //接受函数多个返回值
+        {
+            function fn() {
+                return {
+                    a: 1,
+                    b: 2,
+                    c: 3
+                }
+            }
+
+            const {
+                a,
+                b,
+                c
+            } = fn();
+            console.log(a, b, c)
+        }
+
+        //传参
+        {
+            const arr = [1, 2, 3];
+
+            function fn([a, b, c]) {
+                console.log(a + b + c);
+            }
+            fn(arr);
+        }
+    </script>
+</body>
+
+</html>

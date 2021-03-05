@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            let：
+                - 声明变量，并且支持块作用域
+        
+        
+        */
+        //1.没有声明提升
+        {
+            // console.log(a); //Cannot access 'a' before initialization
+            let a = 1;
+        }
+
+        //2.let不能重复声明变量
+        {
+            let a = 1;
+            // let a = 2;//Identifier 'a' has already been declared
+        }
+
+        //3.块级作用域的出现，实际上使得获得广泛应用的匿名立即执行函数表达式（匿名 IIFE）不再必要了
+
+
+        //练习：
+        //练习1：
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i] = function () {
+                console.log(i);
+            };
+        }
+        a[6](); //10
+
+        // 练习2:
+        var a = [];
+        for (let i = 0; i < 10; i++) {
+            a[i] = function () {
+                console.log(i);
+            };
+        }
+        a[6](); //6
+    </script>
+</body>
+
+</html>

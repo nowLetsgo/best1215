@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //以后尽量不要把函数声明在块作用域中
+        /* var a = 1;
+        if (a == 1) {
+            function fn() {
+                console.log(1)
+            }
+            fn();
+        }
+        fn(); */
+
+        ////如果非要把函数声明在块中，则使用函数表达式
+        var a = 1;
+        if (a == 1) {
+            let fn = function () {
+                console.log(1)
+            }
+            fn();
+        }
+        fn();
+    </script>
+</body>
+
+</html>

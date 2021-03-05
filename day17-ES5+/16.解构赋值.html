@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //旧方法
+        /* const arr = ["a", "b", "c", "d"];
+        const a = arr[0];
+        const b = arr[1];
+        const c = arr[2];
+        const d = arr[3];
+        console.log(a, b, c, d) */
+
+
+
+        //解构赋值
+        const arr = ["a", "b", "c", "d"];
+        const [a, b, c, d] = arr;
+        console.log(a, b, c, d)
+
+        //解构失败返回undefined
+        {
+            const arr = [1, 2];
+            const [a, b, c] = arr;
+            console.log(a, b, c)
+        }
+
+        //不完全解构也可以成功
+        {
+            const arr = [1, 2, 3];
+            const [a] = arr;
+            console.log(a);
+        }
+
+        //可以为解构赋值可以设置默认值
+        {
+            const arr = [1, 2];
+            const [a, b = 0, c = 0] = arr;
+            console.log(a, b, c)
+        }
+
+        //可以使用rest参数（当值比变量多的时候） 必须是最后一个
+        {
+            const arr = [1, 2, 3, 4, 5, 6];
+            const [a, b, ...c] = arr;
+            console.log(a, b, c)
+        }
+
+        //多维数组只要一一对应也可以
+        {
+            const arr = [1, [2, 3, [4, 5]], 6];
+            const [a, [b, c, [d, e]], f] = arr;
+            console.log(a, b, c, d, e, f)
+        }
+
+
+        //练习：交换两个变量的值
+        {
+            // let a = 1;
+            // let b = 2;
+            // let c = a;
+            // a = b;
+            // b = c;
+            // console.log(a, b)
+
+
+            /* let a = 1;
+            let b = 2;
+            a = a + b;
+            b = a - b;
+            a = a - b;
+            console.log(a, b) */
+
+
+            let a = 1;
+            let b = 2;
+            [b, a] = [a, b];
+            console.log(a, b)
+        }
+
+        //练习2：
+        {
+            let [foo = hoo, hoo = 2] = [];
+            console.log(foo, hoo);
+        }
+    </script>
+</body>
+
+</html>

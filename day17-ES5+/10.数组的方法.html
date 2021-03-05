@@ -103,6 +103,61 @@
             return item.age < 18;
         })
         console.log(re);
+
+
+        //fliter 过滤，返回一个新数组：遍历数组，把回调函数返回ture的数组的值，放在新数组中
+        var arr = [{
+            name: "xiaowang",
+            age: 19
+        }, {
+            name: "xiaoli",
+            age: 21
+        }, {
+            name: "xiaozhang",
+            age: 12
+        }, {
+            name: "xiaoxi",
+            age: 22
+        }, {
+            name: "xiaogou",
+            age: 30
+        }]
+        var re = arr.filter(function (item, index) {
+            return item.age >= 20
+        });
+        console.log(re)
+
+
+        /* 
+            reduce()累加：
+                - 参数1：回调函数
+                    - 参数1，prev (第一次是初始值，以后是上一次回调函数的返回值)
+                    - 参数2, now
+                    - 参数3, index
+                    - 参数4, array
+                - 参数2：累加的初始值
+                    - 如果省略初始值，则把数组的第一个值当做初始值，然后从第2个值开始遍历
+
+                - reduce的返回值 就是最后一次回调函数执行的返回值
+        
+        */
+        var arr = [2, 4, 5, 2, 6, 7, 4];
+        var re = arr.reduce(function (prev, now, index, array) {
+            // console.log(prev, now, index, array)
+            return prev + now;
+        }, 0);
+        console.log(re);
+
+
+        var url = "http://www.baidu.com?a=1&b=2&c=3&d=4";
+        // ["a=1", "b=2", "c=3", "d=4"]
+        var re = url.split("?")[1].split("&").reduce(function (p, n) {
+            var key = n.split("=")[0];
+            var value = n.split("=")[1];
+            p[key] = value;
+            return p;
+        }, {});
+        console.log(re)
     </script>
 </body>
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            去空格：
+                trim()
+                trimStart()
+                trimEnd()
+        
+        */
+        {
+            const str = '   123   123   ';
+            console.log(str.trim());
+            console.log(str.trimEnd());
+            console.log(str.trimStart());
+        }
+
+        /* 
+            判断存在
+                indexOf():判断某个值是否存在 如果存在则返回下标 否则返回-1
+                startWith():返回布尔值 判断开头是否包含某个字符串
+                endWidth():返回布尔值 判断结尾是否包含某个字符串
+                includes()::返回布尔值 判断整个字符串中是否包含某个字符串
+        
+        */
+
+        {
+            const str = "hello world";
+            console.log(str.indexOf("lo")); //3
+            console.log(str.startsWith("hel")); //true
+            console.log(str.endsWith("hel")); //false
+            console.log(str.includes("lo")); //true
+        }
+
+        /* 
+            repeat()重复字符串
+        
+        */
+        {
+            const str = "海静你真s";
+            console.log(str.repeat(10))
+        }
+
+        /* 
+            补充字符串
+                - padStart
+                - padEnd
+        */
+
+        {
+            const str = "海静说";
+            console.log(str.padStart(8, "#*io78qw39814-1"));
+            console.log(str.padEnd(8, "*"));
+        }
+    </script>
+</body>
+
+</html>

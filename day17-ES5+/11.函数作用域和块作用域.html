@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // {}: 独立的语句： 代码块,使用var声明的变量只能用函数来区分作用域，代码块不可以区分作用域
+        {
+            var a = 1;
+        }
+        console.log(a);
+
+        if (a > 3) {
+            var b = 2;
+        }
+        console.log(b);
+
+
+        //ES6设置了块作用域，当使用的是let声明变量或者const声明的常量，则都是适用于块级作用域
+
+        {
+            let c = "hello"; 
+            {
+                console.log("c:" + c)
+            }
+        }
+        console.log(c);
+    </script>
+</body>
+
+</html>

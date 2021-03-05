@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            let：
+                - 声明变量，并且支持块作用域
+        
+        
+        */
+        //1.增加了块作用域,块作用域可以嵌套，支持块作用域的作用域链
+        {
+            let a = 1;
+
+            {
+                console.log(a); //1 
+            }
+        }
+        // console.log(a);//ReferenceError: a is not defined
+
+        //for循环的let
+        for (let i = 0; i < 5; i++) {
+            setTimeout(function () {
+                console.log(i);
+            })
+        }
+
+
+        //for语句中声明的i 不是全局变量
+        //for语句小括号的i是for循环的父级作用域,每次执行for语句的时候把自己的i传入到子作用域中执行
+        for (let i = 0; i < 5; i++) {
+            //里边声明的i和外边的i不冲突
+            let i = "a";
+            console.log(i)
+        }
+    </script>
+</body>
+
+</html>

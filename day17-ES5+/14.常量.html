@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            常量：
+                1.常量基本要求大写，但是我们很多都会声明常量，可以不遵守
+                2.常量不允许改变值
+                3.const一旦声明变量，就必须立即初始化，不能留到以后赋值
+                4.块作用域有效
+                5.不能提升
+                6.const声明的常量，也与let一样不可重复声明
+                7.let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。也就是说，从 ES6 开始，全局变量将逐步与顶层对象的属性脱钩。
+
+        */
+
+        {
+            const PI = 3.1415;
+            console.log(PI)
+        }
+
+        {
+            const a = 1;
+            // a = 2; //Assignment to constant variable
+
+            const obj = {};
+            obj.name = "laowang"; //如果是对象，则不改变地址即可
+            console.log(obj)
+        }
+
+        {
+            // const a;//Missing initializer in const declaration
+            // console.log(a)
+        }
+
+        {
+
+            // console.log(a);
+            const a = 1; //Cannot access 'a' before initialization
+        }
+
+        {
+            const a = 1;
+            // const a = 1;//Identifier 'a' has already been declared
+        }
+
+
+        const a = 1;
+        let b = 2;
+        console.log(window.a) //undefined
+        console.log(window.b) //undefined
+    </script>
+</body>
+
+</html>
