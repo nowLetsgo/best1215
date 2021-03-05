@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            存取器属性：getter和setter
+                访问具有getter方法的属性时隐式调用对应的getter方法。
+                为具有getter方法的属性赋值时隐式调用对应的setter方法。
+
+        
+        */
+        /* var obj = {
+            firstName: "lao",
+            lastName: "wang",
+            get fullName() {
+                return this.firstName + " " + this.lastName;
+            },
+            set fullName(value) {
+                this.firstName = value.split(" ")[0];
+                this.lastName = value.split(" ")[1];
+            }
+        }
+        console.log(obj.fullName)
+        obj.fullName = "xiao wang";
+        console.log(obj) */
+
+
+        var obj5 = Object.create(null, {
+            first: {
+                value: "lao",
+                writable: true,
+            },
+            last: {
+                value: "wang",
+            }
+        });
+
+        Object.defineProperty(obj5, "fullName", {
+            get() {
+                return this.first + " " + this.last;
+            },
+            set(value) {
+                this.first = value.split(" ")[0]
+                this.last = value.split(" ")[1];
+            }
+        })
+
+        console.log(obj5.fullName)
+        obj5.fullName = "xiao wang";
+        console.log(obj5.fullName);
+    </script>
+</body>
+
+</html>

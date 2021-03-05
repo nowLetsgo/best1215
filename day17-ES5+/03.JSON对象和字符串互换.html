@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = '{"name":"xiaowang","age":18,"sex":"nan"}';
+
+        //JSON字符串转JSON对象 JSON.parse();
+
+        var objJson = JSON.parse(obj)
+        console.log(objJson);
+
+        //JSON对象转JSON字符串 JSON.stringify()
+        var objJsonStr = JSON.stringify(objJson);
+        console.log(objJsonStr)
+    </script>
+</body>
+
+</html>

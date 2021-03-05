@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            只要对象的属性是 通过.或者[]直接添加的，则修改删除枚举都正常
+        */
+        var obj5 = Object.create(null, {
+            name: {
+                value: "laowang",
+                writable: false,
+                enumerable: false,
+                configurable: false
+            }
+        });
+
+        obj5.sex = "nan";
+
+        console.log(obj5)
+        //查看属性是否可以被写
+        obj5.sex = "nv";
+        console.log(obj5)
+
+        //查看属性是否可以被枚举
+        for (var key in obj5) {
+            console.log(key)
+        }
+
+
+        //查看是否可以删除属性
+        delete obj5.sex;
+        console.log(obj5)
+    </script>
+</body>
+
+</html>

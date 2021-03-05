@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Object.create():
+                - 创建一个对象，必须指定这个新对象的原型对象是谁
+                - 参数1：prototype:必须参数,指定原型对象,可以为null
+                - 参数2：是一个对象，给当前对象创建属性或方法，并指定属性的特性描述
+                    - key是属性名，值是一个对象
+                    - 对象中的value属性：是当前key的值
+                    - writable属性：属性值是否可以写
+                    - enumerable属性：属性值是否可以被枚举出来
+                    - configurable属性：属性是否可以被删除 和 属性描述的enumerable及configurable能否被修改
+        
+        */
+        //创建一个干干净净的对象
+        var obj1 = Object.create(null);
+        console.log(obj1)
+
+        //可以进行继承（JS继承：当一个对象可以使用另一个对象的属性和方法的时候，被称作为继承）
+        var obj2 = {
+            name: "xiaowang",
+            eat: function () {
+                console.log("红烧牛蹄")
+            }
+        }
+        var obj3 = Object.create(obj2);
+        console.log(obj3);
+        obj3.eat();
+
+        //参数1必须是一个对象或null 
+        var obj4 = Object.create([]);
+        console.log(obj4)
+
+
+        //参数2
+        var obj5 = Object.create(null, {
+            name: {
+                value: "laowang",
+                writable: true,
+                enumerable: true,
+                configurable: false
+            }
+        });
+        console.log(obj5)
+        //查看属性是否可以被写
+        obj5.name = "xiaozhang";
+        console.log(obj5)
+
+        //查看属性是否可以被枚举
+        for (var key in obj5) {
+            console.log(key)
+        }
+
+        for (var key in Array.prototype) {
+            console.log(key)
+        }
+
+        //查看是否可以删除属性
+        delete obj5.name;
+        console.log(obj5)
+    </script>
+</body>
+
+</html>

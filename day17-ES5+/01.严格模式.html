@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            严格模式：
+                - 除了正常运行模式(混杂模式)，ES5添加了第二种运行模式："严格模式"（strict mode）。这种模式使得Javascript在更严格的语法条件下运行
+                - 严格模式可以比非严格模式下运行得更快，消除代码运行的一些不安全之处
+                - 在全局或函数的第一条语句定义为: 'use strict',将"use strict"放在函数体的第一行，则整个函数以"严格模式运行"。
+                - 影响：
+                    - 变量必须声明才能使用
+                    - 禁止自定义的函数中的this指向window（严格模式下全局作用域中定义的函数中的this为undefined）
+                    - 创建eval作用域
+
+
+        
+        
+        */
+        'use strict';
+
+        function fn() {
+            'use strict';
+            console.log(this);
+        }
+        fn();
+
+        // a = 1;
+
+
+        eval("var a =1;a++;console.log(a);")
+        console.log(a)
+    </script>
+</body>
+
+</html>

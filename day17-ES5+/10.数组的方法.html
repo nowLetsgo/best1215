@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            数组的方法：
+                concat
+                join
+                pop
+                push
+                reverse
+                shift
+                slice
+                sort
+                splice
+                unshift
+
+                forEach
+                map
+                filter
+                every
+                reduce
+                some
+
+         */
+
+        //字符串倒序
+        var str = "123456";
+        var strReverse = str.split("").reverse().join("");
+        console.log(strReverse)
+
+        //forEach() 遍历数组 没有返回值
+        var arr = [1, 2, 3, 4, 5];
+        var newArr = []
+        arr.forEach(function (item, index) {
+            newArr[index] = item + 1;
+        })
+        console.log(newArr);
+
+        /* 
+            map() 映射数组:
+                - map一定会返回一个和原数组长度一样的新数组
+                - 遍历数组，map返回的数组的每一个值都是，对应数组值在回调函数中的返回值
+        */
+        var arr = [1, 2, 3, 4, 5];
+        var re = arr.map(function (item, index) {
+            return item + 1;
+        })
+        console.log(re);
+
+
+        //every:返回一个布尔值，遍历数组的值，看每次回调函数的返回值，一假即假
+        var arr = [{
+            name: "xiaowang",
+            age: 19
+        }, {
+            name: "xiaoli",
+            age: 21
+        }, {
+            name: "xiaozhang",
+            age: 18
+        }, {
+            name: "xiaoxi",
+            age: 22
+        }, {
+            name: "xiaogou",
+            age: 24
+        }]
+        //判断以上数组中是否所有的年龄都满18
+        var re = arr.every(function (item, index) {
+            return item.age >= 18;
+        })
+        console.log(re);
+
+
+        //some:返回一个布尔值，遍历数组的值，看每次回调函数的返回值，一真即真
+        var arr = [{
+            name: "xiaowang",
+            age: 19
+        }, {
+            name: "xiaoli",
+            age: 21
+        }, {
+            name: "xiaozhang",
+            age: 12
+        }, {
+            name: "xiaoxi",
+            age: 22
+        }, {
+            name: "xiaogou",
+            age: 24
+        }]
+        //判断以上数组有没有小于18岁的人
+        var re = arr.some(function (item, index) {
+            return item.age < 18;
+        })
+        console.log(re);
+    </script>
+</body>
+
+</html>

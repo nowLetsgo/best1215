@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Obejct.defineProperty:
+                - Object的静态方法defineProperty 可以给对象添加属性（带有属性描述符的属性）
+                - 参数1：被添加的对象
+                - 参数2：添加或修改的属性
+                - 参数3：属性描述 所有默认值都是false
+        
+        
+        */
+        var obj1 = {
+            name: "laowang"
+        };
+
+        Object.defineProperty(obj1, "sex", {
+            value: "nan",
+            writable: true,
+            enumerable: true,
+            configurable: true
+        })
+
+
+        //查看属性是否可以被写
+        obj1.sex = "nv";
+        console.log(obj1)
+
+        //查看属性是否可以被枚举
+        for (var key in obj1) {
+            console.log(key)
+        }
+
+
+        //查看是否可以删除属性
+        delete obj1.sex;
+        console.log(obj1)
+    </script>
+</body>
+
+</html>
