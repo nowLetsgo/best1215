@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myCall = function (thisArg, ...rest) {
+            //判断指定this的类型 
+            if (thisArg === null || thisArg === undefined) {
+                thisArg = window;
+            }
+            if (typeof thisArg !== 'undefined' && typeof thisArg !== 'function' && typeof thisArg !== 'object') {
+                thisArg = Object(thisArg);
+            }
+
+            var uniqKey = Symbol("uniqKey");
+            thisArg[uniqKey] = this;
+
+            var re = thisArg[uniqKey](...rest)
+
+            delete thisArg[uniqKey];
+
+            return re;
+        }
+
+
+
+        var obj = {
+            name: "laowang"
+        }
+
+        function fn(a, b, c) {
+            console.log(this, a + b + c);
+            // return "hello"
+        }
+        var re = fn.myCall(obj, 1, 2, 3);
+        console.log(re)
+    </script>
+</body>
+
+</html>

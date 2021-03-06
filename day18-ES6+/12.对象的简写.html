@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.对象的value用变量来表示的情况下，如果key和value一直，则可以省略书写
+        const name = "laowang";
+        const age = 18;
+        const sex = "nv";
+        const obj = {
+            name,
+            age,
+            sex
+        }
+
+
+        //2.对象的方法，可以省略function直接简写，没有任何其他副作用
+
+        const obj2 = {
+            do() {
+                console.log("dododo");
+            },
+            eat() {
+                console.log("eat");
+            },
+            name: "laowang"
+        }
+    </script>
+</body>
+
+</html>

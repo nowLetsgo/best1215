@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Object.is():
+                判断两个对象是否相等 类似于===
+                修复了 NaN不等于NaN的问题
+        
+        */
+
+        /* const obj1 = {
+            name: "laowang",
+        }
+        const obj2 = {
+            name: "laowang"
+        }
+        const obj3 = obj2;
+        console.log(Object.is(obj1, obj2)); //false
+        console.log(Object.is(obj3, obj2)); //true
+        console.log(NaN === NaN); //false
+        console.log(Object.is(NaN, NaN)); //true */
+
+
+        /* 
+            Object.assign();
+                合并对象
+        */
+
+        const obj1 = {
+            name: "laowang",
+        }
+        const obj2 = {
+            age: "18"
+        }
+        const obj3 = {
+            sex: "nv"
+        }
+
+        /* const re = Object.assign(obj1, obj2, obj3);
+        console.log(re);
+        console.log(re === obj1); */
+
+        const re = Object.assign({}, obj1, obj2, obj3);
+        console.log(re);
+        console.log(re === obj1);
+    </script>
+</body>
+
+</html>

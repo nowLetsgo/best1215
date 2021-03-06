@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            箭头函数没有自己的this，箭头函数内部的this并不是调用时候指向的对象,而是定义时指向的对象
+        
+        */
+        /* const obj = {
+            name: "xiaozhang",
+            do: () => {
+                console.log(this);
+            }
+        }
+
+        obj.do();//window */
+
+
+        /*  const obj = {
+             name: "xiaozhang",
+             do: function () {
+                 console.log(this);
+                 setTimeout(() => {
+                     console.log(this);
+                 })
+             }
+         }
+
+         obj.do(); */ //
+
+        /* const obj = {
+            name: "xiaozhang",
+            do: () => {
+                setTimeout(() => {
+                    console.log(this);
+                })
+            }
+        }
+
+        obj.do(); */
+
+
+        /* document.onclick = () => {
+            console.log(this); //window
+        } */
+
+
+
+        //2.箭头函数不能作为构造函数
+        /* const Person = (name, age) => {
+            this.name = name;
+            this.age = age;
+        } */
+
+        // const p1 = new Person("laowang", "18"); //Person is not a constructor
+
+
+        //3.箭头函数没有arguments对象
+        const fn = (...rest) => console.log(rest);
+        fn(1, 2, 3, 4, 5, 6);
+    </script>
+</body>
+
+</html>

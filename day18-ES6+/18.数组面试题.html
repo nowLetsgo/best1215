@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.扁平化数组
+        */
+        /* function flat(arr) {
+            //先判断当前进来的值是否是一个数组
+            if (!Array.isArray(arr)) {
+                //如果不是数组，则直接返回当前的值
+                return arr;
+            }
+
+            return arr.reduce((p, n) => p.concat(flat(n)), [])
+
+        }
+        const arr = [1, 4, [5, 3, [5, 2, 6, [0], 1], 4]]
+        console.log(flat(arr)); */
+
+
+        /* 
+            数组去重:
+        
+        */
+        /* const arr = [1, 2, 3, 1, 3, 6, 7, 4, 5, 6, 3, 4, 2, 1];
+        const newArr = [];
+        arr.forEach((item, index) => {
+            if (arr.indexOf(item) === index) {
+                newArr.push(item)
+            }
+        })
+        console.log(newArr); */
+
+        /*  const arr = [1, 2, 3, 1, 3, 6, 7, 4, 5, 6, 3, 4, 2, 1];
+
+         const re = arr.reduce((p, n) => {
+             //判断新数组中是否出现当前值
+             if (p.includes(n)) {
+                 return p;
+             }
+             return [...p, n]
+         }, []);
+         console.log(re); */
+
+
+        /* 
+           计算字符串中每个值出现的次数 用对象表示
+        
+        */
+        /* const str = "abacdaba";
+
+        const re = [...str].reduce((p, n) => {
+            p[n] ? p[n]++ : p[n] = 1;
+            return p;
+        }, {})
+        console.log(re); */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            JS在2的53次方的时候，计算将不再精确
+        
+        */
+        console.log(2 ** 53);
+        console.log(2 ** 53 + 1);
+        console.log(2 ** 53 + 2);
+        console.log(2 ** 53 + 3);
+        console.log(2 ** 53 + 4);
+        console.log(2 ** 53 + 5);
+        console.log(2 ** 53 + 6);
+        console.log(2 ** 53 + 7);
+        console.log(2 ** 53 + 8);
+
+        /* 
+            JS在2的1024次方的时候，将不再计算，直接返回Infinity
+        */
+        console.log(2 ** 1023)
+        console.log(2 ** 1024)
+
+        /* 
+            ES10提供了一个大整型的数据类型，可以进行大数运算
+            在整数的后边添加一个n 就是大整型 数据类型
+        
+        */
+        let num1 = 1n;
+        console.log(num1); //1n
+        console.log(typeof num1); //bigint
+
+        console.log(1n == 1); //true
+        console.log(1n === 1); //false
+
+        console.log(Number(2n)) //2
+        console.log(Boolean(1n)) //true
+        console.log(Boolean(0n)) //false
+        console.log(String(2n)) //'2'
+
+        //bigInt不和其他类型进行运算 只能是同类型运算
+        // console.log(1 + 1n)
+        console.log(2n ** 1024000n)
+        
+    </script>
+</body>
+
+</html>

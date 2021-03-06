@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* const obj = {
+            name: "laowang",
+            fn() {
+                console.log("fn");
+            }
+        }
+
+        //当给对象扩展属性或方法的时候，可能会覆盖原有的这个属性，那么我们需要有一个独一无二的值，防止重复命名，ES6提供了新的数据类型 Symbol
+        obj.fn = function () {
+
+        } */
+
+
+        /* 
+            Symbol类型：
+
+        
+        */
+        //创建一个独一无二的值 (不能使用new调用)
+        /* const sy1 = Symbol();
+        const sy2 = Symbol();
+        console.log(sy1);
+        console.log(typeof sy1); //symbol
+        console.log(sy1 === sy2); //symbol */
+
+        //symbol的使用
+        const obj = {
+            name: "laowang",
+            fn() {
+                console.log("fn");
+            }
+        }
+
+        //想要给obj扩展一个方法 要防止重复命名
+        //不能直接把Symbol通过以下方式设置进去，因为以后基本不能再获取到了
+        obj[Symbol()] = function () {
+
+        }
+        console.log(obj)
+        console.log(obj[Symbol()]) //undefined 获取不到的 因为此时写的Symbol()也是独一无二的值
+
+
+        //一般要设置的Symbol的时候，使用一个变量保存这个Symbol 方便以后获取
+        const sy1 = Symbol("sy1"); //Symbol的参数没有任何意义，但是可以给我们提供信息，一般我们书写为保存这个Symbol的变量
+        obj[sy1] = function () {
+            console.log("sy1");
+        }
+        console.log(obj)
+        console.log(obj[sy1])
+
+
+        //Symbol的类型转换
+        const sy2 = Symbol();
+        console.log(sy2.toString()) //Symbol()
+        // console.log(Number(sy2))//Cannot convert a Symbol value to a number
+        console.log(Boolean(sy2)) //true
+
+
+        //for in 不可以遍历出Symbol
+        for (let key in obj) {
+            console.log(key) //没有Symbol
+        }
+
+        //getOwnPropertySymbols可以拿到对象中的Symbol的key
+        console.log(Object.getOwnPropertySymbols(obj));
+
+        Object.getOwnPropertySymbols(obj).forEach((item, index) => console.log(obj[item]))
+    </script>
+</body>
+
+</html>

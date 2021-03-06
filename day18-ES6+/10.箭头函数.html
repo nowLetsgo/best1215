@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //参数个数 的箭头函数写法
+        /* function fn() {
+
+        } */
+
+        //如果函数没有参数或者有两个及两个以上的参数的时候
+        /* const fn = () => {
+            console.log(1);
+        }
+        fn(); */
+
+        /* const fn = (a) => {
+            console.log(a);
+        }
+        fn(1); */
+
+        /* const fn = (a, b) => {
+            console.log(a + b);
+        }
+        fn(1, 2); */
+
+        //如果函数只有一个参数,则可以省略小括号
+        /* const fn = a => {
+            console.log(a);
+        }
+        fn("1") */
+
+
+        //从函数体来考虑
+        //1当函数体只有一句话的时候， 则可以省略大括号
+        /* const fn = a => console.log(a);
+        fn("12"); */
+
+        //当函数体只有一句话，并且是return语句的时候，则可以省略大括号和return
+        const fn = a => a + 1;
+        console.log(fn(1));
+
+        //当函数体不是一句话的时候，则正常书写大括号即可
+    </script>
+</body>
+
+</html>
