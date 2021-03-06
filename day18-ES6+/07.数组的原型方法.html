@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            copyWithin: 
+                - 参数1：开始替换的下标
+                - 参数2：选取数组替换值的开始位置
+                - 参数3：选取数组替换值的结束位置
+                修改了原数组 并把原数组的引用地址返回出去
+        
+        */
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 9];
+            const re = arr.copyWithin(1, 5, 9);
+            console.log(re, arr);
+            console.log(re === arr);
+        }
+
+        /* 
+            fill()
+                - 参数1：需要给数组填充的内容
+                - 参数2：开始填充的位置
+                - 参数3：结束填充的位置
+        
+        */
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7, 9];
+            const re = arr.fill("a", 2, 4);
+            console.log(arr, re)
+        }
+
+        /* 
+        
+            includes()
+                - 判断是否包含某个值
+        */
+        {
+            const arr = [1, 2, 3, 4, [5, 6]];
+            console.log(arr.includes(2)) //true
+            console.log(arr.includes(5)) //false
+            console.log(arr.includes([5, 6])) //false
+        }
+
+        {
+            /* 
+                flat()：数组扁平化
+                    - 参数是一个拉平的层数 
+                    - 如果一定要一个完全扁平化数组 则可以直接书写 infinity
+                
+            
+            */
+            const arr = [1, 2, [3, 4, [5, 6, [7]]]];
+            const re = arr.flat(Infinity);
+            console.log(re);
+        }
+
+        {
+            /* 
+                find()：
+                    - 寻找第一个符和条件的数组的值，找到则停止遍历，找不到返回undefined
+
+                findIndex()：
+                    - 寻找第一个符和条件的数组的值的下标，找到则停止遍历，找不到返回undefined
+            
+            */
+            const arr = ["asd", "df", "sds", "de", "dsad", "43rd"];
+            const re = arr.find(function (item, index) {
+                return item.startsWith("d");
+            });
+            console.log(re);
+        }
+    </script>
+</body>
+
+</html>

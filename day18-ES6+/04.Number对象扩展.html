@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        
+            Number.isFinite(i) : 判断是否是有限大的数
+            Number.isNaN(i) : 判断是否是NaN
+            Number.isInteger(i) : 判断是否是整数
+            Number.parseInt(str) : 将字符串转换为对应的数值
+            toFixed(a)：取小数点后a位
+        
+        */
+        let a = 1;
+        let b = Infinity;
+        console.log(Number.isFinite(a)) //true
+        console.log(Number.isFinite(b)) //false
+
+
+        let c = NaN;
+        console.log(isNaN(a)) //false
+        console.log(isNaN(c)) //true
+        console.log(isNaN("abc")) //全局的isNaN方法会将值转换为数字，然后判断是否是NaN
+
+        console.log(Number.isNaN(a)) //false
+        console.log(Number.isNaN(c)) //true
+        console.log(Number.isNaN("abc")) //false//Number的isNaN方法 就检测这个值是不是NaN  不会进行类型转换后再判断
+
+        //判断是否是整数
+        let d = 3.1;
+        console.log(parseInt(d) === d);
+
+        console.log(Number.isInteger(d)); //false
+    </script>
+</body>
+
+</html>

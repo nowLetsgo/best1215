@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            进制写法：
+                二进制: 0b...
+                八进制：0...(ES3)  0o...(ES6)
+                十六进制: 0x...
+
+            进制转换
+                parseInt(A,B); 把B进制的A转换为10进制
+                A.toString(B): 把A转换为B进制的字符串
+        */
+
+        //声明一个二进制的数字
+        let a = 0b111;
+        //打印总会转换成10进制打印
+        console.log(a);
+
+        let b = 010;
+        console.log(b);
+
+        let c = 0o10;
+        console.log(c);
+
+        let d = 0xff;
+        console.log(d);
+
+
+        console.log(parseInt(21, 3)) //7
+
+        let s = 100000000;
+        console.log(s.toString(30))
+
+        //练习
+        const re = [0, 1, 2].map(parseInt);
+        // parseInt(0,0)
+        // parseInt(1,1)
+        // parseInt(2,2)
+        console.log(re); //[0,NaN,NaN]
+    </script>
+</body>
+
+</html>

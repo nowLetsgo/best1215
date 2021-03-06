@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            解构使用的rest参数：    
+            
+        */
+        {
+            const arr = [1, 2, 3, 4, 5, 6, 7];
+            const [a, b, ...c] = arr;
+            console.log(a, b, c);
+        }
+
+        {
+            const obj = {
+                name: "laowang",
+                sex: "nan",
+                age: 18,
+                add: "草围"
+            }
+            const {
+                name,
+                ...obj1
+            } = obj;
+            console.log(name, obj1)
+
+        }
+
+        /* 
+            数组的扩展运算符 ...arr  用来展开数组
+        
+        */
+        {
+            const arr = [1, 2, 3];
+            console.log(...arr);
+
+            //展开数组，可以拷贝一个数组
+            const arr1 = [...arr];
+            console.log(arr1);
+            console.log(arr1 === arr);
+        }
+
+        {
+            const arr = [1, 2, 3];
+            //传参的使用
+            function fn(x, y, z) {
+                console.log(x, y, z)
+            }
+            // eval("fn(" + arr.toString() + ")")
+            fn(...arr);
+        }
+
+
+        {
+            //合并数组
+            const arr1 = [1, 2, 4];
+            const arr2 = [3, 5, 6];
+            const arr3 = [...arr1, ...arr2]
+            console.log(arr3)
+        }
+
+        {
+            //字符串也部署有iterator接口，所以也可以使用...
+            const str = "abcde";
+            const arr = [...str];
+            console.log(arr);
+        }
+    </script>
+</body>
+
+</html>

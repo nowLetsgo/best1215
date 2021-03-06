@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(Math.floor(2.1)) //2
+        console.log(Math.floor(-2.1)) //-3
+
+        console.log(Math.ceil(2.1)) //3
+        console.log(Math.ceil(-2.1)) //-2
+
+        /* 
+            Math.trunc()方法会将数字的小数部分去掉，只保留整数部分
+            Math.sign() 判断一个数字的正数还是负数 还是0 或者是NaN
+            Math.sqrt()平方根
+            Math.cbrt()立方根
+            Math.hypot() 求所有参数平方和的平方根
+        */
+        console.log(Math.trunc(2.1)) //2
+        console.log(Math.trunc(-2.1)) //-2
+
+        console.log(Math.sign(-2.1)) //-1
+        console.log(Math.sign(2.1)) //1
+        console.log(Math.sign(NaN)) //NaN
+        console.log(Math.sign(0)) //0
+
+
+        console.log(Math.sqrt(4)) //2
+        console.log(Math.cbrt(27)) //3
+
+        console.log(Math.hypot(3, 4)) //5
+        console.log(Math.hypot(3, 4, 5)) //7.07
+    </script>
+</body>
+
+</html>
