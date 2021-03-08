@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            size属性  返回Set的长度
+            add 添加某个值，返回 Set 结构本身。
+            delete 删除某个值，返回一个布尔值，表示删除是否成功。
+            has 返回一个布尔值，表示该值是否为Set的成员
+            clear 清除所有成员，没有返回值。
+        
+        
+        */
+        const set1 = new Set([1, 1, 1, 2, 3, 4, 5, ["a"]]);
+        console.log(set1);
+
+        //长度 size
+        console.log(set1.size)
+
+        //add 添加  重复的值不会被添加进去
+        set1.add(1);
+        const reAdd = set1.add(6);
+        console.log(set1);
+        console.log(reAdd === set1); //修改了原set 并返回这个set的引用
+
+        //delete 删除某个值 
+        const reDelete = set1.delete(1);
+        console.log(set1);
+        console.log(reDelete) //true 如果删除成功则返回true  否则返回false
+
+
+        //clear() 清空
+        /* const reClear = set1.clear();
+        console.log(set1)
+        console.log(reClear); //没有返回值 */
+
+        //has() 判断是否存在某个值  全等判断
+        const reHas = set1.has(["a"]);
+        console.log(reHas)
+
+
+        //forEach遍历
+        set1.forEach(function (item, index) {
+            //set的key和value 是一个值  set不能通过下标获取  可以尝试使用转数组或者forEach遍历访问
+            console.log(item, index);
+        })
+    </script>
+</body>
+
+</html>

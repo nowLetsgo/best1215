@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            在ES6中，只要一种数据结构具有了Symbol.iterator属性，那么就认为是可以迭代的  
+            在ES6中，很多数据结构都部署了iterator接口(Array,set,Map,string)
+        
+        */
+
+        // console.log(window.name)
+        //字符串
+        const str1 = "abc";
+        console.log(str1[Symbol.iterator]())
+
+        //map
+        const map1 = new Map([
+            ["sex", "nv"]
+        ]);
+        console.log(map1)
+        console.log(map1[Symbol.iterator]())
+
+        //set
+        const set1 = new Set([1, 2, 3, 4, 1, 2]);
+        console.log(set1);
+        console.log(set1[Symbol.iterator]())
+
+        //object
+        const obj1 = {
+            name: "laowang",
+            age: 18
+        };
+        console.log(obj1); //obj1[Symbol.iterator] is not a function
+        console.log(obj1[Symbol.iterator]())
+
+
+        
+    </script>
+</body>
+
+</html>

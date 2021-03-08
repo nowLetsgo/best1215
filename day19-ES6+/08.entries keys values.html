@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //数组的entries keys values
+        {
+            const arr = ["a", "b", "c", "d"];
+            //entries得到的是数组的 键值对 的迭代器对象
+            const entriesArr = arr.entries();
+            console.log(entriesArr);
+            console.log(entriesArr.next());
+
+            for (let value of entriesArr) {
+                console.log(value)
+            }
+
+            //keys 得到的是数组的 key 组成的的迭代器对象
+            const keysArr = arr.keys();
+            console.log(keysArr)
+            for (let value of keysArr) {
+                console.log(value)
+            }
+
+            //values 得到的是数组的 value 组成的的迭代器对象
+            const valuesArr = arr.values();
+            console.log(valuesArr)
+            for (let value of valuesArr) {
+                console.log(value)
+            }
+        }
+
+
+
+        //map的entries keys values
+        {
+            const map = new Map([
+                [{
+                    a: 1
+                }, true],
+                ["hello", "world"]
+            ]);
+            //entries得到的是数组的 键值对 的迭代器对象
+            const entriesMap = map.entries();
+            console.log(entriesMap);
+            console.log(entriesMap.next());
+
+            for (let value of entriesMap) {
+                console.log(value)
+            }
+
+            //keys 得到的是数组的 key 组成的的迭代器对象
+            const keysMap = map.keys();
+            console.log(keysMap)
+            for (let value of keysMap) {
+                console.log(value)
+            }
+
+            //values 得到的是数组的 value 组成的的迭代器对象
+            const valuesMap = map.values();
+            console.log(valuesMap)
+            for (let value of valuesMap) {
+                console.log(value)
+            }
+        }
+
+
+        {
+            /* 
+                Object.entries(obj):得到对象的键值对组成的一个数组
+                Object.values(obj)
+                Object.keys(obj)
+            */
+            const obj = {
+                a: 1,
+                b: 2
+            }
+            console.log(Object.entries(obj))
+            console.log(Object.keys(obj))
+            console.log(Object.values(obj))
+
+
+            for (let value of Object.values(obj)) {
+                console.log(value)
+            }
+        }
+    </script>
+</body>
+
+</html>

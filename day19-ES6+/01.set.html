@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
+                - new实例化生成set结构 new Set();
+                - Set构造函数，接受具有iterator接口的数据结构（字符串 数组 set  map）
+        */
+
+        {
+            const set1 = new Set([1, 2, 3, 4, 5]);
+            console.log(set1); //object
+            console.log(Object.prototype.toString.call(set1)); //[object Set]
+        }
+
+        { //数组去重
+            const arr = [1, 1, 2, 2, 2, 1, 1, 4, 2, 2, 1, 4, 5];
+            //把数组传递Set构造函数中 
+            const set2 = new Set(arr);
+            //得到一个数组去重后的set类型
+            console.log(set2);
+            //...运算符可以将具有iterator接口的数据展开,外层包裹一层中括号，即可得到一个数组
+            console.log([...set2]); //1,2,4,5
+        }
+
+        {
+            //字符串去重
+            const str = "13211224345";
+            const set3 = new Set(str);
+            console.log([...set3].join(""))
+        }
+    </script>
+</body>
+
+</html>

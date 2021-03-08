@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = ["a", "b", "c", "d"];
+        console.log(arr);
+        //三点运算符执行的时候，会把数组展开，默认调用了数组的iterator接口来展开的
+        console.log(...arr)
+
+
+        //获取数组的iterator接口 并调用 得到一个 Array Iterator对象
+        const iter1 = arr[Symbol.iterator]();
+        console.log(iter1)
+        //Array.Iterator对象有一个方法是next 可以依次获得每一个值
+        console.log(iter1.next()); //{value:"a",done:false}
+        console.log(iter1.next())
+        console.log(iter1.next())
+        console.log(iter1.next())
+        console.log(iter1.next())
+    </script>
+</body>
+
+</html>

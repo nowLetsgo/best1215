@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //字符串
+        const str1 = "abc";
+        for (let value of str1) {
+            console.log(value)
+        }
+
+        //map
+        const map1 = new Map([
+            ["sex", "nv"],
+            [true, "123"],
+            [{
+                a: 1
+            }, "hello"]
+        ]);
+        console.log(map1)
+        for (let value of map1) {
+            console.log(value);
+            console.log(value[0]);
+        }
+
+        //set
+        const set1 = new Set([1, 2, 3, 4, 1, 2]);
+        for (let value of set1) {
+            console.log(value);
+        }
+
+        //object
+        const obj1 = {
+            name: "laowang",
+            age: 18
+        };
+        for (let value of obj1) {
+            console.log(value); //obj1 is not iterable
+        }
+    </script>
+</body>
+
+</html>
