@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            promise的函数参数的两个参数：
+                - resolve:成功回调函数，当异步处理成功了，则直接调用成功回调函数
+                - reject:失败回调函数，当异步处理失败了，则直接调用失败回调函数
+                - 无论调用resolve还是reject，都会把结果返回给promise对象
+                - resolve和reject方法调用的时候，可以传递参数，把成功的结果或失败的报错信息返回给promise对象接收
+        
+            promise实例化对象：
+                -[[PromiseState]]：promise状态
+                    - pending:初始化状态，异步代码正在执行中，或者开发人员没有调用resolve或reject
+                    - resolved/fulfilled:成功状态，只要在promise中调用了resolve即可返回成功状态
+                    - rejected:失败状态，当promise调用了reject()方法的时候，返回失败状态
+
+                - [[PromiseResult]]:promise内部成功或失败的时候，调用resolve或reject方法，给的参数
+
+
+        */
+        console.dir(Promise);
+
+        //创建一个Promise
+        const p1 = new Promise((resolve, reject) => {
+            //这个位置是同步
+            console.log("promise内部")
+            //请求数据（异步） 把异步代码写入promise中来处理
+            setTimeout(() => {
+                console.log("请求到了数据");
+                /* resolve({
+                    name: "广东"
+                }) */
+                // reject("error:你失败了");
+            }, 1000)
+        });
+        console.log(p1);
+
+
+        //当p1收到反馈的时候，则可以继续再执行
+        
+    </script>
+</body>
+
+</html>

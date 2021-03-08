@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            什么是promise:
+                - 一个异步编程的解决方案，将异步操作以同步的形式表达出来，避免回调地狱方式的书写。
+
+            promise对象
+                - Promise是一个构造函数，需要实例化调用，得到一个实例化的promise对象
+                - Promise对象上有静态方法：all、allSettled、any、race、reject、resolve
+                - Promise原型对象上有：catch、finally、then
+
+            promise的使用
+                - promise接受一个函数作为参数,把异步代码写入这个函数中即可
+                - promise是处理异步代码的，但是本身是同步执行的
+        
+        */
+        console.dir(Promise);
+
+        //创建一个Promise
+        const p1 = new Promise(() => {
+            //这个位置是同步
+            console.log("promise内部")
+            //请求数据（异步） 把异步代码写入promise中来处理
+            setTimeout(() => {
+                console.log("请求到了数据")
+            }, 1000)
+        });
+        console.log(p1);
+
+
+        //当p1收到反馈的时候，则可以继续再执行
+        
+    </script>
+</body>
+
+</html>

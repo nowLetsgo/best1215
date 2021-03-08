@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            先请求A数据，再请求B数据，再请求C数据
+            计时器模拟ajax请求
+        */
+        //回调地狱
+        setTimeout(() => {
+            console.log("请求了a数据");
+            setTimeout(() => {
+                console.log("请求了b数据");
+                setTimeout(() => {
+                    console.log("请求了c数据");
+                }, 1000)
+            }, 1000)
+        }, 1000)
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>
