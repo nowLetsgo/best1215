@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            先请求A数据 再请求B属性 再请求C数据，拿到所有数据并展示
+            已知A数据：{name:"xiaoli"}
+            B数据：{age:25}
+            C数据：{sex:"nan"}
+        
+        */
+
+        const p1 = new Promise((resolve, reject) => {
+                console.log("开始请求A数据。。。。")
+                try {
+                    setTimeout(() => {
+                        console.log("A数据请求完毕");
+                        const dataA = {
+                            name: "xiaoli"
+                        };
+                        resolve(dataA);
+                    }, 1500)
+                } catch (e) {
+                    reject(e);
+                }
+            })
+
+            .then((data) => {
+                return new Promise((resolve, reject) => {
+                    console.log("B数据开始请求。。。。");
+
+                    try {
+                        // throw new Error("B出错了")
+                        setTimeout(() => {
+                            console.log("B数据请求完毕");
+                            const dataB = {
+                                age: 25
+                            }
+                            resolve(Object.assign({}, data, dataB))
+                        }, 1000)
+                    } catch (e) {
+                        reject(e);
+                    }
+
+                })
+            })
+            .then((data) => {
+                return new Promise((resolve, reject) => {
+                    console.log("C数据开始请求。。。。");
+
+                    try {
+                        setTimeout(() => {
+                            console.log("C数据请求完毕");
+                            const dataC = {
+                                sex: "nan"
+                            }
+                            resolve(Object.assign({}, data, dataC))
+                        }, 2000)
+                    } catch (e) {
+                        reject(e);
+                    }
+
+                })
+            })
+
+            .then((data) => {
+                console.log("data已经获取完毕");
+                for (let key of Object.keys(data)) {
+                    console.log(`${key}:${data[key]}`);
+                }
+            })
+
+            .catch((e) => {
+                console.log("出现了一些问题:" + e);
+            })
+
+            .finally(() => {
+                console.log("不管结果如何~撒花~")
+            })
+    </script>
+</body>
+
+</html>
