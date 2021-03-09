@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <!-- <script src="./01.js"></script> -->
+    <script>
+        const oBtn = document.getElementById("btn");
+
+        oBtn.onclick = function () {
+            //按需加载js import方法返回promise对象
+            const re = import("./01.js");
+            console.log(re);
+            re.then((data) => {
+                    console.log("js加载成功")
+                })
+                .catch((e) => {
+                    console.log("js加载失败")
+                })
+        }
+    </script>
+</body>
+
+</html>

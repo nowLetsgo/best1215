@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            console.log("开始请求A.....");
+            try {
+                // throw new Error("ERROR");
+                setTimeout(() => {
+                    console.log("A请求完毕")
+                    resolve("A")
+                }, 1500)
+            } catch (e) {
+                reject(e)
+            }
+
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("开始请求B.....");
+            try {
+                throw new Error("ERROR");
+                setTimeout(() => {
+                    console.log("B请求完毕")
+                    resolve("B")
+                }, 1000)
+            } catch (e) {
+                reject(e)
+            }
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("开始请求C.....");
+            try {
+                throw new Error("ERROR");
+                setTimeout(() => {
+                    console.log("C请求完毕")
+                    resolve("C")
+                }, 2000)
+            } catch (e) {
+                reject(e)
+            }
+
+        })
+
+        /* 
+            Promise.allSettled()：等待所有promise对象返回成功或失败状态
+                - allSettled()将总会返回一个成功的promise对象
+                - allSettled()返回的promise对象的值，就是所有promise对象组成的数组
+                
+        */
+        const p4 = Promise.allSettled([p1, p2, p3]);
+        console.log(p4)
+
+        p4.then((data) => {
+            console.log(data);
+            data.forEach((item, index) => {
+                console.log(item);
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            同时请求A B C 三个数据，当三个数据全部加载完成的时候，执行某些操作
+        
+         */
+        /* let num = 0;
+        new Promise((resolve, reject) => {
+            console.log("开始请求A.....");
+            setTimeout(() => {
+                console.log("A请求完毕")
+                num++;
+                if (num === 3) {
+                    console.log("全部执行完成")
+                }
+            }, 1500)
+        })
+
+        new Promise((resolve, reject) => {
+            console.log("开始请求B.....");
+            setTimeout(() => {
+                console.log("B请求完毕")
+                num++;
+                if (num === 3) {
+                    console.log("全部执行完成")
+                }
+            }, 1000)
+        })
+
+        new Promise((resolve, reject) => {
+            console.log("开始请求C.....");
+            setTimeout(() => {
+                console.log("C请求完毕")
+                num++;
+                if (num === 3) {
+                    console.log("全部执行完成")
+                }
+            }, 2000)
+        }) */
+
+
+        new Promise((resolve, reject) => {
+                console.log("开始请求A.....");
+                console.log("开始请求B.....");
+                console.log("开始请求C.....");
+                let num = 0
+                try {
+                    throw new Error("ERROR")
+                    setTimeout(() => {
+                        console.log("A请求完毕")
+                        num++;
+                        if (num === 3) {
+                            resolve("全部成功");
+                        }
+                    }, 1500);
+                    setTimeout(() => {
+                        console.log("B请求完毕")
+                        num++;
+                        if (num === 3) {
+                            resolve("全部成功");
+                        }
+                    }, 1000);
+
+                    setTimeout(() => {
+                        console.log("C请求完毕")
+                        num++;
+                        if (num === 3) {
+                            resolve("全部成功");
+                        }
+                    }, 2000)
+                } catch (e) {
+                    reject(e);
+                }
+            })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((e) => {
+                console.log("error:" + e);
+            })
+    </script>
+</body>
+
+</html>

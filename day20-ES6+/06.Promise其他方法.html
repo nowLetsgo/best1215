@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = Promise.resolve(123);
+        console.log(p1);
+
+        const p2 = Promise.reject(456);
+        console.log(p2)
+
+        p1.then((data) => {
+            console.log(data);
+        })
+
+        p2.catch((e) => {
+            console.log(e);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            console.log("开始请求A.....");
+            try {
+                setTimeout(() => {
+                    // throw new Error("ERROR");
+                    console.log("A请求完毕")
+                    resolve("A")
+                }, 1500)
+            } catch (e) {
+                reject(e)
+            }
+
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("开始请求B.....");
+
+            // reject(e)
+            /* try {
+                setTimeout(() => {
+                    console.log("B请求完毕")
+                    resolve("B")
+                }, 1000)
+            } catch (e) {
+                console.log(1);
+                reject(e);
+            } */
+            setTimeout(() => {
+                try {
+                    throw new Error("ERROR:B");
+                    console.log("B请求完毕")
+                    resolve("B")
+                } catch (e) {
+                    reject(e);
+                }
+
+            }, 1000)
+
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("开始请求C.....");
+            try {
+                setTimeout(() => {
+                    // throw new Error("ERROR");
+                    console.log("C请求完毕")
+                    resolve("C")
+                }, 2000)
+            } catch (e) {
+                reject(e)
+            }
+        })
+
+        /* 
+            Promise.race()：取得最快的promise对象,无论成功或失败
+
+        */
+        const p4 = Promise.race([p1, p2, p3]);
+        console.log(p4)
+    </script>
+</body>
+
+</html>

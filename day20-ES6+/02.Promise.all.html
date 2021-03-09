@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => {
+            console.log("开始请求A.....");
+            try {
+                setTimeout(() => {
+                    console.log("A请求完毕")
+                    resolve("A")
+                }, 1500)
+            } catch (e) {
+                reject(e)
+            }
+
+        })
+
+        const p2 = new Promise((resolve, reject) => {
+            console.log("开始请求B.....");
+            try {
+                setTimeout(() => {
+                    console.log("B请求完毕")
+                    resolve("B")
+                }, 1000)
+            } catch (e) {
+                reject(e)
+            }
+        })
+
+        const p3 = new Promise((resolve, reject) => {
+            console.log("开始请求C.....");
+            try {
+                // throw new Error("ERROR");
+                setTimeout(() => {
+                    console.log("C请求完毕")
+                    resolve("C")
+                }, 2000)
+            } catch (e) {
+                reject(e)
+            }
+
+        })
+
+        /* 
+            Promise.all()：等待所有都完成（或第一个失败）
+                - 当所有的promise对象都返回成功状态，则all()返回成功状态的promise，值是内部所有promise值组成的数组
+                - 一旦有一个返回失败状态，则all()返回失败状态的promise对象，值为失败的promise对象的值
+        
+        */
+        const p4 = Promise.all([p1, p2, p3]);
+        console.log(p4)
+        p4.then((data) => {
+                data.forEach((item, index) => {
+                    console.log(item)
+                })
+            })
+
+            .catch((e) => {
+                console.log(e);
+            })
+    </script>
+</body>
+
+</html>

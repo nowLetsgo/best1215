@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            先请求a 再请求b 再请求c
+        
+        */
+
+        async function getData() {
+            const dataA = await new Promise((resolve, reject) => {
+                console.log("a数据开始请求。。。。");
+                setTimeout(() => {
+                    try {
+                        console.log("a数据请求成功");
+                        const dataA = {
+                            name: "laowang"
+                        }
+                        resolve(dataA)
+                    } catch (e) {
+                        reject(e);
+                    }
+                }, 2000)
+            })
+
+            const dataB = await new Promise((resolve, reject) => {
+                console.log("b数据开始请求。。。。");
+                setTimeout(() => {
+                    try {
+                        throw new Error("ERROR ~~~")
+                        console.log("b数据请求成功");
+                        const dataB = {
+                            age: 18
+                        }
+                        resolve(Object.assign({}, dataA, dataB));
+                    } catch (e) {
+                        reject(e);
+                    }
+                }, 1000)
+            })
+
+            const allData = await new Promise((resolve, reject) => {
+                console.log("c数据开始请求。。。。");
+                setTimeout(() => {
+                    try {
+                        console.log("c数据请求成功");
+                        const dataC = {
+                            sex: "nv"
+                        }
+                        resolve(Object.assign({}, dataC, dataB));
+                    } catch (e) {
+                        reject(e);
+                    }
+                }, 1500)
+            })
+
+            await new Promise((resolve, reject) => {
+                //处理数据逻辑
+                for (let key of Object.keys(allData)) {
+                    console.log(`${key}:${allData[key]}`)
+                }
+                resolve();
+            })
+        }
+
+        const re = getData();
+        console.log(re);
+        re.then((data) => {
+                console.log("所有的请求和数据处理结束")
+            })
+            .catch((e) => {
+                console.log(e)
+                console.log("async函数中可能出现了点问题")
+            })
+    </script>
+</body>
+
+</html>

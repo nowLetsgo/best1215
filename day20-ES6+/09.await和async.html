@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            async函数
+                - 返回一个promise对象,promise对象的状态默认成功
+                - 返回promise对象的值 是函数return的内容
+
+            await:
+                - 只要async开始调用，则立即开始执行函数第一个await的内容，第一个await之后的内容属于异步
+                - await 只等promise对象
+                - await必须出现在async函数中
+
+            await返回值：
+                - 当await等待的promise返回失败，则直接退出async函数，async也这个返回失败的promise对象
+                - 当await等待的promise对象成功，继续执行下一个await，并且当前await返回成功promise的值
+        
+        */
+        async function getData() {
+            const re = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    try {
+                        // throw new Error("ERROR");
+                        console.log("等我");
+                        resolve("成功")
+                    } catch (e) {
+                        reject("失败")
+                    }
+                }, 1000)
+            });
+            console.log(re);
+            await console.log(2);
+            return "haha";
+        }
+
+        const re = getData();
+        console.log(re)
+    </script>
+</body>
+
+</html>

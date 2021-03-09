@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            旧版本的类和继承
+        */
+        /* function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.do = function () {
+            console.log("吃饭睡觉打豆豆");
+        }
+
+        function Student(sex, name, age) {
+            Person.call(this, name, age);
+            this.sex = sex;
+        }
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        Student.prototype.study = function () {
+            console.log("class");
+        }
+
+
+        const s1 = new Student("nan", "doudou", 12);
+        console.log(s1) */
+
+
+        class Student {
+            //constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显式定义，一个空的constructor方法会被默认添加
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+                this.eat = function () {
+                    console.log("吃")
+                }
+            }
+
+            //公有方法 给的是原型对象扩展的方法
+            do() {
+                console.log("dododo")
+            }
+
+            //这样书写将会把属性直接扩给实例化对象，但是不推荐这样书写，数据不可传参
+            sex = "nv";
+
+            //静态方法，直接扩展给Student对象的
+            static study() {
+                console.log("study");
+            }
+        }
+
+        Student.prototype.say = function () {
+            console.log("how are you")
+        }
+
+        const s1 = new Student("xiaowang", 18);
+        console.log(s1);
+        console.log(Student.study);
+    </script>
+</body>
+
+</html>
